@@ -1,0 +1,16 @@
+# Ambienti virtuali Python
+venv/
+.venv/
+env/
+__pycache__/
+*.pyc
+
+# Configurazione e Segreti (NON caricarli mai su GitHub!)
+.env
+*.local
+
+# File di sistema e IDE
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
