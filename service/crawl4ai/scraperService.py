@@ -20,13 +20,9 @@ from service.crawl4ai.esecutoreLoginService import EsecutoreLoginService
 from service.crawl4ai.estrattoreBandiService import EstrazioneDatiService
 
 logging.basicConfig(
-    level=logging.DEBUG,  # <--- Cambiato da INFO a DEBUG
-    format="%(asctime)s [%(levelname)s] [%(name)s.%(funcName)s:%(lineno)d] — %(message)s",
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s — %(message)s",
 )
-# Disattiviamo il debug troppo logorroico di Playwright e HTTPX per non intasare lo schermo
-logging.getLogger("playwright").setLevel(logging.WARNING)
-logging.getLogger("httpx").setLevel(logging.WARNING)
-logging.getLogger("selector_events").setLevel(logging.WARNING)
 
 logger = logging.getLogger(__name__)
 

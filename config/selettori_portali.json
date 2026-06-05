@@ -71,18 +71,18 @@
     "portale_id": "www.arca.regione.lombardia.it_wps_portal_ARCA_Home_e-procurement_piattaforma-sintel",
     "url_base": "https://www.arca.regione.lombardia.it/wps/portal/ARCA/Home/e-procurement/piattaforma-sintel",
     "scoperto_il": "2026-06-05",
-    "affidabile": false,
+    "affidabile": true,
     "selettori": {
-      "contenitore_bando": ".announcement-list .announcement-item",
-      "titolo": ".title",
-      "descrizione": ".description",
-      "scadenza": ".deadline",
-      "importo": ".amount",
-      "categoria": ".category",
-      "url_dettaglio": "a.details-link"
+      "contenitore_bando": ".card",
+      "titolo": ".card-title",
+      "descrizione": ".card-text",
+      "scadenza": ".card-deadline",
+      "importo": ".card-amount",
+      "categoria": ".card-category",
+      "url_dettaglio": ".card-link"
     },
     "ultimo_test": "2026-06-05",
-    "bandi_estratti_ultimo_test": 0
+    "bandi_estratti_ultimo_test": 8
   },
   "egwh.fa.em2.oraclecloud.com": {
     "portale_id": "egwh.fa.em2.oraclecloud.com",
@@ -107,13 +107,13 @@
     "scoperto_il": "2026-06-05",
     "affidabile": false,
     "selettori": {
-      "contenitore_bando": ".contenitore-bando",
-      "titolo": ".titolo-bando",
-      "descrizione": ".descrizione-bando",
-      "scadenza": ".scadenza-bando",
-      "importo": ".importo-bando",
-      "categoria": ".categoria-bando",
-      "url_dettaglio": "a.dettaglio-bando"
+      "contenitore_bando": ".container.body-content .content-def .boxbglog",
+      "titolo": "h1.text-center",
+      "descrizione": "p.text-center",
+      "scadenza": "",
+      "importo": "",
+      "categoria": "",
+      "url_dettaglio": ""
     },
     "ultimo_test": "2026-06-05",
     "bandi_estratti_ultimo_test": 0
@@ -144,13 +144,13 @@
       "contenitore_bando": "div.box.box-red",
       "titolo": "span.titoloredboldbig",
       "descrizione": "p.testoRosso",
-      "scadenza": "strong",
-      "importo": "",
-      "categoria": "",
-      "url_dettaglio": "a"
+      "scadenza": "<N/D>",
+      "importo": "<N/D>",
+      "categoria": "<N/D>",
+      "url_dettaglio": "a[class*=testoRosso][target=_blank]"
     },
     "ultimo_test": "2026-06-05",
-    "bandi_estratti_ultimo_test": 1
+    "bandi_estratti_ultimo_test": 0
   },
   "www.gruppohera.it_gruppo_fornitori": {
     "portale_id": "www.gruppohera.it_gruppo_fornitori",
@@ -159,12 +159,12 @@
     "affidabile": false,
     "selettori": {
       "contenitore_bando": "div.bando-item",
-      "titolo": ".bando-title",
-      "descrizione": ".bando-description",
-      "scadenza": ".bando-deadline",
-      "importo": ".bando-amount",
-      "categoria": ".bando-category",
-      "url_dettaglio": "a.bando-link"
+      "titolo": ".bando-titolo",
+      "descrizione": ".bando-descrizione",
+      "scadenza": ".bando-scadenza",
+      "importo": ".bando-importo",
+      "categoria": ".bando-categoria",
+      "url_dettaglio": ".bando-dettaglio a"
     },
     "ultimo_test": "2026-06-05",
     "bandi_estratti_ultimo_test": 0
@@ -192,13 +192,13 @@
     "scoperto_il": "2026-06-05",
     "affidabile": false,
     "selettori": {
-      "contenitore_bando": "div.portlet-content-container",
-      "titolo": "h3.bando-title",
-      "descrizione": "p.bando-description",
-      "scadenza": "span.bando-deadline",
-      "importo": "span.bando-amount",
-      "categoria": "span.bando-category",
-      "url_dettaglio": "a.bando-detail-link"
+      "contenitore_bando": ".bando-card",
+      "titolo": ".bando-titolo",
+      "descrizione": ".bando-descrizione",
+      "scadenza": ".bando-scadenza",
+      "importo": ".bando-importo",
+      "categoria": ".bando-categoria",
+      "url_dettaglio": ".bando-url a"
     },
     "ultimo_test": "2026-06-05",
     "bandi_estratti_ultimo_test": 0
@@ -209,16 +209,16 @@
     "scoperto_il": "2026-06-05",
     "affidabile": false,
     "selettori": {
-      "contenitore_bando": "div#message",
-      "titolo": "span.red",
-      "descrizione": "none",
-      "scadenza": "none",
-      "importo": "none",
-      "categoria": "none",
-      "url_dettaglio": "a[href^='mailto:']"
+      "contenitore_bando": "div.inner-col",
+      "titolo": "h2 a",
+      "descrizione": "p",
+      "scadenza": "",
+      "importo": "",
+      "categoria": "",
+      "url_dettaglio": "h2 a"
     },
     "ultimo_test": "2026-06-05",
-    "bandi_estratti_ultimo_test": 1
+    "bandi_estratti_ultimo_test": 2
   },
   "eprocurement.fieramilano.it_ngp421_loginprocess": {
     "portale_id": "eprocurement.fieramilano.it_ngp421_loginprocess",
@@ -226,13 +226,13 @@
     "scoperto_il": "2026-06-05",
     "affidabile": false,
     "selettori": {
-      "contenitore_bando": ".loginInputsItem",
-      "titolo": "input#user",
-      "descrizione": "input#password",
-      "scadenza": ".cantLogin",
-      "importo": "input#remember_me",
-      "categoria": "div.checkbox",
-      "url_dettaglio": "form"
+      "contenitore_bando": ".bando-item",
+      "titolo": ".titolo",
+      "descrizione": ".descrizione",
+      "scadenza": ".scadenza",
+      "importo": ".importo",
+      "categoria": ".categoria",
+      "url_dettaglio": "a.dettagli"
     },
     "ultimo_test": "2026-06-05",
     "bandi_estratti_ultimo_test": 0
@@ -277,13 +277,13 @@
     "scoperto_il": "2026-06-05",
     "affidabile": false,
     "selettori": {
-      "contenitore_bando": "div.leftNavPanelContent",
-      "titolo": "span.NaviTreeTitleTextDownHoverState",
+      "contenitore_bando": "tr.FirstLevel[id^='tabIndex']",
+      "titolo": ".TabText",
       "descrizione": "N/A",
       "scadenza": "N/A",
       "importo": "N/A",
-      "categoria": "div.textIcon + span",
-      "url_dettaglio": "div.TreeText > span.NaviTreeTitleTextDownHoverState"
+      "categoria": "N/A",
+      "url_dettaglio": "N/A"
     },
     "ultimo_test": "2026-06-05",
     "bandi_estratti_ultimo_test": 0
@@ -292,35 +292,35 @@
     "portale_id": "globalprocurement.enel.com_it",
     "url_base": "https://globalprocurement.enel.com/it",
     "scoperto_il": "2026-06-05",
-    "affidabile": false,
+    "affidabile": true,
     "selettori": {
-      "contenitore_bando": "div.DoorwayItem",
-      "titolo": "h3.title",
-      "descrizione": "div.category",
-      "scadenza": "NOT_AVAILABLE",
-      "importo": "NOT_AVAILABLE",
-      "categoria": "NOT_AVAILABLE",
-      "url_dettaglio": "a.cta-link"
+      "contenitore_bando": ".NewsModuleItem",
+      "titolo": ".content .title span",
+      "descrizione": "",
+      "scadenza": ".content .date",
+      "importo": "",
+      "categoria": "",
+      "url_dettaglio": "a.card-link"
     },
     "ultimo_test": "2026-06-05",
-    "bandi_estratti_ultimo_test": 2
+    "bandi_estratti_ultimo_test": 4
   },
   "autostrade.bravosolution.com_web_login.html": {
     "portale_id": "autostrade.bravosolution.com_web_login.html",
     "url_base": "https://autostrade.bravosolution.com/web/login.html",
     "scoperto_il": "2026-06-05",
-    "affidabile": false,
+    "affidabile": true,
     "selettori": {
-      "contenitore_bando": "div.row > div.col-lg-4",
+      "contenitore_bando": "div.container.marketing div.row div.col-lg-4",
       "titolo": "h2",
-      "descrizione": "> ul li a",
-      "scadenza": ".text-center a.btn",
-      "importo": "N/A",
-      "categoria": "N/A",
-      "url_dettaglio": "> ul li a"
+      "descrizione": "p",
+      "scadenza": "",
+      "importo": "",
+      "categoria": "",
+      "url_dettaglio": "a.btn.btn-primary"
     },
     "ultimo_test": "2026-06-05",
-    "bandi_estratti_ultimo_test": 0
+    "bandi_estratti_ultimo_test": 3
   },
   "portaleacquisti.terna.it": {
     "portale_id": "portaleacquisti.terna.it",
@@ -338,5 +338,56 @@
     },
     "ultimo_test": "2026-06-05",
     "bandi_estratti_ultimo_test": 11
+  },
+  "www.vegaformazione.it_area-utenti.php": {
+    "portale_id": "www.vegaformazione.it_area-utenti.php",
+    "url_base": "https://www.vegaformazione.it/area-utenti.php",
+    "scoperto_il": "2026-06-05",
+    "affidabile": false,
+    "selettori": {
+      "contenitore_bando": "div.bando",
+      "titolo": ".titolo",
+      "descrizione": ".descrizione",
+      "scadenza": ".scadenza",
+      "importo": ".importo",
+      "categoria": ".categoria",
+      "url_dettaglio": "a.dettagli"
+    },
+    "ultimo_test": "2026-06-05",
+    "bandi_estratti_ultimo_test": 0
+  },
+  "enispace.eni.com_it_IT_home.page": {
+    "portale_id": "enispace.eni.com_it_IT_home.page",
+    "url_base": "https://enispace.eni.com/it_IT/home.page",
+    "scoperto_il": "2026-06-05",
+    "affidabile": true,
+    "selettori": {
+      "contenitore_bando": ".slick-slide",
+      "titolo": ".news-title",
+      "descrizione": ".news-subtitle",
+      "scadenza": "",
+      "importo": "",
+      "categoria": ".news-header",
+      "url_dettaglio": "linknews button"
+    },
+    "ultimo_test": "2026-06-05",
+    "bandi_estratti_ultimo_test": 23
+  },
+  "imprese.istat.it_": {
+    "portale_id": "imprese.istat.it_",
+    "url_base": "https://imprese.istat.it/",
+    "scoperto_il": "2026-06-05",
+    "affidabile": false,
+    "selettori": {
+      "contenitore_bando": "div.card[_ngcontent-ng-c2417303142]",
+      "titolo": "h3.titolo-notizia",
+      "descrizione": "app-text-truncator[_ngcontent-ng-c2417303142] div[_ngcontent-ng-c1852116579] > div",
+      "scadenza": "div.dataNotizia strong",
+      "importo": "",
+      "categoria": "",
+      "url_dettaglio": "app-text-truncator[_ngcontent-ng-c2417303142] a"
+    },
+    "ultimo_test": "2026-06-05",
+    "bandi_estratti_ultimo_test": 0
   }
 }
