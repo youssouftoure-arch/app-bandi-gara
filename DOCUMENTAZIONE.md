@@ -1,7 +1,3 @@
-Certamente! Puoi chiamarlo tranquillamente `DOCUMENTAZIONE.md` (o `ARCHITECTURE.md`) e tenerlo nella radice del progetto accanto al `README.md` principale. È una pratica comunissima nei progetti professionali: il `README.md` serve come guida rapida di installazione e avvio, mentre un file dedicato alla documentazione o all'architettura descrive come funziona il motore sotto il cofano.
-
-Ecco l'intero documento formattato in un unico blocco Markdown, pronto da copiare e incollare nel tuo nuovo file:
-
 ```markdown
 # 📜 Documentazione Tecnica di Architettura: Sistema Ingegnerizzato di Scraping Bandi
 
