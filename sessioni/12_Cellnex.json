@@ -1,0 +1,32 @@
+[
+  {
+    "name": "JSESSIONID",
+    "value": "81B68312A9C4BBA747A19412C8FD4E11",
+    "domain": "fornitori.cellnextelecom.it",
+    "path": "/albo/",
+    "expires": -1,
+    "httpOnly": true,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "visid_incap_2462393",
+    "value": "K0MO0Lz4QHmlefV/TWUWZgDFImoAAAAAQUIPAAAAAAB1nuH9NpzlYntFpS/JVLVz",
+    "domain": ".cellnextelecom.it",
+    "path": "/",
+    "expires": 1812151277.46027,
+    "httpOnly": true,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "incap_ses_475_2462393",
+    "value": "yrnkYuYhsl35kMbDl4qXBgDFImoAAAAAb2VkGba19j8ak6xwBu1QvA==",
+    "domain": ".cellnextelecom.it",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  }
+]

@@ -10,7 +10,9 @@ import logging
 import os
 from dotenv import load_dotenv
 from pathlib import Path
-
+import json
+from crawl4ai import AsyncWebCrawler, BrowserConfig, CrawlerRunConfig
+from crawl4ai.async_configs import CacheMode
 import pandas as pd
 
 from model.enums.statoLoginEnum import LoginStatus
@@ -66,15 +68,11 @@ class scraper:
 
         return {"portale": portale.url, "login": risultato_login.status.value, "bandi": bandi}
 
-    async def _scrapa_bandi(self, portale: Portale, cookies_path: str) -> list:
-        """
-        Scraping della pagina bandi con sessione autenticata.
-        I cookie del login vengono iniettati nel crawler.
-        """
+    async def _scrapa_bandi(self, portale: Portale, cookies_path: str) -> str:
+        """Scraping con Playwright diretto usando i cookie della sessione."""
         import json
-        from crawl4ai import AsyncWebCrawler, BrowserConfig, CrawlerRunConfig
+        from playwright.async_api import async_playwright
 
-        # Carica i cookie salvati dall'EsecutoreLoginService
         cookies = []
         if cookies_path:
             try:
@@ -82,17 +80,18 @@ class scraper:
             except Exception as e:
                 logger.warning("[%s] Cookie non caricabili: %s", portale.url, e)
 
-        browser_cfg = BrowserConfig(headless=True)
-        run_cfg = CrawlerRunConfig(
-            cookies=cookies,   # sessione autenticata
-        )
+        async with async_playwright() as p:
+            browser = await p.chromium.launch(headless=True)
+            context = await browser.new_context()
+            if cookies:
+                await context.add_cookies(cookies)
+            page = await context.new_page()
+            await page.goto(portale.url, timeout=30_000, wait_until="domcontentloaded")
+            contenuto = await page.content()
+            await browser.close()
 
-        async with AsyncWebCrawler(config=browser_cfg) as crawler:
-            risultato = await crawler.arun(url=portale.url, config=run_cfg)
-
-        # TODO: aggiungere LLMExtractionStrategy per strutturare i bandi
-        # Per ora restituisce il markdown grezzo
-        return risultato.markdown or ""
+        # TODO: passare a LLMExtractionStrategy per strutturare i bandi
+        return contenuto
 
     def _carica_portali(self) -> list[Portale]:
         df = pd.read_excel(EXCEL_PATH, header=4)

@@ -25,7 +25,7 @@ from openai import AsyncOpenAI
 
 from model.dto.classificazioneLoginDto import ClassificationResult
 from model.enums.confidenzaEnum import Confidence
-from model.enums.statoLoginEnum import LoginStatus
+from model.enums.statoPaginaEnum import PageState
 from promptDiSistema.classificatoreLogin import SYSTEM_PROMPT
 
 logger = logging.getLogger(__name__)
@@ -160,7 +160,7 @@ class LoginClassifier:
             logger.error("Errore chiamata vision [%s]: %s", model, exc)
             # In caso di errore API, restituiamo unknown con LOW
             return ClassificationResult(
-                state=LoginStatus.UNKNOWN,
+                state=PageState.UNKNOWN,
                 confidence=Confidence.LOW,
                 notes=f"Errore API: {exc}",
                 used_model=model,
@@ -177,7 +177,7 @@ class LoginClassifier:
         except json.JSONDecodeError:
             logger.warning("JSON non valido dal modello %s: %r", model, raw_text)
             return ClassificationResult(
-                state=LoginStatus.UNKNOWN,
+                state=PageState.UNKNOWN,
                 confidence=Confidence.LOW,
                 notes="JSON non valido nella risposta",
                 used_model=model,
@@ -187,10 +187,10 @@ class LoginClassifier:
         # Normalizzazione valori
         state_value = data.get("state", "unknown")
         try:
-            state = LoginStatus(state_value)
+            state = PageState(state_value)
         except ValueError:
             logger.warning("State sconosciuto: %r", state_value)
-            state = LoginStatus.UNKNOWN
+            state = PageState.UNKNOWN
 
         confidence_value = data.get("confidence", "LOW")
         try:
@@ -199,7 +199,7 @@ class LoginClassifier:
             confidence = Confidence.LOW
 
         return ClassificationResult(
-            state=LoginStatus(state) if state in LoginStatus._value2member_map_ else LoginStatus.UNKNOWN,
+            state=PageState(state) if state in PageState._value2member_map_ else PageState.UNKNOWN,
             confidence=Confidence(confidence) if confidence in Confidence._value2member_map_ else Confidence.LOW,
             notes=str(data.get("notes", ""))[:200],
             used_model=model,

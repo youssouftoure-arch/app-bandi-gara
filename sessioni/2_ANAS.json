@@ -1,0 +1,52 @@
+[
+  {
+    "name": "CLUSTER-NODE",
+    "value": "tlkadm_lb2",
+    "domain": "acquisti.stradeanas.it",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "AWSALBAPP-1",
+    "value": "_remove_",
+    "domain": "acquisti.stradeanas.it",
+    "path": "/",
+    "expires": 1781268238.449584,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "AWSALBAPP-2",
+    "value": "_remove_",
+    "domain": "acquisti.stradeanas.it",
+    "path": "/",
+    "expires": 1781268238.44964,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "AWSALBAPP-3",
+    "value": "_remove_",
+    "domain": "acquisti.stradeanas.it",
+    "path": "/",
+    "expires": 1781268238.449704,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "AWSALBAPP-0",
+    "value": "AAAAAAAAAACz9SMD0wbdQ/39PhX+pz0xZB6ZHFUnO7k609tZIAj6L+MuicafaMoGYo1ywEO6JdSylz/pP8e0mLKV+MstpnsUXhhkhagRpc3At1karYDmkaANAw3Ff/q07don7tsTP2JZR1M=",
+    "domain": "acquisti.stradeanas.it",
+    "path": "/",
+    "expires": 1781268238.449366,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  }
+]

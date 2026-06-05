@@ -1,0 +1,12 @@
+[
+  {
+    "name": "ASP.NET_SessionId",
+    "value": "syjfa0bnhgowv2x21li0dvim",
+    "domain": "mm.pro-q.it",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "Lax"
+  }
+]
