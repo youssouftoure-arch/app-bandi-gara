@@ -1,0 +1,342 @@
+{
+  "acquisti.stradeanas.it_web_areaFornitori.html": {
+    "portale_id": "acquisti.stradeanas.it_web_areaFornitori.html",
+    "url_base": "https://acquisti.stradeanas.it/web/areaFornitori.html",
+    "scoperto_il": "2026-06-05",
+    "affidabile": true,
+    "selettori": {
+      "contenitore_bando": ".content ul.punti li",
+      "titolo": "a",
+      "descrizione": "",
+      "scadenza": "",
+      "importo": "",
+      "categoria": "",
+      "url_dettaglio": "a"
+    },
+    "ultimo_test": "2026-06-05",
+    "bandi_estratti_ultimo_test": 13
+  },
+  "fornitori.cellnextelecom.it_albo_login": {
+    "portale_id": "fornitori.cellnextelecom.it_albo_login",
+    "url_base": "https://fornitori.cellnextelecom.it/albo/login",
+    "scoperto_il": "2026-06-05",
+    "affidabile": false,
+    "selettori": {
+      "contenitore_bando": "div.container",
+      "titolo": "h3",
+      "descrizione": "div",
+      "scadenza": "",
+      "importo": "",
+      "categoria": "",
+      "url_dettaglio": "a[target='_blank']"
+    },
+    "ultimo_test": "2026-06-05",
+    "bandi_estratti_ultimo_test": 1
+  },
+  "fornitori.cellnextelecom.it_albo_login;jsessionid=D53148FAAA7161FED97A79A86ADE9BBC": {
+    "portale_id": "fornitori.cellnextelecom.it_albo_login;jsessionid=D53148FAAA7161FED97A79A86ADE9BBC",
+    "url_base": "http://fornitori.cellnextelecom.it/albo/login;jsessionid=D53148FAAA7161FED97A79A86ADE9BBC",
+    "scoperto_il": "2026-06-05",
+    "affidabile": false,
+    "selettori": {
+      "contenitore_bando": ".stato_accredit",
+      "titolo": "h3",
+      "descrizione": ".stato_accredit",
+      "scadenza": "",
+      "importo": "",
+      "categoria": "",
+      "url_dettaglio": "a[target='_blank']"
+    },
+    "ultimo_test": "2026-06-05",
+    "bandi_estratti_ultimo_test": 0
+  },
+  "mm.pro-q.it_": {
+    "portale_id": "mm.pro-q.it_",
+    "url_base": "https://mm.pro-q.it/",
+    "scoperto_il": "2026-06-05",
+    "affidabile": true,
+    "selettori": {
+      "contenitore_bando": "#ctl00_MC_spGarePossibiliPartecipanti_uc_GarePossibiliPartecipantiNew_rgResults_ctl00 > tbody > tr",
+      "titolo": "span[id*='lDenominazioneGara']",
+      "descrizione": "",
+      "scadenza": "td.rgSorted",
+      "importo": "",
+      "categoria": "span[id*='lblAppalto']",
+      "url_dettaglio": "a[id*='btnDettaglio']"
+    },
+    "ultimo_test": "2026-06-05",
+    "bandi_estratti_ultimo_test": 6
+  },
+  "www.arca.regione.lombardia.it_wps_portal_ARCA_Home_e-procurement_piattaforma-sintel": {
+    "portale_id": "www.arca.regione.lombardia.it_wps_portal_ARCA_Home_e-procurement_piattaforma-sintel",
+    "url_base": "https://www.arca.regione.lombardia.it/wps/portal/ARCA/Home/e-procurement/piattaforma-sintel",
+    "scoperto_il": "2026-06-05",
+    "affidabile": false,
+    "selettori": {
+      "contenitore_bando": ".announcement-list .announcement-item",
+      "titolo": ".title",
+      "descrizione": ".description",
+      "scadenza": ".deadline",
+      "importo": ".amount",
+      "categoria": ".category",
+      "url_dettaglio": "a.details-link"
+    },
+    "ultimo_test": "2026-06-05",
+    "bandi_estratti_ultimo_test": 0
+  },
+  "egwh.fa.em2.oraclecloud.com": {
+    "portale_id": "egwh.fa.em2.oraclecloud.com",
+    "url_base": "https://egwh.fa.em2.oraclecloud.com",
+    "scoperto_il": "2026-06-05",
+    "affidabile": false,
+    "selettori": {
+      "contenitore_bando": "oj-idaas-signin-app-shell-redwood-container",
+      "titolo": "h1.oj-idaas-signin-section-header-text-container",
+      "descrizione": ".oj-idaas-signin-section-login-text-container",
+      "scadenza": ".oj-idaas-signin-section-domain-info-value",
+      "importo": ".oj-idaas-signin-section-domain-info-label",
+      "categoria": ".oj-idaas-signin-section-domain-help-icon-style",
+      "url_dettaglio": "a.idcs-signin-link-button"
+    },
+    "ultimo_test": "2026-06-05",
+    "bandi_estratti_ultimo_test": 0
+  },
+  "wind3privacy.azurewebsites.net_reg_login": {
+    "portale_id": "wind3privacy.azurewebsites.net_reg_login",
+    "url_base": "https://wind3privacy.azurewebsites.net/reg/login",
+    "scoperto_il": "2026-06-05",
+    "affidabile": false,
+    "selettori": {
+      "contenitore_bando": ".contenitore-bando",
+      "titolo": ".titolo-bando",
+      "descrizione": ".descrizione-bando",
+      "scadenza": ".scadenza-bando",
+      "importo": ".importo-bando",
+      "categoria": ".categoria-bando",
+      "url_dettaglio": "a.dettaglio-bando"
+    },
+    "ultimo_test": "2026-06-05",
+    "bandi_estratti_ultimo_test": 0
+  },
+  "alfagest.lemainformatica.it_web_amadori_": {
+    "portale_id": "alfagest.lemainformatica.it_web_amadori_",
+    "url_base": "https://alfagest.lemainformatica.it/web/amadori/",
+    "scoperto_il": "2026-06-05",
+    "affidabile": false,
+    "selettori": {
+      "contenitore_bando": "div.row.row_custom",
+      "titolo": "div.col-md-12 > a[href]",
+      "descrizione": "div.col-md-12.text-left",
+      "scadenza": "div.col-md-12.row_custom.text-center > font > a",
+      "importo": "div.row.row_btn_login > div.col-md-12 > button",
+      "categoria": "div.row.row_version > div.col-md-12",
+      "url_dettaglio": "div.col-md-12.row_custom.text-center a"
+    },
+    "ultimo_test": "2026-06-05",
+    "bandi_estratti_ultimo_test": 0
+  },
+  "www.acquistionlinerfi.it_web_error.html?_ncp=1753696951455.127431-1": {
+    "portale_id": "www.acquistionlinerfi.it_web_error.html?_ncp=1753696951455.127431-1",
+    "url_base": "https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1",
+    "scoperto_il": "2026-06-05",
+    "affidabile": false,
+    "selettori": {
+      "contenitore_bando": "div.box.box-red",
+      "titolo": "span.titoloredboldbig",
+      "descrizione": "p.testoRosso",
+      "scadenza": "strong",
+      "importo": "",
+      "categoria": "",
+      "url_dettaglio": "a"
+    },
+    "ultimo_test": "2026-06-05",
+    "bandi_estratti_ultimo_test": 1
+  },
+  "www.gruppohera.it_gruppo_fornitori": {
+    "portale_id": "www.gruppohera.it_gruppo_fornitori",
+    "url_base": "https://www.gruppohera.it/gruppo/fornitori",
+    "scoperto_il": "2026-06-05",
+    "affidabile": false,
+    "selettori": {
+      "contenitore_bando": "div.bando-item",
+      "titolo": ".bando-title",
+      "descrizione": ".bando-description",
+      "scadenza": ".bando-deadline",
+      "importo": ".bando-amount",
+      "categoria": ".bando-category",
+      "url_dettaglio": "a.bando-link"
+    },
+    "ultimo_test": "2026-06-05",
+    "bandi_estratti_ultimo_test": 0
+  },
+  "eprocurement.raiway.it_PortaleAppalti_it_homepage.wp": {
+    "portale_id": "eprocurement.raiway.it_PortaleAppalti_it_homepage.wp",
+    "url_base": "https://eprocurement.raiway.it/PortaleAppalti/it/homepage.wp",
+    "scoperto_il": "2026-06-05",
+    "affidabile": false,
+    "selettori": {
+      "contenitore_bando": ".bando-card",
+      "titolo": ".bando-titolo",
+      "descrizione": ".bando-descrizione",
+      "scadenza": ".bando-scadenza",
+      "importo": ".bando-importo",
+      "categoria": ".bando-categoria",
+      "url_dettaglio": ".bando-url"
+    },
+    "ultimo_test": "2026-06-05",
+    "bandi_estratti_ultimo_test": 0
+  },
+  "www.anticorruzione.it_per-le-imprese": {
+    "portale_id": "www.anticorruzione.it_per-le-imprese",
+    "url_base": "https://www.anticorruzione.it/per-le-imprese",
+    "scoperto_il": "2026-06-05",
+    "affidabile": false,
+    "selettori": {
+      "contenitore_bando": "div.portlet-content-container",
+      "titolo": "h3.bando-title",
+      "descrizione": "p.bando-description",
+      "scadenza": "span.bando-deadline",
+      "importo": "span.bando-amount",
+      "categoria": "span.bando-category",
+      "url_dettaglio": "a.bando-detail-link"
+    },
+    "ultimo_test": "2026-06-05",
+    "bandi_estratti_ultimo_test": 0
+  },
+  "ingate.invitalia.it": {
+    "portale_id": "ingate.invitalia.it",
+    "url_base": "https://ingate.invitalia.it",
+    "scoperto_il": "2026-06-05",
+    "affidabile": false,
+    "selettori": {
+      "contenitore_bando": "div#message",
+      "titolo": "span.red",
+      "descrizione": "none",
+      "scadenza": "none",
+      "importo": "none",
+      "categoria": "none",
+      "url_dettaglio": "a[href^='mailto:']"
+    },
+    "ultimo_test": "2026-06-05",
+    "bandi_estratti_ultimo_test": 1
+  },
+  "eprocurement.fieramilano.it_ngp421_loginprocess": {
+    "portale_id": "eprocurement.fieramilano.it_ngp421_loginprocess",
+    "url_base": "https://eprocurement.fieramilano.it/ngp421/loginprocess",
+    "scoperto_il": "2026-06-05",
+    "affidabile": false,
+    "selettori": {
+      "contenitore_bando": ".loginInputsItem",
+      "titolo": "input#user",
+      "descrizione": "input#password",
+      "scadenza": ".cantLogin",
+      "importo": "input#remember_me",
+      "categoria": "div.checkbox",
+      "url_dettaglio": "form"
+    },
+    "ultimo_test": "2026-06-05",
+    "bandi_estratti_ultimo_test": 0
+  },
+  "www2.autostrade.it_": {
+    "portale_id": "www2.autostrade.it_",
+    "url_base": "https://www2.autostrade.it/",
+    "scoperto_il": "2026-06-05",
+    "affidabile": false,
+    "selettori": {
+      "contenitore_bando": ".bando-container",
+      "titolo": ".bando-titolo",
+      "descrizione": ".bando-descrizione",
+      "scadenza": ".bando-scadenza",
+      "importo": ".bando-importo",
+      "categoria": ".bando-categoria",
+      "url_dettaglio": ".bando-url-dettaglio"
+    },
+    "ultimo_test": "2026-06-05",
+    "bandi_estratti_ultimo_test": 0
+  },
+  "deiplus.build.it_index.php": {
+    "portale_id": "deiplus.build.it_index.php",
+    "url_base": "https://deiplus.build.it/index.php",
+    "scoperto_il": "2026-06-05",
+    "affidabile": false,
+    "selettori": {
+      "contenitore_bando": ".diet-plan-card",
+      "titolo": "h3",
+      "descrizione": "p",
+      "scadenza": "",
+      "importo": "",
+      "categoria": "",
+      "url_dettaglio": ""
+    },
+    "ultimo_test": "2026-06-05",
+    "bandi_estratti_ultimo_test": 0
+  },
+  "partner.indraweb.net": {
+    "portale_id": "partner.indraweb.net",
+    "url_base": "https://partner.indraweb.net",
+    "scoperto_il": "2026-06-05",
+    "affidabile": false,
+    "selettori": {
+      "contenitore_bando": "div.leftNavPanelContent",
+      "titolo": "span.NaviTreeTitleTextDownHoverState",
+      "descrizione": "N/A",
+      "scadenza": "N/A",
+      "importo": "N/A",
+      "categoria": "div.textIcon + span",
+      "url_dettaglio": "div.TreeText > span.NaviTreeTitleTextDownHoverState"
+    },
+    "ultimo_test": "2026-06-05",
+    "bandi_estratti_ultimo_test": 0
+  },
+  "globalprocurement.enel.com_it": {
+    "portale_id": "globalprocurement.enel.com_it",
+    "url_base": "https://globalprocurement.enel.com/it",
+    "scoperto_il": "2026-06-05",
+    "affidabile": false,
+    "selettori": {
+      "contenitore_bando": "div.DoorwayItem",
+      "titolo": "h3.title",
+      "descrizione": "div.category",
+      "scadenza": "NOT_AVAILABLE",
+      "importo": "NOT_AVAILABLE",
+      "categoria": "NOT_AVAILABLE",
+      "url_dettaglio": "a.cta-link"
+    },
+    "ultimo_test": "2026-06-05",
+    "bandi_estratti_ultimo_test": 2
+  },
+  "autostrade.bravosolution.com_web_login.html": {
+    "portale_id": "autostrade.bravosolution.com_web_login.html",
+    "url_base": "https://autostrade.bravosolution.com/web/login.html",
+    "scoperto_il": "2026-06-05",
+    "affidabile": false,
+    "selettori": {
+      "contenitore_bando": "div.row > div.col-lg-4",
+      "titolo": "h2",
+      "descrizione": "> ul li a",
+      "scadenza": ".text-center a.btn",
+      "importo": "N/A",
+      "categoria": "N/A",
+      "url_dettaglio": "> ul li a"
+    },
+    "ultimo_test": "2026-06-05",
+    "bandi_estratti_ultimo_test": 0
+  },
+  "portaleacquisti.terna.it": {
+    "portale_id": "portaleacquisti.terna.it",
+    "url_base": "https://portaleacquisti.terna.it",
+    "scoperto_il": "2026-06-05",
+    "affidabile": true,
+    "selettori": {
+      "contenitore_bando": "li.area3Off",
+      "titolo": "a",
+      "descrizione": "a[title]",
+      "scadenza": "",
+      "importo": "",
+      "categoria": "",
+      "url_dettaglio": "a"
+    },
+    "ultimo_test": "2026-06-05",
+    "bandi_estratti_ultimo_test": 11
+  }
+}

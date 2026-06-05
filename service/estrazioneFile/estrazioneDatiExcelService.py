@@ -1,8 +1,4 @@
-
-
-
-from turtle import pd
-
+import pandas as pd
 from model.po.portalePo import Portale
 
 
