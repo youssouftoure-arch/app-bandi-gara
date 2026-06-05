@@ -1,15 +1,24 @@
-# Usa l'immagine ufficiale di Playwright che ha già tutti i browser e le dipendenze di sistema pronte
-FROM mcr.microsoft.com/playwright/python:v1.60.0-jammy
+FROM python:3.11-slim
 
-# Imposta la cartella di lavoro all'interno del container
+# Dipendenze di sistema per Playwright + lxml
+RUN apt-get update && apt-get install -y \
+    wget curl gnupg \
+    libglib2.0-0 libnss3 libnspr4 libatk1.0-0 libatk-bridge2.0-0 \
+    libcups2 libdrm2 libdbus-1-3 libxkbcommon0 libx11-6 libxcomposite1 \
+    libxdamage1 libxext6 libxfixes3 libxrandr2 libgbm1 libpango-1.0-0 \
+    libcairo2 libasound2 libatspi2.0-0 \
+    && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 
-# Copia il file dei requisiti e installa le dipendenze Python
+# Installa dipendenze Python
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copia tutto il resto del codice del tuo progetto nel container
+# Installa browser Chromium per Playwright
+RUN playwright install chromium
+
+# Copia il codice (in dev viene sovrascritto dal volume)
 COPY . .
 
-# Comando per avviare il tuo script (sostituisci "main.py" con il nome del tuo file)
 CMD ["python", "app.py"]
