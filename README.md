@@ -25,7 +25,7 @@ app bandi gara/
 
 ## Prerequisiti
 
-L'applicazione è interamente containerizzata. L'unico requisito sulla macchina è **Docker** (e **Docker Desktop** su Windows/macOS).
+L'applicazione è interamente containerizzata. L'unico requisito sulla macchina è **Docker** (e **Docker Desktop** su Windows/macOS). 
 
 ---
 
