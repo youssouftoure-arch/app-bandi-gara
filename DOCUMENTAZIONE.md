@@ -1,7 +1,3 @@
-Ecco la documentazione tecnica d'architettura completamente aggiornata.
-
-Sono stati integrati i nuovi moduli architetturali dei **Blueprint di Flask**, l'interfaccia **Frontend (HTML/CSS)**, l'evoluzione del modello **Pydantic DTO** (con le nuove regole stringenti di business logic sul **Committente** e sulle **Date del 2026**), e la procedura nativa di deployment tramite **Docker** con esposizione di rete.
-
 ---
 
 ```markdown
