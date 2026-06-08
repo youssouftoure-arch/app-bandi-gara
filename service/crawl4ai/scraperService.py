@@ -154,7 +154,7 @@ class scraper:
                     logger.info("[%s] 🧭 IA ha deciso di navigare verso la sezione bandi: %s", portale.url, url_sezione_bandi)
                     await page.goto(url_sezione_bandi, timeout=45_000, wait_until="domcontentloaded")
                     # Diamo tempo a eventuali tabelle dinamiche di caricarsi
-                    await page.wait_for_timeout(4000) 
+                    await page.wait_for_timeout(10000) 
                 else:
                     logger.info("[%s] L'IA ritiene di essere già sulla pagina corretta o nessun link valido trovato.", portale.url)
                     # Forziamo una piccola attesa nel caso in cui i dati compaiano in differita via JS

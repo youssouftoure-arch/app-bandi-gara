@@ -1,7 +1,7 @@
 import asyncio
 import logging
 import random
-from playwright.async_api import Page, Frame
+from playwright.async_api import Page, Frame, errors  # <--- Aggiunto errors di Playwright
 
 logger = logging.getLogger(__name__)
 
@@ -20,9 +20,10 @@ class FormFillerService:
         target_context = page
         is_iframe = False
 
+        # --- OTTIMIZZAZIONE TIMEOUT: Alzato a 5000ms per dare tempo agli iFrame lenti ---
         try:
             if u_sel:
-                await page.wait_for_selector(u_sel, state="visible", timeout=3000)
+                await page.wait_for_selector(u_sel, state="visible", timeout=5000)
         except Exception:
             logger.info("[%s] Selettore non visibile sulla pagina principale, cerco negli iFrame...", portale_url)
             for frame in page.frames:
@@ -40,12 +41,12 @@ class FormFillerService:
             # --- 1. Gestione Username & Fallback Robustezza ---
             try:
                 username_input = target_context.locator(u_sel).first
-                await username_input.wait_for(state="visible", timeout=5000)
+                await username_input.wait_for(state="visible", timeout=6000) # Alzato da 5000
                 await username_input.click()
             except Exception:
                 logger.warning("[%s] Selettore username primario fallito o mutato. Avvio fallback generico...", portale_url)
                 username_input = target_context.locator("input[type='text'], input[type='email'], input[name*='user'], input[name*='login']").first
-                await username_input.wait_for(state="visible", timeout=4000)
+                await username_input.wait_for(state="visible", timeout=6000) # Alzato da 4000
                 await username_input.click()
 
             await username_input.fill("")
@@ -55,12 +56,12 @@ class FormFillerService:
             # --- 2. Gestione Password & Fallback Robustezza ---
             try:
                 password_input = target_context.locator(p_sel).first
-                await password_input.wait_for(state="visible", timeout=4000)
+                await password_input.wait_for(state="visible", timeout=6000) # Alzato da 4000
                 await password_input.click()
             except Exception:
                 logger.warning("[%s] Selettore password primario fallito. Avvio fallback generico...", portale_url)
                 password_input = target_context.locator("input[type='password'], input[name*='pass']").first
-                await password_input.wait_for(state="visible", timeout=4000)
+                await password_input.wait_for(state="visible", timeout=6000) # Alzato da 4000
                 await password_input.click()
 
             await password_input.fill("")
@@ -70,28 +71,38 @@ class FormFillerService:
             # --- 3. Gestione Submit / Invio Form robusto ---
             submit_button = await FormFillerService._trova_submit(target_context, s_sel)
             try:
-                await submit_button.wait_for(state="visible", timeout=4000)
+                await submit_button.wait_for(state="visible", timeout=5000) # Alzato da 4000
                 await submit_button.click()
+                # Aspettiamo un attimo che la navigazione inizi prima di ritornare True
+                await page.wait_for_timeout(1500)
             except Exception:
                 logger.warning("[%s] Click standard sul submit fallito. Tento click forzato o via JS...", portale_url)
                 try:
                     await submit_button.click(force=True)
+                    await page.wait_for_timeout(1500)
                 except Exception:
-                    # Se anche il forzato fallisce, cerchiamo un pulsante col testo o inviamo via Enter
-                    await password_input.press("Enter")
+                    # Protezione contro il TargetClosedError inserendo un try-except specifico di Playwright
+                    try:
+                        logger.info("[%s] Tento l'invio disperato tramite tasto INVIO sulla password...", portale_url)
+                        await password_input.press("Enter")
+                        # Diamo tempo al browser di processare l'invio prima che il chiamante distrugga la pagina
+                        await page.wait_for_timeout(2000)
+                    except errors.TargetClosedError:
+                        logger.warning("[%s] Il browser si è chiuso anticipatamente durante la pressione di Enter, ma proseguiamo.", portale_url)
+                    except Exception as press_ex:
+                        logger.warning("[%s] Errore generico sulla pressione di Enter: %s", portale_url, press_ex)
+            
             return True
             
         except Exception as e:
-            logger.error("[%s] Errore durante l'interazione con i campi (iFrame=%s): %s", portale_url, is_iframe, e)
+            logger.error("[%s] Errore critico durante l'interazione con i campi (iFrame=%s): %s", portale_url, is_iframe, e)
             raise e
 
     @staticmethod
     async def _trova_submit(target_context, s_sel):
-        # Parole chiave che identificano un bottone di login (in ordine di priorità)
         login_keywords = ["accedi", "login", "sign in", "entra", "accesso", "invia", "conferma"]
 
         if not s_sel:
-            # Fallback immediato se l'LLM non ha estratto un selettore valido per il submit
             return target_context.locator("button[type='submit'], input[type='submit'], button:has-text('Accedi')").first
 
         locator_tutti = target_context.locator(s_sel)
@@ -103,7 +114,6 @@ class FormFillerService:
         if count <= 1:
             return locator_tutti.first
 
-        # Prova a trovare il bottone giusto filtrando per testo
         for keyword in login_keywords:
             candidato = target_context.locator(s_sel).filter(has_text=keyword)
             try:
@@ -113,6 +123,5 @@ class FormFillerService:
             except Exception:
                 continue
 
-        # Fallback se non si riesce a disambiguare
         logger.warning("Impossibile disambiguare il submit con %d elementi — uso .first", count)
         return locator_tutti.first
