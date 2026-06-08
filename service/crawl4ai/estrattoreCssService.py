@@ -11,32 +11,36 @@ class EstrattoreCssService:
         """Estrae i bandi in modo deterministico usando i selettori CSS."""
         soup = BeautifulSoup(html, 'html.parser')
         bandi_estratti = []
-        
-        # Trova tutti i nodi contenitore dei bandi
-        contenitori = soup.select(selettori.get("contenitore_bando"))
+
+        # BUG FIX 3: guard su selettore contenitore vuoto (causava "Expected a selector at position 0")
+        contenitore_sel = selettori.get("contenitore_bando", "")
+        if not contenitore_sel or not contenitore_sel.strip():
+            logger.warning("Selettore contenitore_bando vuoto o assente — skip estrazione CSS.")
+            return []
+
+        contenitori = soup.select(contenitore_sel)
         logger.info(f"Trovati {len(contenitori)} elementi con il selettore contenitore.")
 
         for nodo in contenitori:
             try:
-                # Funzione di helper per estrarre il testo in sicurezza
                 def _testo_o_none(selector_key: str) -> Optional[str]:
-                    sel = selettori.get(selector_key)
-                    if not sel:
+                    sel = selettori.get(selector_key, "")
+                    if not sel or not sel.strip():
                         return None
                     el = nodo.select_one(sel)
                     return el.get_text(strip=True) if el else None
 
-                # Gestione speciale per l'URL (href)
+                # Gestione URL (href)
                 url_relativo = None
-                sel_url = selettori.get("url_dettaglio")
-                if sel_url:
+                sel_url = selettori.get("url_dettaglio", "")
+                if sel_url and sel_url.strip():
                     el_url = nodo.select_one(sel_url)
                     if el_url:
                         url_relativo = el_url.get('href')
 
                 titolo = _testo_o_none("titolo")
                 if not titolo:
-                    continue  # Salta se manca l'elemento core
+                    continue
 
                 bando = Bando(
                     titolo=titolo,
@@ -50,5 +54,5 @@ class EstrattoreCssService:
             except Exception as e:
                 logger.error(f"Errore durante il parsing del singolo bando CSS: {e}")
                 continue
-                
+
         return bandi_estratti

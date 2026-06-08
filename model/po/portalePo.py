@@ -14,6 +14,10 @@ class Portale:
     password: str
     note:     Optional[str] = None
 
+    # FIX 3: URL separato per la pagina dei bandi (opzionale)
+    # Se valorizzato, lo scraper naviga qui dopo il login invece che su `url`
+    url_bandi: Optional[str] = None
+
     # Tipo di login
     login_type:   str = "unknown"
     captcha_type: str = "none"
@@ -35,6 +39,12 @@ class Portale:
     # Flags
     requires_manual: bool = False
     is_active:       bool = True
+
+    @property
+    def url_scraping(self) -> str:
+        """Restituisce l'URL corretto per lo scraping dei bandi.
+        Usa url_bandi se configurato, altrimenti cade su url (login page)."""
+        return self.url_bandi or self.url
 
     @property
     def has_valid_session(self) -> bool:
@@ -60,7 +70,7 @@ class Portale:
     def from_dataframe_row(cls, row: dict) -> "Portale":
         """
         Mappa le colonne reali dell'Excel:
-        n°, cliente, gruppo, link_http, user, psw, note
+        n°, cliente, gruppo, link_http, user, psw, note, url_bandi (opzionale)
         """
         import math
 
@@ -74,7 +84,7 @@ class Portale:
         numero_val = row.get("n°") or row.get("numero")
         if numero_val is None or (isinstance(numero_val, float) and math.isnan(numero_val)):
             raise ValueError("numero")
-        
+
         url = str_or_none(row.get("link_http") or row.get("url"))
         if not url:
             raise ValueError("url mancante")
@@ -93,6 +103,8 @@ class Portale:
             username = username,
             password = password,
             note     = str_or_none(row.get("note")),
+            # FIX 3: legge la colonna url_bandi dall'Excel (se presente)
+            url_bandi        = str_or_none(row.get("url_bandi")),
             login_type       = row.get("login_type",   "unknown") or "unknown",
             captcha_type     = row.get("captcha_type", "none")    or "none",
             mfa_type         = row.get("mfa_type",     "none")    or "none",

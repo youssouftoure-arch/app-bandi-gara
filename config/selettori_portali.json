@@ -389,5 +389,39 @@
     },
     "ultimo_test": "2026-06-05",
     "bandi_estratti_ultimo_test": 0
+  },
+  "www_arca_regione_lombardia_it_wps_portal_ARCA_Home_e-procurement_piattaforma-sintel": {
+    "portale_id": "www_arca_regione_lombardia_it_wps_portal_ARCA_Home_e-procurement_piattaforma-sintel",
+    "url_base": "https://www.arca.regione.lombardia.it/wps/portal/ARCA/Home/e-procurement/piattaforma-sintel",
+    "scoperto_il": "2026-06-08",
+    "affidabile": true,
+    "selettori": {
+      "contenitore_bando": ".card-bandi-conv",
+      "titolo": "a > .card-title",
+      "descrizione": ".ambito-bandi-conv",
+      "scadenza": ".data-card",
+      "importo": "",
+      "categoria": "",
+      "url_dettaglio": "a"
+    },
+    "ultimo_test": "2026-06-08",
+    "bandi_estratti_ultimo_test": 8
+  },
+  "www_anticorruzione_it_per-le-imprese": {
+    "portale_id": "www_anticorruzione_it_per-le-imprese",
+    "url_base": "https://www.anticorruzione.it/per-le-imprese",
+    "scoperto_il": "2026-06-08",
+    "affidabile": false,
+    "selettori": {
+      "contenitore_bando": "",
+      "titolo": "",
+      "descrizione": "",
+      "scadenza": "",
+      "importo": "",
+      "categoria": "",
+      "url_dettaglio": ""
+    },
+    "ultimo_test": "2026-06-08",
+    "bandi_estratti_ultimo_test": 0
   }
 }

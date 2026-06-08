@@ -1,0 +1,806 @@
+2026-06-08 13:46:52,596 [INFO] werkzeug — [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.17.0.2:5000
+2026-06-08 13:46:52,598 [INFO] werkzeug — [33mPress CTRL+C to quit[0m
+2026-06-08 13:46:52,601 [INFO] werkzeug —  * Restarting with stat
+2026-06-08 13:46:54,217 [WARNING] werkzeug —  * Debugger is active!
+2026-06-08 13:46:54,232 [INFO] werkzeug —  * Debugger PIN: 100-479-240
+2026-06-08 13:47:03,499 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:47:03] "GET /api/dati HTTP/1.1" 200 -
+2026-06-08 13:47:04,497 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:47:04] "GET / HTTP/1.1" 200 -
+2026-06-08 13:47:04,752 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:47:04] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-06-08 13:47:04,802 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:47:04] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:47:04,918 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:47:04] "GET /api/dati HTTP/1.1" 200 -
+2026-06-08 13:47:05,002 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:47:05] "GET /api/dati HTTP/1.1" 200 -
+2026-06-08 13:47:11,737 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:47:11] "POST /api/avvia HTTP/1.1" 200 -
+2026-06-08 13:47:12,028 [INFO] service.crawl4ai.scraperService — Colonne trovate nell'Excel (riga 5): ['unnamed:_0', 'n°', 'cliente', 'gruppo', 'link_http', 'user', 'psw', 'note', 'cognome', 'nome', 'telefono']
+2026-06-08 13:47:12,037 [WARNING] service.crawl4ai.scraperService — Riga dell'Excel saltata per errore di validazione: numero
+2026-06-08 13:47:12,038 [INFO] service.crawl4ai.scraperService — Portali caricati finali attivi: 8
+2026-06-08 13:47:13,715 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:47:13] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:47:15,956 [INFO] service.crawl4ai.esecutoreLoginService — [https://portalefornitori.a2a.eu/Login.aspx] Avvio tentativo di login 1/2
+2026-06-08 13:47:15,975 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Avvio tentativo di login 1/2
+2026-06-08 13:47:16,002 [INFO] service.crawl4ai.esecutoreLoginService — [https://acquisti.stradeanas.it/web/areaFornitori.html] Avvio tentativo di login 1/2
+2026-06-08 13:47:17,717 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:47:17] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:47:21,696 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:47:21] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:47:23,292 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:47:23,312 [INFO] service.crawl4ai.esecutoreLoginService — [https://portalefornitori.a2a.eu/Login.aspx] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:47:25,697 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:47:25] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:47:25,859 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:47:25,861 [INFO] service.crawl4ai.classificatoreLoginService — Confidence LOW con gpt-4o-mini — fallback a gpt-4o
+2026-06-08 13:47:27,793 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:47:27,802 [INFO] service.crawl4ai.esecutoreLoginService — [https://acquisti.stradeanas.it/web/areaFornitori.html] Stato pagina: PageState.UNKNOWN (confidence=Confidence.LOW, model=gpt-4o)
+2026-06-08 13:47:29,048 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:47:29,053 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://acquisti.stradeanas.it/web/areaFornitori.html] Confidence bassa con gpt-4o-mini — fallback a gpt-4o
+2026-06-08 13:47:29,703 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:47:29] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:47:29,932 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:47:29,934 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:47:30,323 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:47:30,333 [WARNING] service.crawl4ai.estrattoreSelettoriService — [https://acquisti.stradeanas.it/web/areaFornitori.html] Selettori non trovati o confidence bassa
+2026-06-08 13:47:30,334 [WARNING] service.crawl4ai.esecutoreLoginService — [https://acquisti.stradeanas.it/web/areaFornitori.html] Tentativo 1 non andato a buon fine. Stato: failed_error
+2026-06-08 13:47:30,334 [INFO] service.crawl4ai.esecutoreLoginService — [https://acquisti.stradeanas.it/web/areaFornitori.html] Attesa di 4.78 secondi prima del tentativo 2...
+2026-06-08 13:47:31,487 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:47:31,499 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Selettori estratti e cachati (confidence=0.90)
+2026-06-08 13:47:32,973 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:47:32,976 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://portalefornitori.a2a.eu/Login.aspx] Selettori estratti e cachati (confidence=1.00)
+2026-06-08 13:47:33,715 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:47:33] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:47:35,120 [INFO] service.crawl4ai.esecutoreLoginService — [https://acquisti.stradeanas.it/web/areaFornitori.html] Avvio tentativo di login 2/2
+2026-06-08 13:47:37,706 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:47:37] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:47:39,168 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:47:39,171 [INFO] service.crawl4ai.classificatoreLoginService — Confidence LOW con gpt-4o-mini — fallback a gpt-4o
+2026-06-08 13:47:40,656 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:47:40,659 [INFO] service.crawl4ai.esecutoreLoginService — [https://acquisti.stradeanas.it/web/areaFornitori.html] Stato pagina: PageState.LOGGED_IN (confidence=Confidence.HIGH, model=gpt-4o)
+2026-06-08 13:47:40,689 [INFO] service.crawl4ai.esecutoreLoginService — [https://acquisti.stradeanas.it/web/areaFornitori.html] Login OK — cookie salvati in sessioni/2_ANAS.json
+2026-06-08 13:47:40,699 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:47:40,702 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Stato post-submit: PageState.ERROR_PAGE
+2026-06-08 13:47:40,703 [WARNING] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Tentativo 1 non andato a buon fine. Stato: failed_creds
+2026-06-08 13:47:40,704 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Attesa di 3.14 secondi prima del tentativo 2...
+2026-06-08 13:47:41,237 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:47:41,239 [INFO] service.crawl4ai.classificatoreLoginService — Confidence LOW con gpt-4o-mini — fallback a gpt-4o
+2026-06-08 13:47:41,694 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:47:41] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:47:42,517 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:47:42,521 [INFO] service.crawl4ai.esecutoreLoginService — [https://portalefornitori.a2a.eu/Login.aspx] Stato post-submit: PageState.LOGGED_IN
+2026-06-08 13:47:42,568 [INFO] service.crawl4ai.esecutoreLoginService — [https://portalefornitori.a2a.eu/Login.aspx] Login OK — cookie salvati in sessioni/1_A2A.json
+2026-06-08 13:47:43,778 [INFO] service.crawl4ai.scraperService — [https://acquisti.stradeanas.it/web/areaFornitori.html] Navigazione verso la Home di partenza: https://acquisti.stradeanas.it/web/areaFornitori.html
+2026-06-08 13:47:43,851 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Avvio tentativo di login 2/2
+2026-06-08 13:47:44,275 [INFO] service.crawl4ai.scraperService — [https://portalefornitori.a2a.eu/Login.aspx] Navigazione verso la Home di partenza: https://portalefornitori.a2a.eu/Login.aspx
+2026-06-08 13:47:45,698 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:47:45] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:47:46,928 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:47:46,936 [INFO] service.crawl4ai.scraperService — [https://acquisti.stradeanas.it/web/areaFornitori.html] 🧭 IA ha deciso di navigare verso la sezione bandi: https://acquisti.stradeanas.it/web/bandi_avvisi.html
+2026-06-08 13:47:47,019 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:47:47,021 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:47:47,060 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Selettori da cache
+2026-06-08 13:47:47,083 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:47:47,085 [INFO] service.crawl4ai.scraperService — [https://portalefornitori.a2a.eu/Login.aspx] L'IA ritiene di essere già sulla pagina corretta o nessun link valido trovato.
+2026-06-08 13:47:49,694 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:47:49] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:47:53,694 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:47:53] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:47:53,926 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:47:53,928 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Stato post-submit: PageState.ERROR_PAGE
+2026-06-08 13:47:53,928 [WARNING] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Tentativo 2 non andato a buon fine. Stato: failed_creds
+2026-06-08 13:47:53,929 [ERROR] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Tutti i 2 tentativi di login sono falliti.
+2026-06-08 13:47:54,070 [WARNING] service.crawl4ai.scraperService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Login fallito: failed_creds
+2026-06-08 13:47:55,170 [INFO] service.crawl4ai.estrattoreBandiService — Interrogazione LLM per estrazione elenco bandi da URL base: https://portalefornitori.a2a.eu/Login.aspx
+2026-06-08 13:47:55,815 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:47:55,836 [INFO] service.crawl4ai.estrattoreBandiService — LLM ha individuato 0 bandi nella pagina elenco.
+2026-06-08 13:47:56,292 [INFO] service.crawl4ai.estrattoreBandiService — Interrogazione LLM per estrazione elenco bandi da URL base: https://acquisti.stradeanas.it/web/bandi_avvisi.html
+2026-06-08 13:47:57,602 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:47:57,616 [INFO] service.crawl4ai.estrattoreBandiService — LLM ha individuato 0 bandi nella pagina elenco.
+2026-06-08 13:47:57,617 [INFO] service.crawl4ai.scraperService — Completati 3 / 8
+2026-06-08 13:47:57,705 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:47:57] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:47:58,459 [INFO] service.crawl4ai.esecutoreLoginService — [https://www2.autostrade.it/] Avvio tentativo di login 1/2
+2026-06-08 13:47:58,508 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Avvio tentativo di login 1/2
+2026-06-08 13:47:58,526 [INFO] service.crawl4ai.esecutoreLoginService — [https://imprese.istat.it/] Avvio tentativo di login 1/2
+2026-06-08 13:48:01,695 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:48:01] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:48:02,096 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:48:02,104 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:48:02,167 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:48:02,171 [INFO] service.crawl4ai.esecutoreLoginService — [https://imprese.istat.it/] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:48:02,487 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:48:02,490 [INFO] service.crawl4ai.esecutoreLoginService — [https://www2.autostrade.it/] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:48:04,013 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:48:04,015 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Selettori estratti e cachati (confidence=0.90)
+2026-06-08 13:48:04,257 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:48:04,263 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://www2.autostrade.it/] Selettori estratti e cachati (confidence=0.90)
+2026-06-08 13:48:05,708 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:48:05] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:48:09,704 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:48:09] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:48:11,319 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:48:11,321 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Stato post-submit: PageState.ERROR_PAGE
+2026-06-08 13:48:11,322 [WARNING] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Tentativo 1 non andato a buon fine. Stato: failed_creds
+2026-06-08 13:48:11,322 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Attesa di 3.81 secondi prima del tentativo 2...
+2026-06-08 13:48:11,484 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:48:11,499 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://imprese.istat.it/] Selettori estratti e cachati (confidence=0.90)
+2026-06-08 13:48:12,151 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:48:12,153 [INFO] service.crawl4ai.classificatoreLoginService — Confidence LOW con gpt-4o-mini — fallback a gpt-4o
+2026-06-08 13:48:13,626 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:48:13,629 [INFO] service.crawl4ai.esecutoreLoginService — [https://www2.autostrade.it/] Stato post-submit: PageState.STANDARD_FORM
+2026-06-08 13:48:13,630 [WARNING] service.crawl4ai.esecutoreLoginService — [https://www2.autostrade.it/] Tentativo 1 non andato a buon fine. Stato: failed_error
+2026-06-08 13:48:13,631 [INFO] service.crawl4ai.esecutoreLoginService — [https://www2.autostrade.it/] Attesa di 4.36 secondi prima del tentativo 2...
+2026-06-08 13:48:13,701 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:48:13] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:48:15,134 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Avvio tentativo di login 2/2
+2026-06-08 13:48:17,695 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:48:17] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:48:17,993 [INFO] service.crawl4ai.esecutoreLoginService — [https://www2.autostrade.it/] Avvio tentativo di login 2/2
+2026-06-08 13:48:18,292 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:48:18,294 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:48:18,309 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Selettori da cache
+2026-06-08 13:48:19,171 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:48:19,173 [INFO] service.crawl4ai.classificatoreLoginService — Confidence LOW con gpt-4o-mini — fallback a gpt-4o
+2026-06-08 13:48:20,692 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:48:20,694 [INFO] service.crawl4ai.esecutoreLoginService — [https://imprese.istat.it/] Stato post-submit: PageState.LOGGED_IN
+2026-06-08 13:48:20,863 [INFO] service.crawl4ai.esecutoreLoginService — [https://imprese.istat.it/] Login OK — cookie salvati in sessioni/134_ISTAT.json
+2026-06-08 13:48:21,192 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:48:21,196 [INFO] service.crawl4ai.classificatoreLoginService — Confidence LOW con gpt-4o-mini — fallback a gpt-4o
+2026-06-08 13:48:21,711 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:48:21] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:48:22,113 [INFO] service.crawl4ai.scraperService — [https://imprese.istat.it/] Navigazione verso la Home di partenza: https://imprese.istat.it/
+2026-06-08 13:48:23,582 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:48:23,584 [INFO] service.crawl4ai.esecutoreLoginService — [https://www2.autostrade.it/] Stato pagina: PageState.LOGGED_IN (confidence=Confidence.HIGH, model=gpt-4o)
+2026-06-08 13:48:23,629 [INFO] service.crawl4ai.esecutoreLoginService — [https://www2.autostrade.it/] Login OK — cookie salvati in sessioni/132_Autostrade BAW.json
+2026-06-08 13:48:24,240 [INFO] service.crawl4ai.scraperService — [https://www2.autostrade.it/] Navigazione verso la Home di partenza: https://www2.autostrade.it/
+2026-06-08 13:48:24,625 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:48:24,627 [INFO] service.crawl4ai.scraperService — [https://imprese.istat.it/] L'IA ritiene di essere già sulla pagina corretta o nessun link valido trovato.
+2026-06-08 13:48:24,871 [INFO] service.crawl4ai.scraperService — [https://www2.autostrade.it/] L'IA ritiene di essere già sulla pagina corretta o nessun link valido trovato.
+2026-06-08 13:48:25,706 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:48:25] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:48:27,586 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:48:27,591 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Stato post-submit: PageState.ERROR_PAGE
+2026-06-08 13:48:27,592 [WARNING] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Tentativo 2 non andato a buon fine. Stato: failed_creds
+2026-06-08 13:48:27,593 [ERROR] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Tutti i 2 tentativi di login sono falliti.
+2026-06-08 13:48:27,739 [WARNING] service.crawl4ai.scraperService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Login fallito: failed_creds
+2026-06-08 13:48:29,707 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:48:29] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:48:32,741 [INFO] service.crawl4ai.estrattoreBandiService — Interrogazione LLM per estrazione elenco bandi da URL base: https://imprese.istat.it/login
+2026-06-08 13:48:32,977 [INFO] service.crawl4ai.estrattoreBandiService — Interrogazione LLM per estrazione elenco bandi da URL base: https://www2.autostrade.it/
+2026-06-08 13:48:33,710 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:48:33] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:48:33,750 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:48:33,757 [INFO] service.crawl4ai.estrattoreBandiService — LLM ha individuato 0 bandi nella pagina elenco.
+2026-06-08 13:48:35,688 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:48:35,730 [ERROR] service.crawl4ai.estrattoreBandiService — Errore LLM durante l'estrazione dell'elenco bandi: 3 validation errors for ElencoBandiOutput
+bandi.0.scadenza
+  Value error, Bando scaduto il 15/11/2023, riga ignorata. [type=value_error, input_value='15/11/2023', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/value_error
+bandi.1.scadenza
+  Value error, Bando scaduto il 20/11/2023, riga ignorata. [type=value_error, input_value='20/11/2023', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/value_error
+bandi.2.scadenza
+  Value error, Bando scaduto il 30/11/2023, riga ignorata. [type=value_error, input_value='30/11/2023', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/value_error
+2026-06-08 13:48:35,735 [INFO] service.crawl4ai.scraperService — Completati 6 / 8
+2026-06-08 13:48:36,238 [INFO] service.crawl4ai.esecutoreLoginService — [https://portaleacquisti.terna.it] Avvio tentativo di login 1/2
+2026-06-08 13:48:36,246 [INFO] service.crawl4ai.esecutoreLoginService — [www.anticorruzione.it] Avvio tentativo di login 1/2
+2026-06-08 13:48:36,338 [ERROR] service.crawl4ai.esecutoreLoginService — [www.anticorruzione.it] Errore critico al tentativo 1: Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "www.anticorruzione.it", waiting until "domcontentloaded"
+
+2026-06-08 13:48:36,339 [INFO] service.crawl4ai.esecutoreLoginService — [www.anticorruzione.it] Attesa di 3.69 secondi prima del tentativo 2...
+2026-06-08 13:48:37,707 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:48:37] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:48:40,032 [INFO] service.crawl4ai.esecutoreLoginService — [www.anticorruzione.it] Avvio tentativo di login 2/2
+2026-06-08 13:48:40,122 [ERROR] service.crawl4ai.esecutoreLoginService — [www.anticorruzione.it] Errore critico al tentativo 2: Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "www.anticorruzione.it", waiting until "domcontentloaded"
+
+2026-06-08 13:48:40,123 [ERROR] service.crawl4ai.esecutoreLoginService — [www.anticorruzione.it] Tutti i 2 tentativi di login sono falliti.
+2026-06-08 13:48:40,160 [WARNING] service.crawl4ai.scraperService — [www.anticorruzione.it] Login fallito: failed_error
+2026-06-08 13:48:41,697 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:48:41] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:48:41,731 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:48:41,733 [INFO] service.crawl4ai.esecutoreLoginService — [https://portaleacquisti.terna.it] Stato pagina: PageState.OAUTH_SSO (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:48:41,734 [WARNING] service.crawl4ai.esecutoreLoginService — [https://portaleacquisti.terna.it] Tentativo 1 non andato a buon fine. Stato: failed_manual
+2026-06-08 13:48:41,734 [INFO] service.crawl4ai.esecutoreLoginService — [https://portaleacquisti.terna.it] Attesa di 2.95 secondi prima del tentativo 2...
+2026-06-08 13:48:44,691 [INFO] service.crawl4ai.esecutoreLoginService — [https://portaleacquisti.terna.it] Avvio tentativo di login 2/2
+2026-06-08 13:48:45,690 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:48:45] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:48:49,637 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:48:49,639 [INFO] service.crawl4ai.esecutoreLoginService — [https://portaleacquisti.terna.it] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:48:49,693 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:48:49] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:48:51,017 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:48:51,025 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://portaleacquisti.terna.it] Selettori estratti e cachati (confidence=0.90)
+2026-06-08 13:48:53,689 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:48:53] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:48:57,691 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:48:57] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:48:59,725 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:48:59,727 [INFO] service.crawl4ai.esecutoreLoginService — [https://portaleacquisti.terna.it] Stato post-submit: PageState.LOGGED_IN
+2026-06-08 13:48:59,747 [INFO] service.crawl4ai.esecutoreLoginService — [https://portaleacquisti.terna.it] Login OK — cookie salvati in sessioni/135_TERNA.json
+2026-06-08 13:49:00,325 [INFO] service.crawl4ai.scraperService — [https://portaleacquisti.terna.it] Navigazione verso la Home di partenza: https://portaleacquisti.terna.it
+2026-06-08 13:49:01,697 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:49:01] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:49:05,707 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:49:05] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:49:08,764 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:49:08,779 [INFO] service.crawl4ai.scraperService — [https://portaleacquisti.terna.it] 🧭 IA ha deciso di navigare verso la sezione bandi: https://portaleacquisti.terna.it/esop/guest/go/neg/project
+2026-06-08 13:49:09,707 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:49:09] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:49:13,702 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:49:13] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:49:17,690 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:49:17] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:49:18,393 [INFO] service.crawl4ai.estrattoreBandiService — Interrogazione LLM per estrazione elenco bandi da URL base: https://portaleacquisti.terna.it/esop/toolkit/negotiation/tender/list.si?from=menu&_ncp=1780926623147.15192-1
+2026-06-08 13:49:19,270 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:49:19,274 [INFO] service.crawl4ai.estrattoreBandiService — LLM ha individuato 0 bandi nella pagina elenco.
+2026-06-08 13:49:19,275 [INFO] service.crawl4ai.scraperService — Completati 8 / 8
+2026-06-08 13:49:19,278 [INFO] service.crawl4ai.scraperService — ============================================================
+2026-06-08 13:49:19,279 [INFO] service.crawl4ai.scraperService — RILASCIO OPERAZIONI DI SCRAPING COMPLETATO
+2026-06-08 13:49:19,279 [INFO] service.crawl4ai.scraperService — Totale Portali Processati:         8
+2026-06-08 13:49:19,281 [INFO] service.crawl4ai.scraperService — Login Effettuati con Successo:     5
+2026-06-08 13:49:19,282 [INFO] service.crawl4ai.scraperService — Login Falliti:                     3
+2026-06-08 13:49:19,282 [INFO] service.crawl4ai.scraperService — Totale Bandi Complessivi Estratti: 0
+2026-06-08 13:49:19,283 [INFO] service.crawl4ai.scraperService — Tempo Totale Impiegato:            2m 7s
+2026-06-08 13:49:19,284 [INFO] service.crawl4ai.scraperService — ============================================================
+2026-06-08 13:49:19,288 [INFO] service.crawl4ai.scraperService — Generazione file Excel di riepilogo bandi...
+2026-06-08 13:49:19,514 [INFO] service.crawl4ai.scraperService — = = = = = = = = = = = = = = = = = = = = = = = = = 
+2026-06-08 13:49:19,514 [INFO] service.crawl4ai.scraperService — 💾 FILE SALVATO CON SUCCESSO: bandi_estratti_totale.xlsx
+2026-06-08 13:49:19,515 [INFO] service.crawl4ai.scraperService — = = = = = = = = = = = = = = = = = = = = = = = = = 
+2026-06-08 13:49:21,706 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:49:21] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:49:21,819 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:49:21] "GET /api/dati HTTP/1.1" 200 -
+2026-06-08 13:49:49,029 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:49:49] "GET /api/dati HTTP/1.1" 200 -
+2026-06-08 13:53:01,999 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:53:01] "POST /api/avvia HTTP/1.1" 200 -
+2026-06-08 13:53:02,884 [INFO] service.crawl4ai.scraperService — Colonne trovate nell'Excel (riga 5): ['unnamed:_0', 'n°', 'cliente', 'gruppo', 'link_http', 'user', 'psw', 'note', 'cognome', 'nome', 'telefono']
+2026-06-08 13:53:02,920 [WARNING] service.crawl4ai.scraperService — Riga dell'Excel saltata per errore di validazione: numero
+2026-06-08 13:53:02,923 [INFO] service.crawl4ai.scraperService — Portali caricati finali attivi: 21
+2026-06-08 13:53:03,735 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:53:03] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:53:05,226 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Account/Login] Avvio tentativo di login 1/2
+2026-06-08 13:53:05,245 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Account/Login] Avvio tentativo di login 1/2
+2026-06-08 13:53:05,259 [INFO] service.crawl4ai.esecutoreLoginService — [https://fornitori.cellnextelecom.it/albo/login] Avvio tentativo di login 1/2
+2026-06-08 13:53:08,401 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:53:08] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:53:09,316 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:53:09,354 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Account/Login] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:53:09,755 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:53:09,757 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Account/Login] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:53:10,480 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:53:10,498 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://fastweb.risk.coupahost.com/Account/Login] Selettori estratti e cachati (confidence=0.90)
+2026-06-08 13:53:10,793 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:53:10,800 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://fastweb.risk.coupahost.com/Account/Login] Selettori estratti e cachati (confidence=0.90)
+2026-06-08 13:53:11,502 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:53:11,504 [INFO] service.crawl4ai.classificatoreLoginService — Confidence LOW con gpt-4o-mini — fallback a gpt-4o
+2026-06-08 13:53:12,381 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:53:12] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:53:12,999 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:53:13,003 [INFO] service.crawl4ai.esecutoreLoginService — [https://fornitori.cellnextelecom.it/albo/login] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o)
+2026-06-08 13:53:14,246 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:53:14,249 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://fornitori.cellnextelecom.it/albo/login] Selettori estratti e cachati (confidence=1.00)
+2026-06-08 13:53:16,385 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:53:16] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:53:18,358 [INFO] service.crawl4ai.esecutoreLoginService — Submit disambiguato per testo 'accedi'
+2026-06-08 13:53:18,560 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:53:18,563 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Account/Login] Stato post-submit: PageState.ERROR_PAGE
+2026-06-08 13:53:18,564 [WARNING] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Account/Login] Tentativo 1 non andato a buon fine. Stato: failed_creds
+2026-06-08 13:53:18,565 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Account/Login] Attesa di 4.94 secondi prima del tentativo 2...
+2026-06-08 13:53:20,100 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:53:20,110 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Account/Login] Stato post-submit: PageState.STANDARD_FORM
+2026-06-08 13:53:20,154 [WARNING] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Account/Login] Tentativo 1 non andato a buon fine. Stato: failed_error
+2026-06-08 13:53:20,177 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Account/Login] Attesa di 4.39 secondi prima del tentativo 2...
+2026-06-08 13:53:20,489 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:53:20] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:53:23,502 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Account/Login] Avvio tentativo di login 2/2
+2026-06-08 13:53:24,250 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:53:24,252 [INFO] service.crawl4ai.classificatoreLoginService — Confidence LOW con gpt-4o-mini — fallback a gpt-4o
+2026-06-08 13:53:24,386 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:53:24] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:53:24,569 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Account/Login] Avvio tentativo di login 2/2
+2026-06-08 13:53:25,620 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:53:25,622 [INFO] service.crawl4ai.esecutoreLoginService — [https://fornitori.cellnextelecom.it/albo/login] Stato post-submit: PageState.LOGGED_IN
+2026-06-08 13:53:25,646 [INFO] service.crawl4ai.esecutoreLoginService — [https://fornitori.cellnextelecom.it/albo/login] Login OK — cookie salvati in sessioni/15_Cellnex.json
+2026-06-08 13:53:26,475 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:53:26,477 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Account/Login] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:53:26,504 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://fastweb.risk.coupahost.com/Account/Login] Selettori da cache
+2026-06-08 13:53:27,104 [INFO] service.crawl4ai.scraperService — [https://fornitori.cellnextelecom.it/albo/login] Navigazione verso la Home di partenza: https://fornitori.cellnextelecom.it/albo/login
+2026-06-08 13:53:27,518 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:53:27,523 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Account/Login] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:53:27,549 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://fastweb.risk.coupahost.com/Account/Login] Selettori da cache
+2026-06-08 13:53:28,422 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:53:28] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:53:30,211 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:53:30,214 [INFO] service.crawl4ai.scraperService — [https://fornitori.cellnextelecom.it/albo/login] 🧭 IA ha deciso di navigare verso la sezione bandi: https://fornitori.cellnextelecom.it/albo/
+2026-06-08 13:53:32,392 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:53:32] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:53:36,404 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:53:36] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:53:36,405 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:53:36,410 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Account/Login] Stato post-submit: PageState.ERROR_PAGE
+2026-06-08 13:53:36,411 [WARNING] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Account/Login] Tentativo 2 non andato a buon fine. Stato: failed_creds
+2026-06-08 13:53:36,412 [ERROR] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Account/Login] Tutti i 2 tentativi di login sono falliti.
+2026-06-08 13:53:36,708 [WARNING] service.crawl4ai.scraperService — [https://fastweb.risk.coupahost.com/Account/Login] Login fallito: failed_creds
+2026-06-08 13:53:37,528 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:53:37,533 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Account/Login] Stato post-submit: PageState.STANDARD_FORM
+2026-06-08 13:53:37,535 [WARNING] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Account/Login] Tentativo 2 non andato a buon fine. Stato: failed_error
+2026-06-08 13:53:37,537 [ERROR] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Account/Login] Tutti i 2 tentativi di login sono falliti.
+2026-06-08 13:53:37,867 [WARNING] service.crawl4ai.scraperService — [https://fastweb.risk.coupahost.com/Account/Login] Login fallito: failed_error
+2026-06-08 13:53:40,059 [INFO] service.crawl4ai.estrattoreBandiService — Interrogazione LLM per estrazione elenco bandi da URL base: https://fornitori.cellnextelecom.it/albo/
+2026-06-08 13:53:40,389 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:53:40] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:53:41,167 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:53:41,184 [INFO] service.crawl4ai.estrattoreBandiService — LLM ha individuato 0 bandi nella pagina elenco.
+2026-06-08 13:53:41,184 [INFO] service.crawl4ai.scraperService — Completati 3 / 21
+2026-06-08 13:53:42,774 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Account/Login] Avvio tentativo di login 1/2
+2026-06-08 13:53:42,794 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Avvio tentativo di login 1/2
+2026-06-08 13:53:42,859 [INFO] service.crawl4ai.esecutoreLoginService — [https://supplier.coupahost.com/sessions/new] Avvio tentativo di login 1/2
+2026-06-08 13:53:44,477 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:53:44] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:53:48,343 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:53:48,366 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Account/Login] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:53:48,434 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:53:48] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:53:48,507 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:53:48,509 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:53:49,474 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:53:49,482 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://fastweb.risk.coupahost.com/Account/Login] Selettori estratti e cachati (confidence=0.90)
+2026-06-08 13:53:49,666 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:53:49,698 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://fastweb.coupahost.com/sessions/supplier_login] Selettori estratti e cachati (confidence=1.00)
+2026-06-08 13:53:52,387 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:53:52] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:53:52,448 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:53:52,450 [INFO] service.crawl4ai.esecutoreLoginService — [https://supplier.coupahost.com/sessions/new] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:53:55,469 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:53:55,474 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://supplier.coupahost.com/sessions/new] Selettori estratti e cachati (confidence=0.90)
+2026-06-08 13:53:56,388 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:53:56] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:53:59,220 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:53:59,223 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Stato post-submit: PageState.STANDARD_FORM
+2026-06-08 13:53:59,224 [WARNING] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Tentativo 1 non andato a buon fine. Stato: failed_error
+2026-06-08 13:53:59,225 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Attesa di 2.67 secondi prima del tentativo 2...
+2026-06-08 13:53:59,342 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:53:59,344 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Account/Login] Stato post-submit: PageState.ERROR_PAGE
+2026-06-08 13:53:59,345 [WARNING] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Account/Login] Tentativo 1 non andato a buon fine. Stato: failed_creds
+2026-06-08 13:53:59,346 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Account/Login] Attesa di 3.92 secondi prima del tentativo 2...
+2026-06-08 13:54:00,387 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:54:00] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:54:01,899 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Avvio tentativo di login 2/2
+2026-06-08 13:54:03,264 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Account/Login] Avvio tentativo di login 2/2
+2026-06-08 13:54:04,389 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:54:04] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:54:05,414 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:54:05,417 [INFO] service.crawl4ai.classificatoreLoginService — Confidence LOW con gpt-4o-mini — fallback a gpt-4o
+2026-06-08 13:54:05,597 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:54:05,599 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:54:05,611 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://fastweb.coupahost.com/sessions/supplier_login] Selettori da cache
+2026-06-08 13:54:06,543 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:54:06,545 [INFO] service.crawl4ai.esecutoreLoginService — [https://supplier.coupahost.com/sessions/new] Stato post-submit: PageState.ERROR_PAGE
+2026-06-08 13:54:06,546 [WARNING] service.crawl4ai.esecutoreLoginService — [https://supplier.coupahost.com/sessions/new] Tentativo 1 non andato a buon fine. Stato: failed_creds
+2026-06-08 13:54:06,546 [INFO] service.crawl4ai.esecutoreLoginService — [https://supplier.coupahost.com/sessions/new] Attesa di 4.69 secondi prima del tentativo 2...
+2026-06-08 13:54:07,336 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:54:07,339 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Account/Login] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:54:07,357 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://fastweb.risk.coupahost.com/Account/Login] Selettori da cache
+2026-06-08 13:54:11,222 [INFO] service.crawl4ai.esecutoreLoginService — [https://supplier.coupahost.com/sessions/new] Avvio tentativo di login 2/2
+2026-06-08 13:54:14,225 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:54:14,261 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Stato post-submit: PageState.STANDARD_FORM
+2026-06-08 13:54:14,261 [WARNING] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Tentativo 2 non andato a buon fine. Stato: failed_error
+2026-06-08 13:54:14,261 [ERROR] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Tutti i 2 tentativi di login sono falliti.
+2026-06-08 13:54:14,450 [WARNING] service.crawl4ai.scraperService — [https://fastweb.coupahost.com/sessions/supplier_login] Login fallito: failed_error
+2026-06-08 13:54:17,106 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:54:17,108 [INFO] service.crawl4ai.esecutoreLoginService — [https://supplier.coupahost.com/sessions/new] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:54:17,118 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:54:17,120 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Account/Login] Stato post-submit: PageState.ERROR_PAGE
+2026-06-08 13:54:17,121 [WARNING] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Account/Login] Tentativo 2 non andato a buon fine. Stato: failed_creds
+2026-06-08 13:54:17,122 [ERROR] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Account/Login] Tutti i 2 tentativi di login sono falliti.
+2026-06-08 13:54:17,134 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://supplier.coupahost.com/sessions/new] Selettori da cache
+2026-06-08 13:54:17,269 [WARNING] service.crawl4ai.scraperService — [https://fastweb.risk.coupahost.com/Account/Login] Login fallito: failed_creds
+2026-06-08 13:54:27,365 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:54:27,367 [INFO] service.crawl4ai.esecutoreLoginService — [https://supplier.coupahost.com/sessions/new] Stato post-submit: PageState.STANDARD_FORM
+2026-06-08 13:54:27,368 [WARNING] service.crawl4ai.esecutoreLoginService — [https://supplier.coupahost.com/sessions/new] Tentativo 2 non andato a buon fine. Stato: failed_error
+2026-06-08 13:54:27,369 [ERROR] service.crawl4ai.esecutoreLoginService — [https://supplier.coupahost.com/sessions/new] Tutti i 2 tentativi di login sono falliti.
+2026-06-08 13:54:27,568 [WARNING] service.crawl4ai.scraperService — [https://supplier.coupahost.com/sessions/new] Login fallito: failed_error
+2026-06-08 13:54:27,570 [INFO] service.crawl4ai.scraperService — Completati 6 / 21
+2026-06-08 13:54:30,187 [ERROR] asyncio — Task exception was never retrieved
+future: <Task finished name='Task-236' coro=<AsyncClient.aclose() done, defined at /usr/local/lib/python3.11/site-packages/httpx/_client.py:1978> exception=RuntimeError('Event loop is closed')>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/httpx/_client.py", line 1985, in aclose
+    await self._transport.aclose()
+  File "/usr/local/lib/python3.11/site-packages/httpx/_transports/default.py", line 406, in aclose
+    await self._pool.aclose()
+  File "/usr/local/lib/python3.11/site-packages/httpcore/_async/connection_pool.py", line 353, in aclose
+    await self._close_connections(closing_connections)
+  File "/usr/local/lib/python3.11/site-packages/httpcore/_async/connection_pool.py", line 345, in _close_connections
+    await connection.aclose()
+  File "/usr/local/lib/python3.11/site-packages/httpcore/_async/connection.py", line 173, in aclose
+    await self._connection.aclose()
+  File "/usr/local/lib/python3.11/site-packages/httpcore/_async/http11.py", line 258, in aclose
+    await self._network_stream.aclose()
+  File "/usr/local/lib/python3.11/site-packages/httpcore/_backends/anyio.py", line 53, in aclose
+    await self._stream.aclose()
+  File "/usr/local/lib/python3.11/site-packages/anyio/streams/tls.py", line 236, in aclose
+    await self.transport_stream.aclose()
+  File "/usr/local/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1344, in aclose
+    self._transport.close()
+  File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 864, in close
+    self._loop.call_soon(self._call_connection_lost, None)
+  File "/usr/local/lib/python3.11/asyncio/base_events.py", line 762, in call_soon
+    self._check_closed()
+  File "/usr/local/lib/python3.11/asyncio/base_events.py", line 520, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+2026-06-08 13:54:30,227 [ERROR] asyncio — Task exception was never retrieved
+future: <Task finished name='Task-237' coro=<AsyncClient.aclose() done, defined at /usr/local/lib/python3.11/site-packages/httpx/_client.py:1978> exception=RuntimeError('Event loop is closed')>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/httpx/_client.py", line 1985, in aclose
+    await self._transport.aclose()
+  File "/usr/local/lib/python3.11/site-packages/httpx/_transports/default.py", line 406, in aclose
+    await self._pool.aclose()
+  File "/usr/local/lib/python3.11/site-packages/httpcore/_async/connection_pool.py", line 353, in aclose
+    await self._close_connections(closing_connections)
+  File "/usr/local/lib/python3.11/site-packages/httpcore/_async/connection_pool.py", line 345, in _close_connections
+    await connection.aclose()
+  File "/usr/local/lib/python3.11/site-packages/httpcore/_async/connection.py", line 173, in aclose
+    await self._connection.aclose()
+  File "/usr/local/lib/python3.11/site-packages/httpcore/_async/http11.py", line 258, in aclose
+    await self._network_stream.aclose()
+  File "/usr/local/lib/python3.11/site-packages/httpcore/_backends/anyio.py", line 53, in aclose
+    await self._stream.aclose()
+  File "/usr/local/lib/python3.11/site-packages/anyio/streams/tls.py", line 236, in aclose
+    await self.transport_stream.aclose()
+  File "/usr/local/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1344, in aclose
+    self._transport.close()
+  File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 864, in close
+    self._loop.call_soon(self._call_connection_lost, None)
+  File "/usr/local/lib/python3.11/asyncio/base_events.py", line 762, in call_soon
+    self._check_closed()
+  File "/usr/local/lib/python3.11/asyncio/base_events.py", line 520, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+2026-06-08 13:54:30,250 [ERROR] asyncio — Task exception was never retrieved
+future: <Task finished name='Task-238' coro=<AsyncClient.aclose() done, defined at /usr/local/lib/python3.11/site-packages/httpx/_client.py:1978> exception=RuntimeError('Event loop is closed')>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/httpx/_client.py", line 1985, in aclose
+    await self._transport.aclose()
+  File "/usr/local/lib/python3.11/site-packages/httpx/_transports/default.py", line 406, in aclose
+    await self._pool.aclose()
+  File "/usr/local/lib/python3.11/site-packages/httpcore/_async/connection_pool.py", line 353, in aclose
+    await self._close_connections(closing_connections)
+  File "/usr/local/lib/python3.11/site-packages/httpcore/_async/connection_pool.py", line 345, in _close_connections
+    await connection.aclose()
+  File "/usr/local/lib/python3.11/site-packages/httpcore/_async/connection.py", line 173, in aclose
+    await self._connection.aclose()
+  File "/usr/local/lib/python3.11/site-packages/httpcore/_async/http11.py", line 258, in aclose
+    await self._network_stream.aclose()
+  File "/usr/local/lib/python3.11/site-packages/httpcore/_backends/anyio.py", line 53, in aclose
+    await self._stream.aclose()
+  File "/usr/local/lib/python3.11/site-packages/anyio/streams/tls.py", line 236, in aclose
+    await self.transport_stream.aclose()
+  File "/usr/local/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1344, in aclose
+    self._transport.close()
+  File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 864, in close
+    self._loop.call_soon(self._call_connection_lost, None)
+  File "/usr/local/lib/python3.11/asyncio/base_events.py", line 762, in call_soon
+    self._check_closed()
+  File "/usr/local/lib/python3.11/asyncio/base_events.py", line 520, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+2026-06-08 13:54:30,299 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Avvio tentativo di login 1/2
+2026-06-08 13:54:30,459 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Avvio tentativo di login 1/2
+2026-06-08 13:54:30,533 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Avvio tentativo di login 1/2
+2026-06-08 13:54:34,804 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:54:34,814 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:54:35,096 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:54:35,098 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:54:35,260 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:54:35,262 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:54:36,015 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:54:36,018 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://fastweb.coupahost.com/sessions/supplier_login] Selettori estratti e cachati (confidence=1.00)
+2026-06-08 13:54:36,773 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:54:36,786 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:54:36,822 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://fastweb.coupahost.com/sessions/supplier_login] Selettori estratti e cachati (confidence=1.00)
+2026-06-08 13:54:36,864 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://fastweb.coupahost.com/sessions/supplier_login] Selettori estratti e cachati (confidence=1.00)
+2026-06-08 13:54:46,202 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:54:46,207 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Stato post-submit: PageState.STANDARD_FORM
+2026-06-08 13:54:46,210 [WARNING] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Tentativo 1 non andato a buon fine. Stato: failed_error
+2026-06-08 13:54:46,234 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Attesa di 3.29 secondi prima del tentativo 2...
+2026-06-08 13:54:46,430 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:54:46,432 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Stato post-submit: PageState.STANDARD_FORM
+2026-06-08 13:54:46,433 [WARNING] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Tentativo 1 non andato a buon fine. Stato: failed_error
+2026-06-08 13:54:46,434 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Attesa di 2.56 secondi prima del tentativo 2...
+2026-06-08 13:54:47,064 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:54:47,067 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Stato post-submit: PageState.STANDARD_FORM
+2026-06-08 13:54:47,068 [WARNING] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Tentativo 1 non andato a buon fine. Stato: failed_error
+2026-06-08 13:54:47,068 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Attesa di 3.49 secondi prima del tentativo 2...
+2026-06-08 13:54:48,995 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Avvio tentativo di login 2/2
+2026-06-08 13:54:49,526 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Avvio tentativo di login 2/2
+2026-06-08 13:54:50,561 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Avvio tentativo di login 2/2
+2026-06-08 13:54:53,209 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:54:53,211 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:54:53,225 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://fastweb.coupahost.com/sessions/supplier_login] Selettori da cache
+2026-06-08 13:54:53,523 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:54:53,525 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:54:53,539 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://fastweb.coupahost.com/sessions/supplier_login] Selettori da cache
+2026-06-08 13:54:54,796 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:54:54,798 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:54:54,813 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://fastweb.coupahost.com/sessions/supplier_login] Selettori da cache
+2026-06-08 13:54:58,482 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:54:58] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:55:01,368 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:55:01,370 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Stato post-submit: PageState.STANDARD_FORM
+2026-06-08 13:55:01,371 [WARNING] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Tentativo 2 non andato a buon fine. Stato: failed_error
+2026-06-08 13:55:01,371 [ERROR] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Tutti i 2 tentativi di login sono falliti.
+2026-06-08 13:55:01,384 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:55:01,386 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Stato post-submit: PageState.STANDARD_FORM
+2026-06-08 13:55:01,387 [WARNING] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Tentativo 2 non andato a buon fine. Stato: failed_error
+2026-06-08 13:55:01,387 [ERROR] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Tutti i 2 tentativi di login sono falliti.
+2026-06-08 13:55:02,028 [WARNING] service.crawl4ai.scraperService — [https://fastweb.coupahost.com/sessions/supplier_login] Login fallito: failed_error
+2026-06-08 13:55:02,029 [WARNING] service.crawl4ai.scraperService — [https://fastweb.coupahost.com/sessions/supplier_login] Login fallito: failed_error
+2026-06-08 13:55:04,658 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:55:04,660 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Stato post-submit: PageState.STANDARD_FORM
+2026-06-08 13:55:04,661 [WARNING] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Tentativo 2 non andato a buon fine. Stato: failed_error
+2026-06-08 13:55:04,661 [ERROR] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Tutti i 2 tentativi di login sono falliti.
+2026-06-08 13:55:04,791 [WARNING] service.crawl4ai.scraperService — [https://fastweb.coupahost.com/sessions/supplier_login] Login fallito: failed_error
+2026-06-08 13:55:04,792 [INFO] service.crawl4ai.scraperService — Completati 9 / 21
+2026-06-08 13:55:06,479 [INFO] service.crawl4ai.esecutoreLoginService — [https://deiplus.build.it/index.php] Avvio tentativo di login 1/2
+2026-06-08 13:55:06,493 [INFO] service.crawl4ai.esecutoreLoginService — [https://myaccount.ericsson.net/xpra/#/home] Avvio tentativo di login 1/2
+2026-06-08 13:55:06,537 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Avvio tentativo di login 1/2
+2026-06-08 13:55:13,305 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:55:13] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:55:15,098 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:55:15,231 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:55:15,348 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:55:15,365 [INFO] service.crawl4ai.esecutoreLoginService — [https://myaccount.ericsson.net/xpra/#/home] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:55:15,740 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:55:15] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:55:18,063 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:55:18,071 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://fastweb.coupahost.com/sessions/supplier_login] Selettori estratti e cachati (confidence=1.00)
+2026-06-08 13:55:19,603 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:55:19,609 [INFO] service.crawl4ai.classificatoreLoginService — Confidence LOW con gpt-4o-mini — fallback a gpt-4o
+2026-06-08 13:55:19,722 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:55:19] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:55:20,982 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:55:20,985 [INFO] service.crawl4ai.esecutoreLoginService — [https://deiplus.build.it/index.php] Stato pagina: PageState.LOGGED_IN (confidence=Confidence.HIGH, model=gpt-4o)
+2026-06-08 13:55:21,020 [INFO] service.crawl4ai.esecutoreLoginService — [https://deiplus.build.it/index.php] Login OK — cookie salvati in sessioni/29_DEI.json
+2026-06-08 13:55:23,107 [INFO] service.crawl4ai.scraperService — [https://deiplus.build.it/index.php] Navigazione verso la Home di partenza: https://deiplus.build.it/index.php
+2026-06-08 13:55:23,713 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:55:23] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:55:25,974 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:55:26,021 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://myaccount.ericsson.net/xpra/#/home] Selettori estratti e cachati (confidence=0.90)
+2026-06-08 13:55:27,750 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:55:27] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:55:28,991 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:55:28,993 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Stato post-submit: PageState.STANDARD_FORM
+2026-06-08 13:55:28,994 [WARNING] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Tentativo 1 non andato a buon fine. Stato: failed_error
+2026-06-08 13:55:28,995 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Attesa di 4.51 secondi prima del tentativo 2...
+2026-06-08 13:55:29,119 [INFO] service.crawl4ai.esecutoreLoginService — [https://myaccount.ericsson.net/xpra/#/home] Selettore non visibile sulla pagina principale, cerco negli iFrame...
+2026-06-08 13:55:29,414 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:55:29,416 [INFO] service.crawl4ai.scraperService — [https://deiplus.build.it/index.php] L'IA ritiene di essere già sulla pagina corretta o nessun link valido trovato.
+2026-06-08 13:55:31,709 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:55:31] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:55:32,720 [INFO] service.crawl4ai.estrattoreBandiService — Interrogazione LLM per estrazione elenco bandi da URL base: https://deiplus.build.it/home/
+2026-06-08 13:55:33,504 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Avvio tentativo di login 2/2
+2026-06-08 13:55:33,893 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:55:33,991 [INFO] service.crawl4ai.estrattoreBandiService — LLM ha individuato 0 bandi nella pagina elenco.
+2026-06-08 13:55:34,149 [WARNING] service.crawl4ai.esecutoreLoginService — [https://myaccount.ericsson.net/xpra/#/home] Selettore username primario fallito o mutato. Avvio fallback generico...
+2026-06-08 13:55:35,731 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:55:35] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:55:37,408 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:55:37,412 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:55:37,428 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://fastweb.coupahost.com/sessions/supplier_login] Selettori da cache
+2026-06-08 13:55:39,716 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:55:39] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:55:39,833 [WARNING] service.crawl4ai.esecutoreLoginService — [https://myaccount.ericsson.net/xpra/#/home] Selettore password primario fallito. Avvio fallback generico...
+2026-06-08 13:55:43,716 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:55:43] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:55:43,847 [ERROR] service.crawl4ai.esecutoreLoginService — [https://myaccount.ericsson.net/xpra/#/home] Errore durante l'interazione con i campi (iFrame=False): Locator.wait_for: Timeout 4000ms exceeded.
+Call log:
+  - waiting for locator("input[type='password'], input[name*='pass']").first to be visible
+
+2026-06-08 13:55:43,849 [WARNING] service.crawl4ai.esecutoreLoginService — [https://myaccount.ericsson.net/xpra/#/home] Tentativo 1 non andato a buon fine. Stato: failed_error
+2026-06-08 13:55:43,849 [INFO] service.crawl4ai.esecutoreLoginService — [https://myaccount.ericsson.net/xpra/#/home] Attesa di 3.98 secondi prima del tentativo 2...
+2026-06-08 13:55:47,729 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:55:47] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:55:47,831 [INFO] service.crawl4ai.esecutoreLoginService — [https://myaccount.ericsson.net/xpra/#/home] Avvio tentativo di login 2/2
+2026-06-08 13:55:48,208 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:55:48,211 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Stato post-submit: PageState.STANDARD_FORM
+2026-06-08 13:55:48,212 [WARNING] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Tentativo 2 non andato a buon fine. Stato: failed_error
+2026-06-08 13:55:48,213 [ERROR] service.crawl4ai.esecutoreLoginService — [https://fastweb.coupahost.com/sessions/supplier_login] Tutti i 2 tentativi di login sono falliti.
+2026-06-08 13:55:48,415 [WARNING] service.crawl4ai.scraperService — [https://fastweb.coupahost.com/sessions/supplier_login] Login fallito: failed_error
+2026-06-08 13:55:51,723 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:55:51] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:55:51,744 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:55:51,749 [INFO] service.crawl4ai.classificatoreLoginService — Confidence LOW con gpt-4o-mini — fallback a gpt-4o
+2026-06-08 13:55:53,653 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:55:53,660 [INFO] service.crawl4ai.esecutoreLoginService — [https://myaccount.ericsson.net/xpra/#/home] Stato pagina: PageState.CAPTCHA_PRESENT (confidence=Confidence.HIGH, model=gpt-4o)
+2026-06-08 13:55:53,661 [WARNING] service.crawl4ai.esecutoreLoginService — [https://myaccount.ericsson.net/xpra/#/home] Tentativo 2 non andato a buon fine. Stato: failed_captcha
+2026-06-08 13:55:53,661 [ERROR] service.crawl4ai.esecutoreLoginService — [https://myaccount.ericsson.net/xpra/#/home] Tutti i 2 tentativi di login sono falliti.
+2026-06-08 13:55:54,076 [WARNING] service.crawl4ai.scraperService — [https://myaccount.ericsson.net/xpra/#/home] Login fallito: failed_captcha
+2026-06-08 13:55:54,078 [INFO] service.crawl4ai.scraperService — Completati 12 / 21
+2026-06-08 13:55:55,733 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:55:55] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:55:55,831 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Avvio tentativo di login 1/2
+2026-06-08 13:55:55,848 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Avvio tentativo di login 1/2
+2026-06-08 13:55:55,883 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Avvio tentativo di login 1/2
+2026-06-08 13:55:59,730 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:55:59] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:56:00,483 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:56:00,489 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Stato pagina: PageState.ERROR_PAGE (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:56:00,784 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:56:00,786 [INFO] service.crawl4ai.classificatoreLoginService — Confidence LOW con gpt-4o-mini — fallback a gpt-4o
+2026-06-08 13:56:00,968 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:56:00,970 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Stato pagina: PageState.ERROR_PAGE (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:56:02,268 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:56:02,269 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Stato pagina: PageState.UNKNOWN (confidence=Confidence.LOW, model=gpt-4o)
+2026-06-08 13:56:03,728 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:56:03] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:56:04,788 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:56:04,794 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://autostrade.bravosolution.com/web/login.html] Selettori estratti e cachati (confidence=0.90)
+2026-06-08 13:56:05,729 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:56:05,732 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://autostrade.bravosolution.com/web/login.html] Selettori estratti e cachati (confidence=1.00)
+2026-06-08 13:56:06,444 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:56:06,462 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://autostrade.bravosolution.com/web/login.html] Selettori estratti e cachati (confidence=0.90)
+2026-06-08 13:56:07,760 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:56:07] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:56:07,836 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Selettore non visibile sulla pagina principale, cerco negli iFrame...
+2026-06-08 13:56:07,922 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] 🎯 Form di login individuato all'interno dell'iFrame: https://autostrade.bravosolution.com/web/login.html
+2026-06-08 13:56:08,745 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Selettore non visibile sulla pagina principale, cerco negli iFrame...
+2026-06-08 13:56:08,772 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] 🎯 Form di login individuato all'interno dell'iFrame: https://autostrade.bravosolution.com/web/login.html
+2026-06-08 13:56:09,475 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Selettore non visibile sulla pagina principale, cerco negli iFrame...
+2026-06-08 13:56:09,520 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] 🎯 Form di login individuato all'interno dell'iFrame: https://autostrade.bravosolution.com/web/login.html
+2026-06-08 13:56:11,715 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:56:11] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:56:12,943 [WARNING] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Selettore username primario fallito o mutato. Avvio fallback generico...
+2026-06-08 13:56:13,782 [WARNING] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Selettore username primario fallito o mutato. Avvio fallback generico...
+2026-06-08 13:56:14,522 [WARNING] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Selettore username primario fallito o mutato. Avvio fallback generico...
+2026-06-08 13:56:15,717 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:56:15] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:56:16,958 [ERROR] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Errore durante l'interazione con i campi (iFrame=True): Locator.wait_for: Timeout 4000ms exceeded.
+Call log:
+  - waiting for locator("input[type='text'], input[type='email'], input[name*='user'], input[name*='login']").first to be visible
+    12 × locator resolved to hidden <input type="hidden" name="loginNotOk" value="/web/error.html"/>
+
+2026-06-08 13:56:16,960 [WARNING] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Tentativo 1 non andato a buon fine. Stato: failed_error
+2026-06-08 13:56:16,960 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Attesa di 4.60 secondi prima del tentativo 2...
+2026-06-08 13:56:17,792 [ERROR] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Errore durante l'interazione con i campi (iFrame=True): Locator.wait_for: Timeout 4000ms exceeded.
+Call log:
+  - waiting for locator("input[type='text'], input[type='email'], input[name*='user'], input[name*='login']").first to be visible
+    12 × locator resolved to hidden <input type="hidden" name="loginNotOk" value="/web/error.html"/>
+
+2026-06-08 13:56:17,793 [WARNING] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Tentativo 1 non andato a buon fine. Stato: failed_error
+2026-06-08 13:56:17,793 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Attesa di 3.77 secondi prima del tentativo 2...
+2026-06-08 13:56:18,535 [ERROR] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Errore durante l'interazione con i campi (iFrame=True): Locator.wait_for: Timeout 4000ms exceeded.
+Call log:
+  - waiting for locator("input[type='text'], input[type='email'], input[name*='user'], input[name*='login']").first to be visible
+    12 × locator resolved to hidden <input type="hidden" name="loginNotOk" value="/web/error.html"/>
+
+2026-06-08 13:56:18,536 [WARNING] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Tentativo 1 non andato a buon fine. Stato: failed_error
+2026-06-08 13:56:18,536 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Attesa di 2.62 secondi prima del tentativo 2...
+2026-06-08 13:56:19,718 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:56:19] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:56:21,159 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Avvio tentativo di login 2/2
+2026-06-08 13:56:21,561 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Avvio tentativo di login 2/2
+2026-06-08 13:56:21,572 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Avvio tentativo di login 2/2
+2026-06-08 13:56:23,723 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:56:23] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:56:24,947 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:56:24,950 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Stato pagina: PageState.ERROR_PAGE (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:56:24,973 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://autostrade.bravosolution.com/web/login.html] Selettori da cache
+2026-06-08 13:56:25,151 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:56:25,153 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Stato pagina: PageState.ERROR_PAGE (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:56:25,175 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://autostrade.bravosolution.com/web/login.html] Selettori da cache
+2026-06-08 13:56:26,116 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:56:26,124 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Stato pagina: PageState.ERROR_PAGE (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:56:26,142 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://autostrade.bravosolution.com/web/login.html] Selettori da cache
+2026-06-08 13:56:27,723 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:56:27] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:56:27,994 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Selettore non visibile sulla pagina principale, cerco negli iFrame...
+2026-06-08 13:56:28,021 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] 🎯 Form di login individuato all'interno dell'iFrame: https://autostrade.bravosolution.com/web/login.html
+2026-06-08 13:56:28,190 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Selettore non visibile sulla pagina principale, cerco negli iFrame...
+2026-06-08 13:56:28,209 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] 🎯 Form di login individuato all'interno dell'iFrame: https://autostrade.bravosolution.com/web/login.html
+2026-06-08 13:56:29,153 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Selettore non visibile sulla pagina principale, cerco negli iFrame...
+2026-06-08 13:56:29,168 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] 🎯 Form di login individuato all'interno dell'iFrame: https://autostrade.bravosolution.com/web/login.html
+2026-06-08 13:56:31,725 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:56:31] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:56:33,039 [WARNING] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Selettore username primario fallito o mutato. Avvio fallback generico...
+2026-06-08 13:56:33,223 [WARNING] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Selettore username primario fallito o mutato. Avvio fallback generico...
+2026-06-08 13:56:34,179 [WARNING] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Selettore username primario fallito o mutato. Avvio fallback generico...
+2026-06-08 13:56:35,725 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:56:35] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:56:37,064 [ERROR] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Errore durante l'interazione con i campi (iFrame=True): Locator.wait_for: Timeout 4000ms exceeded.
+Call log:
+  - waiting for locator("input[type='text'], input[type='email'], input[name*='user'], input[name*='login']").first to be visible
+    12 × locator resolved to hidden <input type="hidden" name="loginNotOk" value="/web/error.html"/>
+
+2026-06-08 13:56:37,065 [WARNING] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Tentativo 2 non andato a buon fine. Stato: failed_error
+2026-06-08 13:56:37,065 [ERROR] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Tutti i 2 tentativi di login sono falliti.
+2026-06-08 13:56:37,196 [WARNING] service.crawl4ai.scraperService — [https://autostrade.bravosolution.com/web/login.html] Login fallito: failed_error
+2026-06-08 13:56:37,243 [ERROR] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Errore durante l'interazione con i campi (iFrame=True): Locator.wait_for: Timeout 4000ms exceeded.
+Call log:
+  - waiting for locator("input[type='text'], input[type='email'], input[name*='user'], input[name*='login']").first to be visible
+    12 × locator resolved to hidden <input type="hidden" name="loginNotOk" value="/web/error.html"/>
+
+2026-06-08 13:56:37,245 [WARNING] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Tentativo 2 non andato a buon fine. Stato: failed_error
+2026-06-08 13:56:37,245 [ERROR] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Tutti i 2 tentativi di login sono falliti.
+2026-06-08 13:56:37,337 [WARNING] service.crawl4ai.scraperService — [https://autostrade.bravosolution.com/web/login.html] Login fallito: failed_error
+2026-06-08 13:56:38,190 [ERROR] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Errore durante l'interazione con i campi (iFrame=True): Locator.wait_for: Timeout 4000ms exceeded.
+Call log:
+  - waiting for locator("input[type='text'], input[type='email'], input[name*='user'], input[name*='login']").first to be visible
+    12 × locator resolved to hidden <input type="hidden" name="loginNotOk" value="/web/error.html"/>
+
+2026-06-08 13:56:38,191 [WARNING] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Tentativo 2 non andato a buon fine. Stato: failed_error
+2026-06-08 13:56:38,192 [ERROR] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Tutti i 2 tentativi di login sono falliti.
+2026-06-08 13:56:38,276 [WARNING] service.crawl4ai.scraperService — [https://autostrade.bravosolution.com/web/login.html] Login fallito: failed_error
+2026-06-08 13:56:38,277 [INFO] service.crawl4ai.scraperService — Completati 15 / 21
+2026-06-08 13:56:39,760 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:56:39] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:56:39,828 [INFO] service.crawl4ai.esecutoreLoginService — [https://a4mobility-appalti.maggiolicloud.it/PortaleAppalti/it/ppcommon_area_personale.wp?redirectflag=1] Avvio tentativo di login 1/2
+2026-06-08 13:56:39,847 [INFO] service.crawl4ai.esecutoreLoginService — [https://www2.autostrade.it/] Avvio tentativo di login 1/2
+2026-06-08 13:56:39,890 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Avvio tentativo di login 1/2
+2026-06-08 13:56:43,180 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:56:43,187 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:56:43,397 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:56:43,399 [INFO] service.crawl4ai.esecutoreLoginService — [https://www2.autostrade.it/] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:56:43,722 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:56:43] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:56:44,274 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:56:44,277 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Selettori estratti e cachati (confidence=0.90)
+2026-06-08 13:56:44,523 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:56:44,525 [INFO] service.crawl4ai.classificatoreLoginService — Confidence LOW con gpt-4o-mini — fallback a gpt-4o
+2026-06-08 13:56:44,679 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:56:44,684 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://www2.autostrade.it/] Selettori estratti e cachati (confidence=0.90)
+2026-06-08 13:56:45,792 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:56:45,794 [INFO] service.crawl4ai.esecutoreLoginService — [https://a4mobility-appalti.maggiolicloud.it/PortaleAppalti/it/ppcommon_area_personale.wp?redirectflag=1] Stato pagina: PageState.UNKNOWN (confidence=Confidence.LOW, model=gpt-4o)
+2026-06-08 13:56:47,713 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:56:47] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:56:49,116 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:56:49,127 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://a4mobility-appalti.maggiolicloud.it/PortaleAppalti/it/ppcommon_area_personale.wp?redirectflag=1] Selettori estratti e cachati (confidence=0.80)
+2026-06-08 13:56:51,261 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:56:51,263 [INFO] service.crawl4ai.classificatoreLoginService — Confidence LOW con gpt-4o-mini — fallback a gpt-4o
+2026-06-08 13:56:51,731 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:56:51] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:56:51,843 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:56:51,845 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Stato post-submit: PageState.ERROR_PAGE
+2026-06-08 13:56:51,846 [WARNING] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Tentativo 1 non andato a buon fine. Stato: failed_creds
+2026-06-08 13:56:51,846 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Attesa di 3.35 secondi prima del tentativo 2...
+2026-06-08 13:56:52,146 [INFO] service.crawl4ai.esecutoreLoginService — [https://a4mobility-appalti.maggiolicloud.it/PortaleAppalti/it/ppcommon_area_personale.wp?redirectflag=1] Selettore non visibile sulla pagina principale, cerco negli iFrame...
+2026-06-08 13:56:53,531 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:56:53,534 [INFO] service.crawl4ai.esecutoreLoginService — [https://www2.autostrade.it/] Stato post-submit: PageState.MFA_OTP
+2026-06-08 13:56:53,535 [WARNING] service.crawl4ai.esecutoreLoginService — [https://www2.autostrade.it/] Tentativo 1 non andato a buon fine. Stato: failed_mfa
+2026-06-08 13:56:53,536 [INFO] service.crawl4ai.esecutoreLoginService — [https://www2.autostrade.it/] Attesa di 2.40 secondi prima del tentativo 2...
+2026-06-08 13:56:55,196 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Avvio tentativo di login 2/2
+2026-06-08 13:56:55,724 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:56:55] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:56:55,941 [INFO] service.crawl4ai.esecutoreLoginService — [https://www2.autostrade.it/] Avvio tentativo di login 2/2
+2026-06-08 13:56:57,176 [WARNING] service.crawl4ai.esecutoreLoginService — [https://a4mobility-appalti.maggiolicloud.it/PortaleAppalti/it/ppcommon_area_personale.wp?redirectflag=1] Selettore username primario fallito o mutato. Avvio fallback generico...
+2026-06-08 13:56:58,472 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:56:58,475 [INFO] service.crawl4ai.classificatoreLoginService — Confidence LOW con gpt-4o-mini — fallback a gpt-4o
+2026-06-08 13:56:58,645 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:56:58,647 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:56:58,664 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Selettori da cache
+2026-06-08 13:56:59,725 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:56:59,726 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:56:59] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:56:59,728 [INFO] service.crawl4ai.esecutoreLoginService — [https://www2.autostrade.it/] Stato pagina: PageState.OAUTH_SSO (confidence=Confidence.HIGH, model=gpt-4o)
+2026-06-08 13:56:59,729 [WARNING] service.crawl4ai.esecutoreLoginService — [https://www2.autostrade.it/] Tentativo 2 non andato a buon fine. Stato: failed_manual
+2026-06-08 13:56:59,729 [ERROR] service.crawl4ai.esecutoreLoginService — [https://www2.autostrade.it/] Tutti i 2 tentativi di login sono falliti.
+2026-06-08 13:56:59,780 [WARNING] service.crawl4ai.scraperService — [https://www2.autostrade.it/] Login fallito: failed_manual
+2026-06-08 13:57:01,188 [ERROR] service.crawl4ai.esecutoreLoginService — [https://a4mobility-appalti.maggiolicloud.it/PortaleAppalti/it/ppcommon_area_personale.wp?redirectflag=1] Errore durante l'interazione con i campi (iFrame=False): Locator.wait_for: Timeout 4000ms exceeded.
+Call log:
+  - waiting for locator("input[type='text'], input[type='email'], input[name*='user'], input[name*='login']").first to be visible
+
+2026-06-08 13:57:01,189 [WARNING] service.crawl4ai.esecutoreLoginService — [https://a4mobility-appalti.maggiolicloud.it/PortaleAppalti/it/ppcommon_area_personale.wp?redirectflag=1] Tentativo 1 non andato a buon fine. Stato: failed_error
+2026-06-08 13:57:01,189 [INFO] service.crawl4ai.esecutoreLoginService — [https://a4mobility-appalti.maggiolicloud.it/PortaleAppalti/it/ppcommon_area_personale.wp?redirectflag=1] Attesa di 2.06 secondi prima del tentativo 2...
+2026-06-08 13:57:03,255 [INFO] service.crawl4ai.esecutoreLoginService — [https://a4mobility-appalti.maggiolicloud.it/PortaleAppalti/it/ppcommon_area_personale.wp?redirectflag=1] Avvio tentativo di login 2/2
+2026-06-08 13:57:03,732 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:57:03] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:57:07,185 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:57:07,187 [INFO] service.crawl4ai.classificatoreLoginService — Confidence LOW con gpt-4o-mini — fallback a gpt-4o
+2026-06-08 13:57:07,729 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:57:07] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:57:07,856 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:57:07,858 [INFO] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Stato post-submit: PageState.ERROR_PAGE
+2026-06-08 13:57:07,858 [WARNING] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Tentativo 2 non andato a buon fine. Stato: failed_creds
+2026-06-08 13:57:07,859 [ERROR] service.crawl4ai.esecutoreLoginService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Tutti i 2 tentativi di login sono falliti.
+2026-06-08 13:57:07,909 [WARNING] service.crawl4ai.scraperService — [https://fastweb.risk.coupahost.com/Dashboard/Home] Login fallito: failed_creds
+2026-06-08 13:57:08,294 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:57:08,296 [INFO] service.crawl4ai.esecutoreLoginService — [https://a4mobility-appalti.maggiolicloud.it/PortaleAppalti/it/ppcommon_area_personale.wp?redirectflag=1] Stato pagina: PageState.OAUTH_SSO (confidence=Confidence.HIGH, model=gpt-4o)
+2026-06-08 13:57:08,297 [WARNING] service.crawl4ai.esecutoreLoginService — [https://a4mobility-appalti.maggiolicloud.it/PortaleAppalti/it/ppcommon_area_personale.wp?redirectflag=1] Tentativo 2 non andato a buon fine. Stato: failed_manual
+2026-06-08 13:57:08,297 [ERROR] service.crawl4ai.esecutoreLoginService — [https://a4mobility-appalti.maggiolicloud.it/PortaleAppalti/it/ppcommon_area_personale.wp?redirectflag=1] Tutti i 2 tentativi di login sono falliti.
+2026-06-08 13:57:08,361 [WARNING] service.crawl4ai.scraperService — [https://a4mobility-appalti.maggiolicloud.it/PortaleAppalti/it/ppcommon_area_personale.wp?redirectflag=1] Login fallito: failed_manual
+2026-06-08 13:57:08,362 [INFO] service.crawl4ai.scraperService — Completati 18 / 21
+2026-06-08 13:57:09,477 [INFO] service.crawl4ai.esecutoreLoginService — [www.anticorruzione.it] Avvio tentativo di login 1/2
+2026-06-08 13:57:09,536 [INFO] service.crawl4ai.esecutoreLoginService — [https://portaleacquisti.terna.it] Avvio tentativo di login 1/2
+2026-06-08 13:57:09,556 [INFO] service.crawl4ai.esecutoreLoginService — [https://imprese.istat.it/] Avvio tentativo di login 1/2
+2026-06-08 13:57:09,657 [ERROR] service.crawl4ai.esecutoreLoginService — [www.anticorruzione.it] Errore critico al tentativo 1: Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "www.anticorruzione.it", waiting until "domcontentloaded"
+
+2026-06-08 13:57:09,660 [INFO] service.crawl4ai.esecutoreLoginService — [www.anticorruzione.it] Attesa di 2.42 secondi prima del tentativo 2...
+2026-06-08 13:57:11,715 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:57:11] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:57:12,073 [INFO] service.crawl4ai.esecutoreLoginService — [www.anticorruzione.it] Avvio tentativo di login 2/2
+2026-06-08 13:57:12,596 [ERROR] service.crawl4ai.esecutoreLoginService — [www.anticorruzione.it] Errore critico al tentativo 2: Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "www.anticorruzione.it", waiting until "domcontentloaded"
+
+2026-06-08 13:57:12,599 [ERROR] service.crawl4ai.esecutoreLoginService — [www.anticorruzione.it] Tutti i 2 tentativi di login sono falliti.
+2026-06-08 13:57:12,719 [WARNING] service.crawl4ai.scraperService — [www.anticorruzione.it] Login fallito: failed_error
+2026-06-08 13:57:13,877 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:57:13,880 [INFO] service.crawl4ai.classificatoreLoginService — Confidence LOW con gpt-4o-mini — fallback a gpt-4o
+2026-06-08 13:57:15,228 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:57:15,230 [INFO] service.crawl4ai.esecutoreLoginService — [https://portaleacquisti.terna.it] Stato pagina: PageState.OAUTH_SSO (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:57:15,230 [WARNING] service.crawl4ai.esecutoreLoginService — [https://portaleacquisti.terna.it] Tentativo 1 non andato a buon fine. Stato: failed_manual
+2026-06-08 13:57:15,231 [INFO] service.crawl4ai.esecutoreLoginService — [https://portaleacquisti.terna.it] Attesa di 2.51 secondi prima del tentativo 2...
+2026-06-08 13:57:15,469 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:57:15,470 [INFO] service.crawl4ai.esecutoreLoginService — [https://imprese.istat.it/] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o)
+2026-06-08 13:57:15,718 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:57:15] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:57:17,743 [INFO] service.crawl4ai.esecutoreLoginService — [https://portaleacquisti.terna.it] Avvio tentativo di login 2/2
+2026-06-08 13:57:19,721 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:57:19] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:57:21,985 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:57:21,990 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://imprese.istat.it/] Selettori estratti e cachati (confidence=0.90)
+2026-06-08 13:57:22,893 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:57:22,897 [INFO] service.crawl4ai.esecutoreLoginService — [https://portaleacquisti.terna.it] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 13:57:23,724 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:57:23] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:57:24,681 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:57:24,688 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://portaleacquisti.terna.it] Selettori estratti e cachati (confidence=1.00)
+2026-06-08 13:57:27,722 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:57:27] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:57:30,018 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:57:30,021 [INFO] service.crawl4ai.classificatoreLoginService — Confidence LOW con gpt-4o-mini — fallback a gpt-4o
+2026-06-08 13:57:31,347 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:57:31,350 [INFO] service.crawl4ai.esecutoreLoginService — [https://imprese.istat.it/] Stato post-submit: PageState.LOGGED_IN
+2026-06-08 13:57:31,376 [INFO] service.crawl4ai.esecutoreLoginService — [https://imprese.istat.it/] Login OK — cookie salvati in sessioni/134_ISTAT.json
+2026-06-08 13:57:31,727 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:57:31] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:57:31,845 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:57:31,849 [INFO] service.crawl4ai.esecutoreLoginService — [https://portaleacquisti.terna.it] Stato post-submit: PageState.LOGGED_IN
+2026-06-08 13:57:31,884 [INFO] service.crawl4ai.esecutoreLoginService — [https://portaleacquisti.terna.it] Login OK — cookie salvati in sessioni/135_TERNA.json
+2026-06-08 13:57:31,964 [INFO] service.crawl4ai.scraperService — [https://imprese.istat.it/] Navigazione verso la Home di partenza: https://imprese.istat.it/
+2026-06-08 13:57:32,554 [INFO] service.crawl4ai.scraperService — [https://portaleacquisti.terna.it] Navigazione verso la Home di partenza: https://portaleacquisti.terna.it
+2026-06-08 13:57:34,698 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:57:34,700 [INFO] service.crawl4ai.scraperService — [https://imprese.istat.it/] L'IA ritiene di essere già sulla pagina corretta o nessun link valido trovato.
+2026-06-08 13:57:35,716 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:57:35,719 [INFO] service.crawl4ai.scraperService — [https://portaleacquisti.terna.it] 🧭 IA ha deciso di navigare verso la sezione bandi: https://portaleacquisti.terna.it/esop/guest/go/neg/project
+2026-06-08 13:57:35,725 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:57:35] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:57:39,725 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:57:39] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:57:42,783 [INFO] service.crawl4ai.estrattoreBandiService — Interrogazione LLM per estrazione elenco bandi da URL base: https://imprese.istat.it/login
+2026-06-08 13:57:43,530 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:57:43,536 [INFO] service.crawl4ai.estrattoreBandiService — LLM ha individuato 0 bandi nella pagina elenco.
+2026-06-08 13:57:43,717 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:57:43] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:57:45,129 [INFO] service.crawl4ai.estrattoreBandiService — Interrogazione LLM per estrazione elenco bandi da URL base: https://portaleacquisti.terna.it/esop/toolkit/negotiation/tender/list.si?from=menu&_ncp=1780927130089.10709-1
+2026-06-08 13:57:46,170 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:57:46,180 [INFO] service.crawl4ai.estrattoreBandiService — LLM ha individuato 0 bandi nella pagina elenco.
+2026-06-08 13:57:46,181 [INFO] service.crawl4ai.scraperService — Completati 21 / 21
+2026-06-08 13:57:46,182 [INFO] service.crawl4ai.scraperService — ============================================================
+2026-06-08 13:57:46,183 [INFO] service.crawl4ai.scraperService — RILASCIO OPERAZIONI DI SCRAPING COMPLETATO
+2026-06-08 13:57:46,183 [INFO] service.crawl4ai.scraperService — Totale Portali Processati:         21
+2026-06-08 13:57:46,184 [INFO] service.crawl4ai.scraperService — Login Effettuati con Successo:     4
+2026-06-08 13:57:46,185 [INFO] service.crawl4ai.scraperService — Login Falliti:                     17
+2026-06-08 13:57:46,185 [INFO] service.crawl4ai.scraperService — Totale Bandi Complessivi Estratti: 0
+2026-06-08 13:57:46,186 [INFO] service.crawl4ai.scraperService — Tempo Totale Impiegato:            4m 43s
+2026-06-08 13:57:46,186 [INFO] service.crawl4ai.scraperService — ============================================================
+2026-06-08 13:57:46,187 [INFO] service.crawl4ai.scraperService — Generazione file Excel di riepilogo bandi...
+2026-06-08 13:57:46,748 [INFO] service.crawl4ai.scraperService — = = = = = = = = = = = = = = = = = = = = = = = = = 
+2026-06-08 13:57:46,750 [INFO] service.crawl4ai.scraperService — 💾 FILE SALVATO CON SUCCESSO: bandi_estratti_totale.xlsx
+2026-06-08 13:57:46,752 [INFO] service.crawl4ai.scraperService — = = = = = = = = = = = = = = = = = = = = = = = = = 
+2026-06-08 13:57:47,737 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:57:47] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 13:57:47,890 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 13:57:47] "GET /api/dati HTTP/1.1" 200 -

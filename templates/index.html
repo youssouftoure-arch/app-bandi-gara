@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Scraper Bandi</title>\n    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        /* Stili CSS integrati per il box di riepilogo delle metriche finali */
+        .riepilogo-container {
+            background: #ffffff;
+            border-left: 5px solid #10b981;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+        }
+        .riepilogo-titolo {
+            margin-top: 0;
+            color: #1e293b;
+            font-size: 1.15rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+        .grid-metriche {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .card-metrica {
+            background: #f8fafc;
+            padding: 12px 15px;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+        }
+        .card-metrica label {
+            font-size: 0.78rem;
+            color: #64748b;
+            text-transform: uppercase;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .card-metrica .valore {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #0f172a;
+        }
+        .txt-success { color: #10b981 !important; }
+        .txt-danger { color: #ef4444 !important; }
+        .txt-primary { color: #3b82f6 !important; }
+        .info-file {
+            margin-top: 15px;
+            font-size: 0.88rem;
+            color: #475569;
+            background: #f1f5f9;
+            padding: 8px 12px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <h1>Dashboard Automazione Bandi</h1>
+        <p>Controllo e monitoraggio LLM Autopilot Scraper (Blueprint Architecture)</p>
+    </header>
+
+    <main class="container">
+        <section class="control-panel">
+            <button id="btn-avvia" class="btn btn-primary" onclick="avviaCiclo()">Avvia Ciclo Scraping</button>
+            <button id="btn-aggiorna" class="btn btn-secondary" onclick="caricaTabella()">Aggiorna Tabella</button>
+            
+            <div id="status-indicator" class="status-badge status-idle">
+                Stato: <span id="status-text">Pronto</span>
+            </div>
+        </section>
+
+        <section id="panel-riepilogo-finale" class="riepilogo-container" style="display: none;">
+            <h3 class="riepilogo-titolo">🏁 RILASCIO OPERAZIONI DI SCRAPING COMPLETATO</h3>
+            <div class="grid-metriche">
+                <div class="card-metrica">
+                    <label>Totale Portali Processati</label>
+                    <div id="m-totale-portali" class="valore">-</div>
+                </div>
+                <div class="card-metrica">
+                    <label>Login con Successo</label>
+                    <div id="m-login-successo" class="valore txt-success">-</div>
+                </div>
+                <div class="card-metrica">
+                    <label>Login Falliti</label>
+                    <div id="m-login-falliti" class="valore txt-danger">-</div>
+                </div>
+                <div class="card-metrica">
+                    <label>Bandi Complessivi Estratti</label>
+                    <div id="m-totale-bandi" class="valore txt-primary">-</div>
+                </div>
+                <div class="card-metrica">
+                    <label>Tempo Totale Impiegato</label>
+                    <div id="m-tempo-impiegato" class="valore" style="color: #475569;">-</div>
+                </div>
+            </div>
+            <div class="info-file">
+                💾 <strong>FILE SALVATO CON SUCCESSO:</strong> <span id="m-nome-file" style="font-family: monospace; font-weight: bold; color: #0f172a;">-</span>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <section class="data-section">
+            <h2>Bandi Estratti Recenti</h2>
+            <div class="table-responsive">
+                <table id="tabella-bandi">
+                    <thead>
+                        <tr>
+                            <th>Portale</th>
+                            <th>Stato Login</th>
+                            <th>Committente</th>
+                            <th>Titolo Bando</th>
+                            <th>Scadenza</th>
+                            <th>Importo</th>
+                            <th>Categoria</th>
+                            <th>URL Dettaglio</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabella-corpo">
+                        </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        let intervalStato = null;
+
+        async function avviaCiclo() {
+            try {
+                const response = await fetch('/api/avvia', { method: 'POST' });
+                const data = await response.json();
+                alert(data.message);
+                
+                // Nascondi il vecchio pannello se viene riavviato un nuovo ciclo
+                document.getElementById('panel-riepilogo-finale').style.display = 'none';
+                
+                controllaStato();
+                if (!intervalStato) {
+                    intervalStato = setInterval(controllaStato, 4000);
+                }
+            } catch (error) {
+                console.error("Errore avvio ciclo:", error);
+            }
+        }
+
+        async function controllaStato() {
+            try {
+                const response = await fetch('/api/stato');
+                const data = await response.json();
+                
+                const indicator = document.getElementById('status-indicator');
+                const text = document.getElementById('status-text');
+                const panelRiepilogo = document.getElementById('panel-riepilogo-finale');
+
+                if (data.in_corso) {
+                    indicator.className = "status-badge status-running";
+                    text.innerText = "Scraping in corso...";
+                    panelRiepilogo.style.display = 'none';
+                } else {
+                    indicator.className = "status-badge status-idle";
+                    text.innerText = "Pronto / Terminato";
+                    
+                    // Se lo scraping è terminato ed escono le metriche finali, mostra il pannello riepilogativo
+                    if (data.metriche_finali) {
+                        document.getElementById('m-totale-portali').innerText = data.metriche_finali.totale_portali;
+                        document.getElementById('m-login-successo').innerText = data.metriche_finali.login_successo;
+                        document.getElementById('m-login-falliti').innerText = data.metriche_finali.login_falliti;
+                        document.getElementById('m-totale-bandi').innerText = data.metriche_finali.totale_bandi;
+                        document.getElementById('m-tempo-impiegato').innerText = data.metriche_finali.tempo_impiegato;
+                        document.getElementById('m-nome-file').innerText = data.metriche_finali.file_excel;
+                        
+                        panelRiepilogo.style.display = 'block';
+                    }
+                    
+                    if (intervalStato) {
+                        clearInterval(intervalStato);
+                        intervalStato = null;
+                    }
+                    caricaTabella(); // Ricarica i dati aggiornati
+                }
+            } catch (error) {
+                console.error("Errore controllo stato:", error);
+            }
+        }
+
+        async function caricaTabella() {
+            try {
+                const response = await fetch('/api/dati');
+                const res = await response.json();
+                
+                const tbody = document.getElementById('tabella-corpo');
+                tbody.innerHTML = '';
+
+                if (res.status === 'empty' || !res.data || res.data.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="8" style="text-align:center;">${res.message || 'Nessun dato disponibile.'}</td></tr>`;
+                    return;
+                }
+                
+                res.data.forEach(riga => {
+                    const tr = document.createElement('tr');
+                    const linkHtml = riga['URL Dettaglio'] && riga['URL Dettaglio'] !== '-' 
+                        ? `<a href="${riga['URL Dettaglio']}" target="_blank" class="table-link">Vedi Link</a>` 
+                        : '-';
+
+                    tr.innerHTML = `
+                        <td><span class="url-text">${riga['Portale']}</span></td>
+                        <td><span class="badge-login ${riga['Stato Login'] === 'success' ? 'login-ok' : 'login-ko'}">${riga['Stato Login']}</span></td>
+                        <td><span class="committente-text">${riga['Committente'] || '-'}</span></td> 
+                        <td><strong>${riga['Titolo Bando']}</strong></td>
+                        <td>${riga['Scadenza']}</td>
+                        <td class="text-nowrap">${riga['Importo']}</td>
+                        <td>${riga['Categoria']}</td>
+                        <td>${linkHtml}</td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            } catch (error) {
+                console.error("Errore caricamento tabella:", error);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            controllaStato();
+            caricaTabella();
+        });
+    </script>
+</body>
+</html>
