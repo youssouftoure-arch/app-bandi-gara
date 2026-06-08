@@ -1,5 +1,3 @@
----
-
 ```markdown
 # 📜 Documentazione Tecnica di Architettura: Sistema Ingegnerizzato di Scraping Bandi
 
