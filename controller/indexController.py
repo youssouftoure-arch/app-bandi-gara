@@ -1,4 +1,5 @@
-from flask import Blueprint
+from flask import Blueprint, send_file, jsonify
+import os
 from view.scraperView import FlaskScraperView
 from presenter.scraperPresenter import ScraperPresenter
 
@@ -23,3 +24,22 @@ def stato_scraping():
 def dati_bandi():
     """Ritorna i dati estratti dei bandi."""
     return presenter.ottieni_dati()
+
+@scraper_bp.route('/scarica-excel', methods=['GET'])
+def scarica_excel():
+    file_excel = "bandi_estratti_totale.xlsx"
+    
+    # Controlla se il file esiste davvero sul server
+    if not os.path.exists(file_excel):
+        return jsonify({"status": "error", "message": "Il file Excel non è ancora stato generato."}), 404
+    
+    try:
+        # Invia il file in modo sicuro permettendo il download al browser
+        return send_file(
+            file_excel,
+            mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            as_attachment=True,
+            download_name="bandi_estratti.xlsx"  # Nome che l'utente vedrà al momento del download
+        )
+    except Exception as e:
+        return jsonify({"status": "error", "message": f"Errore durante il download: {str(e)}"}), 500

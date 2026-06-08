@@ -107,6 +107,9 @@
             <div class="info-file">
                 💾 <strong>FILE SALVATO CON SUCCESSO:</strong> <span id="m-nome-file" style="font-family: monospace; font-weight: bold; color: #0f172a;">-</span>
             </div>
+            <button id="btnDownload" class="btn btn-success" onclick="scaricaFile()">
+                📥 Scarica File Excel
+            </button>
         </section>
 
         <hr class="section-divider">
@@ -235,6 +238,25 @@
             controllaStato();
             caricaTabella();
         });
+
+        function scaricaFile() {
+    // Reindirizza direttamente il browser all'endpoint di download
+    window.location.href = "/api/scarica-excel";
+}
+
+// ESEMPIO DI LOGICA DI CONTROLLO (da integrare nella tua funzione che controlla lo stato):
+// Se fai una fetch a `/api/stato` e vedi che lo scraper è in corso, 
+// puoi disabilitare il tasto per evitare download di file incompleti:
+function controllaStatoScraper(stato) {
+    const btn = document.getElementById("btnDownload");
+    if (stato.in_corso) {
+        btn.disabled = true;
+        btn.innerText = "⏳ Scraper in corso... Download bloccato";
+    } else {
+        btn.disabled = false;
+        btn.innerText = "📥 Scarica File Excel";
+    }
+}
     </script>
 </body>
 </html>

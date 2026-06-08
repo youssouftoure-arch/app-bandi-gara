@@ -1890,3 +1890,755 @@ Call log:
 2026-06-08 14:44:46,822 [INFO] werkzeug —  * Debugger PIN: 101-864-616
 2026-06-08 14:44:47,288 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:44:47] "GET /api/stato HTTP/1.1" 200 -
 2026-06-08 14:44:47,339 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:44:47] "POST /api/avvia HTTP/1.1" 200 -
+2026-06-08 14:44:47,964 [INFO] dao.portaleDao — Colonne trovate nell'Excel (riga 5): ['unnamed:_0', 'n°', 'cliente', 'gruppo', 'link_http', 'user', 'psw', 'note', 'cognome', 'nome', 'telefono', 'unnamed:_11']
+2026-06-08 14:44:47,965 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:44:47] "GET /api/dati HTTP/1.1" 200 -
+2026-06-08 14:44:47,979 [WARNING] dao.portaleDao — Riga dell'Excel saltata per errore di validazione: numero
+2026-06-08 14:44:47,980 [INFO] service.crawl4ai.scraperService — Portali caricati finali attivi: 9
+2026-06-08 14:44:48,969 [INFO] service.crawl4ai.browserFactory — Avvio browser Chromium...
+2026-06-08 14:44:49,032 [INFO] service.crawl4ai.browserFactory — Avvio browser Chromium...
+2026-06-08 14:44:49,057 [INFO] service.crawl4ai.browserFactory — Avvio browser Chromium...
+2026-06-08 14:44:49,881 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:44:49] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:44:50,747 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Avvio tentativo di login 1/2
+2026-06-08 14:44:50,773 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Avvio tentativo di login 1/2
+2026-06-08 14:44:50,842 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Avvio tentativo di login 1/2
+2026-06-08 14:44:53,799 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:44:53] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:44:57,753 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:44:57] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:45:01,734 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:45:01] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:45:01,745 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:45:01,776 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Stato pagina: PageState.ERROR_PAGE (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 14:45:02,177 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:45:02,184 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Stato pagina: PageState.ERROR_PAGE (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 14:45:02,661 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:45:02,664 [INFO] service.crawl4ai.classificatoreLoginService — Confidence LOW con gpt-4o-mini — fallback a gpt-4o
+2026-06-08 14:45:04,027 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:45:04,044 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Stato pagina: PageState.OAUTH_SSO (confidence=Confidence.HIGH, model=gpt-4o)
+2026-06-08 14:45:04,045 [WARNING] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Tentativo 1 non andato a buon fine. Stato: failed_manual
+2026-06-08 14:45:04,045 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Attesa di 3.96 secondi prima del tentativo 2...
+2026-06-08 14:45:04,275 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:45:04,287 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://autostrade.bravosolution.com/web/login.html] Selettori estratti e cachati (confidence=0.90)
+2026-06-08 14:45:05,732 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:45:05] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:45:05,787 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:45:05,817 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://autostrade.bravosolution.com/web/login.html] Selettori estratti e cachati (confidence=0.90)
+2026-06-08 14:45:07,326 [INFO] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] Selettore non visibile sulla pagina principale, cerco negli iFrame...
+2026-06-08 14:45:07,345 [INFO] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] 🎯 Form di login individuato all'interno dell'iFrame: https://autostrade.bravosolution.com/web/login.html
+2026-06-08 14:45:08,008 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Avvio tentativo di login 2/2
+2026-06-08 14:45:08,842 [INFO] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] Selettore non visibile sulla pagina principale, cerco negli iFrame...
+2026-06-08 14:45:08,889 [INFO] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] 🎯 Form di login individuato all'interno dell'iFrame: https://autostrade.bravosolution.com/web/login.html
+2026-06-08 14:45:09,732 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:45:09] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:45:12,333 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:45:12,335 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Stato pagina: PageState.ERROR_PAGE (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 14:45:12,362 [WARNING] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] Selettore username primario fallito o mutato. Avvio fallback generico...
+2026-06-08 14:45:13,715 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:45:13] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:45:13,901 [WARNING] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] Selettore username primario fallito o mutato. Avvio fallback generico...
+2026-06-08 14:45:13,958 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:45:13,961 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://autostrade.bravosolution.com/web/login.html] Selettori estratti e cachati (confidence=1.00)
+2026-06-08 14:45:16,365 [ERROR] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] Errore durante l'interazione con i campi (iFrame=True): Locator.wait_for: Timeout 4000ms exceeded.
+Call log:
+  - waiting for locator("input[type='text'], input[type='email'], input[name*='user'], input[name*='login']").first to be visible
+    12 × locator resolved to hidden <input type="hidden" name="loginNotOk" value="/web/error.html"/>
+
+2026-06-08 14:45:16,368 [WARNING] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Tentativo 1 non andato a buon fine. Stato: failed_error
+2026-06-08 14:45:16,368 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Attesa di 2.68 secondi prima del tentativo 2...
+2026-06-08 14:45:16,976 [INFO] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] Selettore non visibile sulla pagina principale, cerco negli iFrame...
+2026-06-08 14:45:16,998 [INFO] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] 🎯 Form di login individuato all'interno dell'iFrame: https://autostrade.bravosolution.com/web/login.html
+2026-06-08 14:45:17,704 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:45:17] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:45:17,917 [ERROR] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] Errore durante l'interazione con i campi (iFrame=True): Locator.wait_for: Timeout 4000ms exceeded.
+Call log:
+  - waiting for locator("input[type='text'], input[type='email'], input[name*='user'], input[name*='login']").first to be visible
+    12 × locator resolved to hidden <input type="hidden" name="loginNotOk" value="/web/error.html"/>
+
+2026-06-08 14:45:17,918 [WARNING] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Tentativo 1 non andato a buon fine. Stato: failed_error
+2026-06-08 14:45:17,918 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Attesa di 2.25 secondi prima del tentativo 2...
+2026-06-08 14:45:19,053 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Avvio tentativo di login 2/2
+2026-06-08 14:45:20,171 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Avvio tentativo di login 2/2
+2026-06-08 14:45:21,723 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:45:21] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:45:22,015 [WARNING] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] Selettore username primario fallito o mutato. Avvio fallback generico...
+2026-06-08 14:45:22,897 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:45:22,899 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Stato pagina: PageState.ERROR_PAGE (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 14:45:22,913 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://autostrade.bravosolution.com/web/login.html] Selettori da cache
+2026-06-08 14:45:24,442 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:45:24,444 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Stato pagina: PageState.ERROR_PAGE (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 14:45:24,458 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://autostrade.bravosolution.com/web/login.html] Selettori da cache
+2026-06-08 14:45:25,720 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:45:25] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:45:25,924 [INFO] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] Selettore non visibile sulla pagina principale, cerco negli iFrame...
+2026-06-08 14:45:25,942 [INFO] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] 🎯 Form di login individuato all'interno dell'iFrame: https://autostrade.bravosolution.com/web/login.html
+2026-06-08 14:45:26,029 [ERROR] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] Errore durante l'interazione con i campi (iFrame=True): Locator.wait_for: Timeout 4000ms exceeded.
+Call log:
+  - waiting for locator("input[type='text'], input[type='email'], input[name*='user'], input[name*='login']").first to be visible
+    12 × locator resolved to hidden <input type="hidden" name="loginNotOk" value="/web/error.html"/>
+
+2026-06-08 14:45:26,029 [WARNING] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Tentativo 2 non andato a buon fine. Stato: failed_error
+2026-06-08 14:45:26,030 [ERROR] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Tutti i 2 tentativi di login sono falliti.
+2026-06-08 14:45:26,306 [WARNING] service.crawl4ai.scraperService — [https://autostrade.bravosolution.com/web/login.html] Login fallito: failed_error
+2026-06-08 14:45:27,472 [INFO] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] Selettore non visibile sulla pagina principale, cerco negli iFrame...
+2026-06-08 14:45:27,497 [INFO] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] 🎯 Form di login individuato all'interno dell'iFrame: https://autostrade.bravosolution.com/web/login.html
+2026-06-08 14:45:29,731 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:45:29] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:45:30,960 [WARNING] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] Selettore username primario fallito o mutato. Avvio fallback generico...
+2026-06-08 14:45:32,512 [WARNING] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] Selettore username primario fallito o mutato. Avvio fallback generico...
+2026-06-08 14:45:33,726 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:45:33] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:45:34,989 [ERROR] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] Errore durante l'interazione con i campi (iFrame=True): Locator.wait_for: Timeout 4000ms exceeded.
+Call log:
+  - waiting for locator("input[type='text'], input[type='email'], input[name*='user'], input[name*='login']").first to be visible
+    12 × locator resolved to hidden <input type="hidden" name="loginNotOk" value="/web/error.html"/>
+
+2026-06-08 14:45:34,990 [WARNING] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Tentativo 2 non andato a buon fine. Stato: failed_error
+2026-06-08 14:45:34,991 [ERROR] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Tutti i 2 tentativi di login sono falliti.
+2026-06-08 14:45:35,147 [WARNING] service.crawl4ai.scraperService — [https://autostrade.bravosolution.com/web/login.html] Login fallito: failed_error
+2026-06-08 14:45:36,531 [ERROR] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] Errore durante l'interazione con i campi (iFrame=True): Locator.wait_for: Timeout 4000ms exceeded.
+Call log:
+  - waiting for locator("input[type='text'], input[type='email'], input[name*='user'], input[name*='login']").first to be visible
+    12 × locator resolved to hidden <input type="hidden" name="loginNotOk" value="/web/error.html"/>
+
+2026-06-08 14:45:36,532 [WARNING] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Tentativo 2 non andato a buon fine. Stato: failed_error
+2026-06-08 14:45:36,533 [ERROR] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Tutti i 2 tentativi di login sono falliti.
+2026-06-08 14:45:36,725 [WARNING] service.crawl4ai.scraperService — [https://autostrade.bravosolution.com/web/login.html] Login fallito: failed_error
+2026-06-08 14:45:36,726 [INFO] service.crawl4ai.scraperService — Completati 3 / 9
+2026-06-08 14:45:37,645 [INFO] service.crawl4ai.browserFactory — Avvio browser Chromium...
+2026-06-08 14:45:37,662 [INFO] service.crawl4ai.browserFactory — Avvio browser Chromium...
+2026-06-08 14:45:37,674 [INFO] service.crawl4ai.browserFactory — Avvio browser Chromium...
+2026-06-08 14:45:37,723 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:45:37] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:45:38,281 [INFO] service.crawl4ai.esecutoreLoginService — [https://www.edison.it/it/diventa-fornitore] Avvio tentativo di login 1/2
+2026-06-08 14:45:38,299 [INFO] service.crawl4ai.esecutoreLoginService — [https://www.anticorruzione.it/per-le-imprese] Avvio tentativo di login 1/2
+2026-06-08 14:45:38,366 [INFO] service.crawl4ai.esecutoreLoginService — [https://eprocurement.raiway.it/PortaleAppalti/it/homepage.wp] Avvio tentativo di login 1/2
+2026-06-08 14:45:41,801 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:45:41] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:45:43,830 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:45:43,843 [INFO] service.crawl4ai.classificatoreLoginService — Confidence LOW con gpt-4o-mini — fallback a gpt-4o
+2026-06-08 14:45:45,284 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:45:45,292 [INFO] service.crawl4ai.esecutoreLoginService — [https://eprocurement.raiway.it/PortaleAppalti/it/homepage.wp] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o)
+2026-06-08 14:45:45,763 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:45:45] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:45:47,160 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:45:47,196 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://eprocurement.raiway.it/PortaleAppalti/it/homepage.wp] Selettori estratti e cachati (confidence=0.80)
+2026-06-08 14:45:48,047 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:45:48,052 [INFO] service.crawl4ai.classificatoreLoginService — Confidence LOW con gpt-4o-mini — fallback a gpt-4o
+2026-06-08 14:45:49,661 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:45:49,663 [INFO] service.crawl4ai.esecutoreLoginService — [https://www.edison.it/it/diventa-fornitore] Stato pagina: PageState.UNKNOWN (confidence=Confidence.HIGH, model=gpt-4o)
+2026-06-08 14:45:49,704 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:45:49] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:45:50,240 [INFO] service.crawl4ai.formFillerService — [https://eprocurement.raiway.it/PortaleAppalti/it/homepage.wp] Selettore non visibile sulla pagina principale, cerco negli iFrame...
+2026-06-08 14:45:51,077 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:45:51,082 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:45:51,083 [INFO] service.crawl4ai.classificatoreLoginService — Confidence LOW con gpt-4o-mini — fallback a gpt-4o
+2026-06-08 14:45:51,102 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://www.edison.it/it/diventa-fornitore] Selettori estratti e cachati (confidence=0.90)
+2026-06-08 14:45:52,777 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:45:52,779 [INFO] service.crawl4ai.esecutoreLoginService — [https://www.anticorruzione.it/per-le-imprese] Stato pagina: PageState.UNKNOWN (confidence=Confidence.HIGH, model=gpt-4o)
+2026-06-08 14:45:53,705 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:45:53] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:45:54,132 [INFO] service.crawl4ai.formFillerService — [https://www.edison.it/it/diventa-fornitore] Selettore non visibile sulla pagina principale, cerco negli iFrame...
+2026-06-08 14:45:55,291 [WARNING] service.crawl4ai.formFillerService — [https://eprocurement.raiway.it/PortaleAppalti/it/homepage.wp] Selettore username primario fallito o mutato. Avvio fallback generico...
+2026-06-08 14:45:57,553 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:45:57,555 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://www.anticorruzione.it/per-le-imprese] Selettori estratti e cachati (confidence=0.90)
+2026-06-08 14:45:57,750 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:45:57] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:45:59,210 [WARNING] service.crawl4ai.formFillerService — [https://www.edison.it/it/diventa-fornitore] Selettore username primario fallito o mutato. Avvio fallback generico...
+2026-06-08 14:46:00,723 [INFO] service.crawl4ai.formFillerService — [https://www.anticorruzione.it/per-le-imprese] Selettore non visibile sulla pagina principale, cerco negli iFrame...
+2026-06-08 14:46:01,712 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:46:01] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:46:03,238 [ERROR] service.crawl4ai.formFillerService — [https://www.edison.it/it/diventa-fornitore] Errore durante l'interazione con i campi (iFrame=False): Locator.wait_for: Timeout 4000ms exceeded.
+Call log:
+  - waiting for locator("input[type='text'], input[type='email'], input[name*='user'], input[name*='login']").first to be visible
+
+2026-06-08 14:46:03,239 [WARNING] service.crawl4ai.esecutoreLoginService — [https://www.edison.it/it/diventa-fornitore] Tentativo 1 non andato a buon fine. Stato: failed_error
+2026-06-08 14:46:03,240 [INFO] service.crawl4ai.esecutoreLoginService — [https://www.edison.it/it/diventa-fornitore] Attesa di 3.22 secondi prima del tentativo 2...
+2026-06-08 14:46:05,721 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:46:05] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:46:05,908 [WARNING] service.crawl4ai.formFillerService — [https://www.anticorruzione.it/per-le-imprese] Selettore username primario fallito o mutato. Avvio fallback generico...
+2026-06-08 14:46:06,458 [INFO] service.crawl4ai.esecutoreLoginService — [https://www.edison.it/it/diventa-fornitore] Avvio tentativo di login 2/2
+2026-06-08 14:46:09,714 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:46:09] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:46:09,925 [ERROR] service.crawl4ai.formFillerService — [https://www.anticorruzione.it/per-le-imprese] Errore durante l'interazione con i campi (iFrame=False): Locator.wait_for: Timeout 4000ms exceeded.
+Call log:
+  - waiting for locator("input[type='text'], input[type='email'], input[name*='user'], input[name*='login']").first to be visible
+
+2026-06-08 14:46:09,926 [WARNING] service.crawl4ai.esecutoreLoginService — [https://www.anticorruzione.it/per-le-imprese] Tentativo 1 non andato a buon fine. Stato: failed_error
+2026-06-08 14:46:09,926 [INFO] service.crawl4ai.esecutoreLoginService — [https://www.anticorruzione.it/per-le-imprese] Attesa di 2.63 secondi prima del tentativo 2...
+2026-06-08 14:46:12,087 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:46:12,093 [INFO] service.crawl4ai.classificatoreLoginService — Confidence LOW con gpt-4o-mini — fallback a gpt-4o
+2026-06-08 14:46:12,550 [INFO] service.crawl4ai.esecutoreLoginService — [https://www.anticorruzione.it/per-le-imprese] Avvio tentativo di login 2/2
+2026-06-08 14:46:13,720 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:46:13] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:46:14,570 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:46:14,572 [INFO] service.crawl4ai.esecutoreLoginService — [https://www.edison.it/it/diventa-fornitore] Stato pagina: PageState.UNKNOWN (confidence=Confidence.LOW, model=gpt-4o)
+2026-06-08 14:46:14,631 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://www.edison.it/it/diventa-fornitore] Selettori da cache
+2026-06-08 14:46:17,664 [INFO] service.crawl4ai.formFillerService — [https://www.edison.it/it/diventa-fornitore] Selettore non visibile sulla pagina principale, cerco negli iFrame...
+2026-06-08 14:46:17,708 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:46:17] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:46:20,643 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:46:20,646 [INFO] service.crawl4ai.classificatoreLoginService — Confidence LOW con gpt-4o-mini — fallback a gpt-4o
+2026-06-08 14:46:21,722 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:46:21] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:46:22,399 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:46:22,403 [INFO] service.crawl4ai.esecutoreLoginService — [https://www.anticorruzione.it/per-le-imprese] Stato pagina: PageState.LOGGED_IN (confidence=Confidence.HIGH, model=gpt-4o)
+2026-06-08 14:46:22,497 [INFO] service.crawl4ai.esecutoreLoginService — [https://www.anticorruzione.it/per-le-imprese] Login OK — cookie salvati in sessioni/113_ANAC.json
+2026-06-08 14:46:22,794 [WARNING] service.crawl4ai.formFillerService — [https://www.edison.it/it/diventa-fornitore] Selettore username primario fallito o mutato. Avvio fallback generico...
+2026-06-08 14:46:25,592 [INFO] service.crawl4ai.browserFactory — Avvio browser Chromium...
+2026-06-08 14:46:25,729 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:46:25] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:46:26,436 [INFO] service.crawl4ai.scraperService — [https://www.anticorruzione.it/per-le-imprese] Navigazione verso la Home di partenza: https://www.anticorruzione.it/per-le-imprese
+2026-06-08 14:46:26,815 [ERROR] service.crawl4ai.formFillerService — [https://www.edison.it/it/diventa-fornitore] Errore durante l'interazione con i campi (iFrame=False): Locator.wait_for: Timeout 4000ms exceeded.
+Call log:
+  - waiting for locator("input[type='text'], input[type='email'], input[name*='user'], input[name*='login']").first to be visible
+
+2026-06-08 14:46:26,816 [WARNING] service.crawl4ai.esecutoreLoginService — [https://www.edison.it/it/diventa-fornitore] Tentativo 2 non andato a buon fine. Stato: failed_error
+2026-06-08 14:46:26,816 [ERROR] service.crawl4ai.esecutoreLoginService — [https://www.edison.it/it/diventa-fornitore] Tutti i 2 tentativi di login sono falliti.
+2026-06-08 14:46:27,247 [WARNING] service.crawl4ai.scraperService — [https://www.edison.it/it/diventa-fornitore] Login fallito: failed_error
+2026-06-08 14:46:28,003 [ERROR] service.crawl4ai.formFillerService — [https://eprocurement.raiway.it/PortaleAppalti/it/homepage.wp] Errore durante l'interazione con i campi (iFrame=False): Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[type='text'], input[type='email'], input[name*='user'], input[name*='login']").first
+    - locator resolved to <input value="" type="text" id="search" class="text" name="search" autocomplete="off"/>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div class="modal-content">…</div> from <div class="modalCookies" id="modalCookieDialog">…</div> subtree intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    - waiting for element to be visible, enabled and stable
+    - element is visible, enabled and stable
+    - scrolling into view if needed
+    - done scrolling
+    - <div class="modal-content">…</div> from <div class="modalCookies" id="modalCookieDialog">…</div> subtree intercepts pointer events
+  2 × retrying click action
+      - waiting 100ms
+      - waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div class="modalCookies" id="modalCookieDialog">…</div> intercepts pointer events
+  13 × retrying click action
+       - waiting 500ms
+       - waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - <div class="modal-content">…</div> from <div class="modalCookies" id="modalCookieDialog">…</div> subtree intercepts pointer events
+     - retrying click action
+       - waiting 500ms
+       - waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - <div class="modal-content">…</div> from <div class="modalCookies" id="modalCookieDialog">…</div> subtree intercepts pointer events
+     - retrying click action
+       - waiting 500ms
+       - waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - <div class="modalCookies" id="modalCookieDialog">…</div> intercepts pointer events
+     - retrying click action
+       - waiting 500ms
+       - waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - <div class="modalCookies" id="modalCookieDialog">…</div> intercepts pointer events
+  2 × retrying click action
+      - waiting 500ms
+      - waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div class="modal-content">…</div> from <div class="modalCookies" id="modalCookieDialog">…</div> subtree intercepts pointer events
+  - retrying click action
+    - waiting 500ms
+    - waiting for element to be visible, enabled and stable
+    - element is visible, enabled and stable
+    - scrolling into view if needed
+    - done scrolling
+    - <div class="modalCookies" id="modalCookieDialog">…</div> intercepts pointer events
+  - retrying click action
+    - waiting 500ms
+    - waiting for element to be visible, enabled and stable
+
+2026-06-08 14:46:28,004 [WARNING] service.crawl4ai.esecutoreLoginService — [https://eprocurement.raiway.it/PortaleAppalti/it/homepage.wp] Tentativo 1 non andato a buon fine. Stato: failed_error
+2026-06-08 14:46:28,005 [INFO] service.crawl4ai.esecutoreLoginService — [https://eprocurement.raiway.it/PortaleAppalti/it/homepage.wp] Attesa di 2.17 secondi prima del tentativo 2...
+2026-06-08 14:46:29,721 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:46:29] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:46:30,175 [INFO] service.crawl4ai.esecutoreLoginService — [https://eprocurement.raiway.it/PortaleAppalti/it/homepage.wp] Avvio tentativo di login 2/2
+2026-06-08 14:46:33,207 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:46:33,225 [INFO] service.crawl4ai.scraperService — [https://www.anticorruzione.it/per-le-imprese] L'IA ritiene di essere già sulla pagina corretta o nessun link valido trovato.
+2026-06-08 14:46:33,724 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:46:33] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:46:36,003 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:46:36,006 [INFO] service.crawl4ai.classificatoreLoginService — Confidence LOW con gpt-4o-mini — fallback a gpt-4o
+2026-06-08 14:46:37,554 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:46:37,557 [INFO] service.crawl4ai.esecutoreLoginService — [https://eprocurement.raiway.it/PortaleAppalti/it/homepage.wp] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o)
+2026-06-08 14:46:37,589 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://eprocurement.raiway.it/PortaleAppalti/it/homepage.wp] Selettori da cache
+2026-06-08 14:46:37,731 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:46:37] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:46:40,608 [INFO] service.crawl4ai.formFillerService — [https://eprocurement.raiway.it/PortaleAppalti/it/homepage.wp] Selettore non visibile sulla pagina principale, cerco negli iFrame...
+2026-06-08 14:46:41,555 [INFO] service.crawl4ai.estrattoreBandiService — Interrogazione LLM per estrazione elenco bandi da URL base: https://www.anticorruzione.it/per-le-imprese
+2026-06-08 14:46:41,745 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:46:41] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:46:43,254 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:46:43,298 [INFO] service.crawl4ai.estrattoreBandiService — LLM ha individuato 0 bandi nella pagina elenco.
+2026-06-08 14:46:45,638 [WARNING] service.crawl4ai.formFillerService — [https://eprocurement.raiway.it/PortaleAppalti/it/homepage.wp] Selettore username primario fallito o mutato. Avvio fallback generico...
+2026-06-08 14:46:45,718 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:46:45] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:46:49,703 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:46:49] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:46:53,709 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:46:53] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:46:57,711 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:46:57] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:47:01,708 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:47:01] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:47:05,741 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:47:05] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:47:07,164 [ERROR] service.crawl4ai.esecutoreLoginService — [https://eprocurement.raiway.it/PortaleAppalti/it/homepage.wp] Timeout globale 90s — portale saltato
+2026-06-08 14:47:07,166 [WARNING] service.crawl4ai.scraperService — [https://eprocurement.raiway.it/PortaleAppalti/it/homepage.wp] Login fallito: failed_error
+2026-06-08 14:47:07,168 [INFO] service.crawl4ai.scraperService — Completati 6 / 9
+2026-06-08 14:47:07,194 [ERROR] asyncio — Future exception was never retrieved
+future: <Future finished exception=TargetClosedError('Target page, context or browser has been closed\nCall log:\n  - waiting for locator("input[type=\'text\'], input[type=\'email\'], input[name*=\'user\'], input[name*=\'login\']").first\n    - locator resolved to <input value="" type="text" id="search" class="text" name="search" autocomplete="off"/>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class="modal-content">…</div> from <div class="modalCookies" id="modalCookieDialog">…</div> subtree intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - <div class="modal-content">…</div> from <div class="modalCookies" id="modalCookieDialog">…</div> subtree intercepts pointer events\n  2 × retrying click action\n      - waiting 100ms\n      - waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class="modalCookies" id="modalCookieDialog">…</div> intercepts pointer events\n  9 × retrying click action\n      - waiting 500ms\n      - waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class="modal-content">…</div> from <div class="modalCookies" id="modalCookieDialog">…</div> subtree intercepts pointer events\n    - retrying click action\n      - waiting 500ms\n      - waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class="modal-content">…</div> from <div class="modalCookies" id="modalCookieDialog">…</div> subtree intercepts pointer events\n    - retrying click action\n      - waiting 500ms\n      - waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class="modalCookies" id="modalCookieDialog">…</div> intercepts pointer events\n    - retrying click action\n      - waiting 500ms\n      - waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class="modalCookies" id="modalCookieDialog">…</div> intercepts pointer events\n  2 × retrying click action\n      - waiting 500ms\n      - waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class="modal-content">…</div> from <div class="modalCookies" id="modalCookieDialog">…</div> subtree intercepts pointer events\n  - retrying click action\n    - waiting 500ms\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - <div class="modalCookies" id="modalCookieDialog">…</div> intercepts pointer events\n  - retrying click action\n    - waiting 500ms\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n')>
+playwright._impl._errors.TargetClosedError: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("input[type='text'], input[type='email'], input[name*='user'], input[name*='login']").first
+    - locator resolved to <input value="" type="text" id="search" class="text" name="search" autocomplete="off"/>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div class="modal-content">…</div> from <div class="modalCookies" id="modalCookieDialog">…</div> subtree intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    - waiting for element to be visible, enabled and stable
+    - element is visible, enabled and stable
+    - scrolling into view if needed
+    - done scrolling
+    - <div class="modal-content">…</div> from <div class="modalCookies" id="modalCookieDialog">…</div> subtree intercepts pointer events
+  2 × retrying click action
+      - waiting 100ms
+      - waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div class="modalCookies" id="modalCookieDialog">…</div> intercepts pointer events
+  9 × retrying click action
+      - waiting 500ms
+      - waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div class="modal-content">…</div> from <div class="modalCookies" id="modalCookieDialog">…</div> subtree intercepts pointer events
+    - retrying click action
+      - waiting 500ms
+      - waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div class="modal-content">…</div> from <div class="modalCookies" id="modalCookieDialog">…</div> subtree intercepts pointer events
+    - retrying click action
+      - waiting 500ms
+      - waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div class="modalCookies" id="modalCookieDialog">…</div> intercepts pointer events
+    - retrying click action
+      - waiting 500ms
+      - waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div class="modalCookies" id="modalCookieDialog">…</div> intercepts pointer events
+  2 × retrying click action
+      - waiting 500ms
+      - waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div class="modal-content">…</div> from <div class="modalCookies" id="modalCookieDialog">…</div> subtree intercepts pointer events
+  - retrying click action
+    - waiting 500ms
+    - waiting for element to be visible, enabled and stable
+    - element is visible, enabled and stable
+    - scrolling into view if needed
+    - done scrolling
+    - <div class="modalCookies" id="modalCookieDialog">…</div> intercepts pointer events
+  - retrying click action
+    - waiting 500ms
+    - waiting for element to be visible, enabled and stable
+    - element is visible, enabled and stable
+    - scrolling into view if needed
+
+2026-06-08 14:47:08,426 [INFO] service.crawl4ai.browserFactory — Avvio browser Chromium...
+2026-06-08 14:47:08,445 [INFO] service.crawl4ai.browserFactory — Avvio browser Chromium...
+2026-06-08 14:47:08,459 [INFO] service.crawl4ai.browserFactory — Avvio browser Chromium...
+2026-06-08 14:47:08,977 [INFO] service.crawl4ai.esecutoreLoginService — [https://atlantefotg.my.site.com/vendorportal/s/] Avvio tentativo di login 1/2
+2026-06-08 14:47:08,999 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Avvio tentativo di login 1/2
+2026-06-08 14:47:09,015 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Avvio tentativo di login 1/2
+2026-06-08 14:47:09,752 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:47:09] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:47:14,429 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:47:14] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:47:14,538 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:47:14,571 [INFO] service.crawl4ai.esecutoreLoginService — [https://atlantefotg.my.site.com/vendorportal/s/] Stato pagina: PageState.ERROR_PAGE (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 14:47:14,706 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:47:14,710 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Stato pagina: PageState.ERROR_PAGE (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 14:47:15,389 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:47:15,400 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Stato pagina: PageState.ERROR_PAGE (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 14:47:16,727 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:47:16,733 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://autostrade.bravosolution.com/web/login.html] Selettori estratti e cachati (confidence=0.90)
+2026-06-08 14:47:17,556 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:47:17,561 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://autostrade.bravosolution.com/web/login.html] Selettori estratti e cachati (confidence=0.90)
+2026-06-08 14:47:18,379 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:47:18] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:47:18,636 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:47:18,638 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://atlantefotg.my.site.com/vendorportal/s/] Selettori estratti e cachati (confidence=0.90)
+2026-06-08 14:47:19,806 [INFO] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] Selettore non visibile sulla pagina principale, cerco negli iFrame...
+2026-06-08 14:47:19,835 [INFO] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] 🎯 Form di login individuato all'interno dell'iFrame: https://autostrade.bravosolution.com/web/login.html
+2026-06-08 14:47:20,581 [INFO] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] Selettore non visibile sulla pagina principale, cerco negli iFrame...
+2026-06-08 14:47:20,605 [INFO] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] 🎯 Form di login individuato all'interno dell'iFrame: https://autostrade.bravosolution.com/web/login.html
+2026-06-08 14:47:22,369 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:47:22] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:47:24,855 [WARNING] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] Selettore username primario fallito o mutato. Avvio fallback generico...
+2026-06-08 14:47:25,620 [WARNING] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] Selettore username primario fallito o mutato. Avvio fallback generico...
+2026-06-08 14:47:25,734 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:47:25] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:47:26,912 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:47:26,914 [INFO] service.crawl4ai.esecutoreLoginService — [https://atlantefotg.my.site.com/vendorportal/s/] Stato post-submit: PageState.STANDARD_FORM
+2026-06-08 14:47:26,916 [WARNING] service.crawl4ai.esecutoreLoginService — [https://atlantefotg.my.site.com/vendorportal/s/] Tentativo 1 non andato a buon fine. Stato: failed_error
+2026-06-08 14:47:26,917 [INFO] service.crawl4ai.esecutoreLoginService — [https://atlantefotg.my.site.com/vendorportal/s/] Attesa di 4.50 secondi prima del tentativo 2...
+2026-06-08 14:47:29,012 [ERROR] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] Errore durante l'interazione con i campi (iFrame=True): Locator.wait_for: Timeout 4000ms exceeded.
+Call log:
+  - waiting for locator("input[type='text'], input[type='email'], input[name*='user'], input[name*='login']").first to be visible
+    12 × locator resolved to hidden <input type="hidden" name="loginNotOk" value="/web/error.html"/>
+
+2026-06-08 14:47:29,013 [WARNING] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Tentativo 1 non andato a buon fine. Stato: failed_error
+2026-06-08 14:47:29,014 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Attesa di 2.17 secondi prima del tentativo 2...
+2026-06-08 14:47:29,669 [ERROR] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] Errore durante l'interazione con i campi (iFrame=True): Locator.wait_for: Timeout 4000ms exceeded.
+Call log:
+  - waiting for locator("input[type='text'], input[type='email'], input[name*='user'], input[name*='login']").first to be visible
+    12 × locator resolved to hidden <input type="hidden" name="loginNotOk" value="/web/error.html"/>
+
+2026-06-08 14:47:29,672 [WARNING] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Tentativo 1 non andato a buon fine. Stato: failed_error
+2026-06-08 14:47:29,680 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Attesa di 2.52 secondi prima del tentativo 2...
+2026-06-08 14:47:29,728 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:47:29] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:47:31,191 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Avvio tentativo di login 2/2
+2026-06-08 14:47:31,419 [INFO] service.crawl4ai.esecutoreLoginService — [https://atlantefotg.my.site.com/vendorportal/s/] Avvio tentativo di login 2/2
+2026-06-08 14:47:32,208 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Avvio tentativo di login 2/2
+2026-06-08 14:47:33,706 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:47:33] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:47:34,954 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:47:34,957 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Stato pagina: PageState.ERROR_PAGE (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 14:47:34,976 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://autostrade.bravosolution.com/web/login.html] Selettori da cache
+2026-06-08 14:47:35,716 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:47:35,719 [INFO] service.crawl4ai.esecutoreLoginService — [https://atlantefotg.my.site.com/vendorportal/s/] Stato pagina: PageState.ERROR_PAGE (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 14:47:35,799 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://atlantefotg.my.site.com/vendorportal/s/] Selettori da cache
+2026-06-08 14:47:36,038 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:47:36,050 [INFO] service.crawl4ai.classificatoreLoginService — Confidence LOW con gpt-4o-mini — fallback a gpt-4o
+2026-06-08 14:47:37,718 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:47:37] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:47:37,845 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:47:37,848 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Stato pagina: PageState.LOGGED_IN (confidence=Confidence.HIGH, model=gpt-4o)
+2026-06-08 14:47:37,906 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Login OK — cookie salvati in sessioni/118_HWTP.json
+2026-06-08 14:47:38,009 [INFO] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] Selettore non visibile sulla pagina principale, cerco negli iFrame...
+2026-06-08 14:47:38,038 [INFO] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] 🎯 Form di login individuato all'interno dell'iFrame: https://autostrade.bravosolution.com/web/login.html
+2026-06-08 14:47:40,991 [INFO] service.crawl4ai.browserFactory — Avvio browser Chromium...
+2026-06-08 14:47:41,739 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:47:41] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:47:42,154 [INFO] service.crawl4ai.scraperService — [https://autostrade.bravosolution.com/web/login.html] Navigazione verso la Home di partenza: https://autostrade.bravosolution.com/web/login.html
+2026-06-08 14:47:43,057 [WARNING] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] Selettore username primario fallito o mutato. Avvio fallback generico...
+2026-06-08 14:47:45,706 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:47:45] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:47:46,102 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:47:46,108 [INFO] service.crawl4ai.scraperService — [https://autostrade.bravosolution.com/web/login.html] 🧭 IA ha deciso di navigare verso la sezione bandi: https://autostrade.bravosolution.com/esop/guest/go/public/opportunity/current
+2026-06-08 14:47:47,117 [ERROR] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] Errore durante l'interazione con i campi (iFrame=True): Locator.wait_for: Timeout 4000ms exceeded.
+Call log:
+  - waiting for locator("input[type='text'], input[type='email'], input[name*='user'], input[name*='login']").first to be visible
+    12 × locator resolved to hidden <input type="hidden" name="loginNotOk" value="/web/error.html"/>
+
+2026-06-08 14:47:47,120 [WARNING] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Tentativo 2 non andato a buon fine. Stato: failed_error
+2026-06-08 14:47:47,121 [ERROR] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Tutti i 2 tentativi di login sono falliti.
+2026-06-08 14:47:47,336 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:47:47,339 [INFO] service.crawl4ai.esecutoreLoginService — [https://atlantefotg.my.site.com/vendorportal/s/] Stato post-submit: PageState.STANDARD_FORM
+2026-06-08 14:47:47,340 [WARNING] service.crawl4ai.esecutoreLoginService — [https://atlantefotg.my.site.com/vendorportal/s/] Tentativo 2 non andato a buon fine. Stato: failed_error
+2026-06-08 14:47:47,341 [ERROR] service.crawl4ai.esecutoreLoginService — [https://atlantefotg.my.site.com/vendorportal/s/] Tutti i 2 tentativi di login sono falliti.
+2026-06-08 14:47:47,533 [WARNING] service.crawl4ai.scraperService — [https://autostrade.bravosolution.com/web/login.html] Login fallito: failed_error
+2026-06-08 14:47:47,563 [WARNING] service.crawl4ai.scraperService — [https://atlantefotg.my.site.com/vendorportal/s/] Login fallito: failed_error
+2026-06-08 14:47:49,708 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:47:49] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:47:51,160 [INFO] service.crawl4ai.estrattoreBandiService — Interrogazione LLM per estrazione elenco bandi da URL base: https://autostrade.bravosolution.com/esop/toolkit/opportunity/current/list.si?reset=true&resetstored=true&_ncp=1780930140515.131293-1
+2026-06-08 14:47:53,701 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:47:53] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:47:57,702 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:47:57] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:48:01,721 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:48:01] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:48:05,713 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:48:05] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:48:09,708 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:48:09] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:48:13,708 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:48:13] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:48:17,723 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:48:17] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:48:21,720 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:48:21] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:48:22,482 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:48:22,516 [INFO] service.crawl4ai.estrattoreBandiService — LLM ha individuato 54 bandi nella pagina elenco.
+2026-06-08 14:48:22,517 [INFO] service.crawl4ai.estrattoreBandiService — Nessun bando con URL dettaglio valido da arricchire.
+2026-06-08 14:48:22,518 [INFO] service.crawl4ai.scraperService — Completati 9 / 9
+2026-06-08 14:48:22,521 [INFO] service.crawl4ai.scraperService — ============================================================
+2026-06-08 14:48:22,522 [INFO] service.crawl4ai.scraperService — RILASCIO OPERAZIONI DI SCRAPING COMPLETATO
+2026-06-08 14:48:22,522 [INFO] service.crawl4ai.scraperService — Totale Portali Processati:         9
+2026-06-08 14:48:22,522 [INFO] service.crawl4ai.scraperService — Login Effettuati con Successo:     2
+2026-06-08 14:48:22,523 [INFO] service.crawl4ai.scraperService — Login Falliti:                     7
+2026-06-08 14:48:22,523 [INFO] service.crawl4ai.scraperService — Totale Bandi Complessivi Estratti: 54
+2026-06-08 14:48:22,523 [INFO] service.crawl4ai.scraperService — Tempo Totale Impiegato:            3m 34s
+2026-06-08 14:48:22,523 [INFO] service.crawl4ai.scraperService — ============================================================
+2026-06-08 14:48:22,525 [INFO] dao.bandoDao — Generazione file Excel di riepilogo bandi...
+2026-06-08 14:48:23,030 [INFO] dao.bandoDao — = = = = = = = = = = = = = = = = = = = = = = = = = 
+2026-06-08 14:48:23,032 [INFO] dao.bandoDao — 💾 FILE SALVATO CON SUCCESSO: bandi_estratti_totale.xlsx
+2026-06-08 14:48:23,036 [INFO] dao.bandoDao — = = = = = = = = = = = = = = = = = = = = = = = = = 
+2026-06-08 14:48:25,716 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:48:25] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:48:25,768 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:48:25] "GET /api/dati HTTP/1.1" 200 -
+2026-06-08 14:51:02,151 [INFO] werkzeug —  * Detected change in '/app/controller/indexController.py', reloading
+2026-06-08 14:51:04,927 [INFO] werkzeug —  * Restarting with stat
+2026-06-08 14:51:11,418 [WARNING] werkzeug —  * Debugger is active!
+2026-06-08 14:51:11,430 [INFO] werkzeug —  * Debugger PIN: 101-864-616
+2026-06-08 14:51:21,397 [INFO] werkzeug —  * Detected change in '/app/controller/indexController.py', reloading
+2026-06-08 14:51:21,739 [INFO] werkzeug —  * Restarting with stat
+2026-06-08 14:51:23,709 [WARNING] werkzeug —  * Debugger is active!
+2026-06-08 14:51:23,711 [INFO] werkzeug —  * Debugger PIN: 101-864-616
+2026-06-08 14:51:31,766 [INFO] werkzeug —  * Detected change in '/app/controller/indexController.py', reloading
+2026-06-08 14:51:31,990 [INFO] werkzeug —  * Restarting with stat
+2026-06-08 14:51:34,147 [WARNING] werkzeug —  * Debugger is active!
+2026-06-08 14:51:34,149 [INFO] werkzeug —  * Debugger PIN: 101-864-616
+2026-06-08 14:58:30,009 [INFO] werkzeug — [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.17.0.3:5000
+2026-06-08 14:58:30,011 [INFO] werkzeug — [33mPress CTRL+C to quit[0m
+2026-06-08 14:58:30,014 [INFO] werkzeug —  * Restarting with stat
+2026-06-08 14:58:32,703 [WARNING] werkzeug —  * Debugger is active!
+2026-06-08 14:58:32,713 [INFO] werkzeug —  * Debugger PIN: 846-437-473
+2026-06-08 14:58:42,093 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:58:42] "POST /api/avvia HTTP/1.1" 200 -
+2026-06-08 14:58:43,974 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:58:43] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:58:44,047 [INFO] dao.portaleDao — Colonne trovate nell'Excel (riga 5): ['unnamed:_0', 'n°', 'cliente', 'gruppo', 'link_http', 'user', 'psw', 'note', 'cognome', 'nome', 'telefono', 'unnamed:_11']
+2026-06-08 14:58:44,058 [WARNING] dao.portaleDao — Riga dell'Excel saltata per errore di validazione: numero
+2026-06-08 14:58:44,059 [INFO] service.crawl4ai.scraperService — Portali caricati finali attivi: 9
+2026-06-08 14:58:45,987 [INFO] service.crawl4ai.browserFactory — Avvio browser Chromium...
+2026-06-08 14:58:46,059 [INFO] service.crawl4ai.browserFactory — Avvio browser Chromium...
+2026-06-08 14:58:46,077 [INFO] service.crawl4ai.browserFactory — Avvio browser Chromium...
+2026-06-08 14:58:47,320 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:58:47] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:58:48,102 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Avvio tentativo di login 1/2
+2026-06-08 14:58:48,154 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Avvio tentativo di login 1/2
+2026-06-08 14:58:48,173 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Avvio tentativo di login 1/2
+2026-06-08 14:58:51,452 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:58:51] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:58:55,322 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:58:55] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:58:56,553 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:58:56,596 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Stato pagina: PageState.ERROR_PAGE (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 14:58:56,631 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:58:56,634 [INFO] service.crawl4ai.classificatoreLoginService — Confidence LOW con gpt-4o-mini — fallback a gpt-4o
+2026-06-08 14:58:56,727 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:58:56,728 [INFO] service.crawl4ai.classificatoreLoginService — Confidence LOW con gpt-4o-mini — fallback a gpt-4o
+2026-06-08 14:58:58,170 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:58:58,182 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://autostrade.bravosolution.com/web/login.html] Selettori estratti e cachati (confidence=1.00)
+2026-06-08 14:58:58,589 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:58:58,591 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Stato pagina: PageState.OAUTH_SSO (confidence=Confidence.HIGH, model=gpt-4o)
+2026-06-08 14:58:58,593 [WARNING] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Tentativo 1 non andato a buon fine. Stato: failed_manual
+2026-06-08 14:58:58,593 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Attesa di 4.41 secondi prima del tentativo 2...
+2026-06-08 14:58:59,294 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:58:59,312 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Stato pagina: PageState.LOGGED_IN (confidence=Confidence.HIGH, model=gpt-4o)
+2026-06-08 14:58:59,344 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:58:59] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:58:59,382 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Login OK — cookie salvati in sessioni/43_HWTP (Autostrade).json
+2026-06-08 14:59:01,294 [INFO] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] Selettore non visibile sulla pagina principale, cerco negli iFrame...
+2026-06-08 14:59:01,349 [INFO] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] 🎯 Form di login individuato all'interno dell'iFrame: https://autostrade.bravosolution.com/web/login.html
+2026-06-08 14:59:01,377 [INFO] service.crawl4ai.browserFactory — Avvio browser Chromium...
+2026-06-08 14:59:01,928 [INFO] service.crawl4ai.scraperService — [https://autostrade.bravosolution.com/web/login.html] Navigazione verso la Home di partenza: https://autostrade.bravosolution.com/web/login.html
+2026-06-08 14:59:03,007 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Avvio tentativo di login 2/2
+2026-06-08 14:59:03,312 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:59:03] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:59:05,328 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:59:05,330 [INFO] service.crawl4ai.scraperService — [https://autostrade.bravosolution.com/web/login.html] 🧭 IA ha deciso di navigare verso la sezione bandi: https://autostrade.bravosolution.com/esop/guest/go/public/opportunity/current
+2026-06-08 14:59:06,375 [WARNING] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] Selettore username primario fallito o mutato. Avvio fallback generico...
+2026-06-08 14:59:07,313 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:59:07] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:59:07,594 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:59:07,597 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Stato pagina: PageState.ERROR_PAGE (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 14:59:09,455 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:59:09,457 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://autostrade.bravosolution.com/web/login.html] Selettori estratti e cachati (confidence=1.00)
+2026-06-08 14:59:10,400 [ERROR] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] Errore durante l'interazione con i campi (iFrame=True): Locator.wait_for: Timeout 4000ms exceeded.
+Call log:
+  - waiting for locator("input[type='text'], input[type='email'], input[name*='user'], input[name*='login']").first to be visible
+    12 × locator resolved to hidden <input type="hidden" name="loginNotOk" value="/web/error.html"/>
+
+2026-06-08 14:59:10,405 [WARNING] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Tentativo 1 non andato a buon fine. Stato: failed_error
+2026-06-08 14:59:10,409 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Attesa di 3.28 secondi prima del tentativo 2...
+2026-06-08 14:59:10,472 [INFO] service.crawl4ai.estrattoreBandiService — Interrogazione LLM per estrazione elenco bandi da URL base: https://autostrade.bravosolution.com/esop/toolkit/opportunity/current/list.si?reset=true&resetstored=true&_ncp=1780930819729.133612-1
+2026-06-08 14:59:11,321 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:59:11] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:59:12,473 [INFO] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] Selettore non visibile sulla pagina principale, cerco negli iFrame...
+2026-06-08 14:59:12,494 [INFO] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] 🎯 Form di login individuato all'interno dell'iFrame: https://autostrade.bravosolution.com/web/login.html
+2026-06-08 14:59:13,686 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Avvio tentativo di login 2/2
+2026-06-08 14:59:15,304 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:59:15] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:59:17,503 [WARNING] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] Selettore username primario fallito o mutato. Avvio fallback generico...
+2026-06-08 14:59:18,414 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:59:18,417 [INFO] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Stato pagina: PageState.ERROR_PAGE (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 14:59:18,443 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://autostrade.bravosolution.com/web/login.html] Selettori da cache
+2026-06-08 14:59:19,302 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:59:19] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:59:21,469 [INFO] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] Selettore non visibile sulla pagina principale, cerco negli iFrame...
+2026-06-08 14:59:21,488 [INFO] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] 🎯 Form di login individuato all'interno dell'iFrame: https://autostrade.bravosolution.com/web/login.html
+2026-06-08 14:59:21,613 [ERROR] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] Errore durante l'interazione con i campi (iFrame=True): Locator.wait_for: Timeout 4000ms exceeded.
+Call log:
+  - waiting for locator("input[type='text'], input[type='email'], input[name*='user'], input[name*='login']").first to be visible
+    12 × locator resolved to hidden <input type="hidden" name="loginNotOk" value="/web/error.html"/>
+
+2026-06-08 14:59:21,617 [WARNING] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Tentativo 2 non andato a buon fine. Stato: failed_error
+2026-06-08 14:59:21,620 [ERROR] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Tutti i 2 tentativi di login sono falliti.
+2026-06-08 14:59:21,990 [WARNING] service.crawl4ai.scraperService — [https://autostrade.bravosolution.com/web/login.html] Login fallito: failed_error
+2026-06-08 14:59:23,297 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:59:23] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:59:26,614 [WARNING] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] Selettore username primario fallito o mutato. Avvio fallback generico...
+2026-06-08 14:59:27,298 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:59:27] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:59:30,631 [ERROR] service.crawl4ai.formFillerService — [https://autostrade.bravosolution.com/web/login.html] Errore durante l'interazione con i campi (iFrame=True): Locator.wait_for: Timeout 4000ms exceeded.
+Call log:
+  - waiting for locator("input[type='text'], input[type='email'], input[name*='user'], input[name*='login']").first to be visible
+    12 × locator resolved to hidden <input type="hidden" name="loginNotOk" value="/web/error.html"/>
+
+2026-06-08 14:59:30,632 [WARNING] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Tentativo 2 non andato a buon fine. Stato: failed_error
+2026-06-08 14:59:30,632 [ERROR] service.crawl4ai.esecutoreLoginService — [https://autostrade.bravosolution.com/web/login.html] Tutti i 2 tentativi di login sono falliti.
+2026-06-08 14:59:30,792 [WARNING] service.crawl4ai.scraperService — [https://autostrade.bravosolution.com/web/login.html] Login fallito: failed_error
+2026-06-08 14:59:31,305 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:59:31] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:59:35,325 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:59:35] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:59:39,309 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:59:39] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:59:43,302 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:59:43] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:59:47,301 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:59:47] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:59:51,302 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:59:51] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:59:54,462 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 14:59:54,609 [INFO] service.crawl4ai.estrattoreBandiService — LLM ha individuato 54 bandi nella pagina elenco.
+2026-06-08 14:59:54,610 [INFO] service.crawl4ai.estrattoreBandiService — Nessun bando con URL dettaglio valido da arricchire.
+2026-06-08 14:59:54,613 [INFO] service.crawl4ai.scraperService — Completati 3 / 9
+2026-06-08 14:59:55,305 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:59:55] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 14:59:55,378 [INFO] service.crawl4ai.browserFactory — Avvio browser Chromium...
+2026-06-08 14:59:55,399 [INFO] service.crawl4ai.browserFactory — Avvio browser Chromium...
+2026-06-08 14:59:55,409 [INFO] service.crawl4ai.browserFactory — Avvio browser Chromium...
+2026-06-08 14:59:56,256 [INFO] service.crawl4ai.esecutoreLoginService — [https://www.edison.it/it/diventa-fornitore] Avvio tentativo di login 1/2
+2026-06-08 14:59:56,288 [INFO] service.crawl4ai.esecutoreLoginService — [https://eprocurement.raiway.it/PortaleAppalti/it/homepage.wp] Avvio tentativo di login 1/2
+2026-06-08 14:59:56,298 [INFO] service.crawl4ai.esecutoreLoginService — [https://www.anticorruzione.it/per-le-imprese] Avvio tentativo di login 1/2
+2026-06-08 14:59:59,910 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 14:59:59] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 15:00:03,327 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 15:00:03] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 15:00:04,558 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 15:00:04,602 [INFO] service.crawl4ai.esecutoreLoginService — [https://eprocurement.raiway.it/PortaleAppalti/it/homepage.wp] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 15:00:07,309 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 15:00:07] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 15:00:08,477 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 15:00:08,480 [INFO] service.crawl4ai.classificatoreLoginService — Confidence LOW con gpt-4o-mini — fallback a gpt-4o
+2026-06-08 15:00:10,143 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 15:00:10,162 [INFO] service.crawl4ai.esecutoreLoginService — [https://www.edison.it/it/diventa-fornitore] Stato pagina: PageState.UNKNOWN (confidence=Confidence.HIGH, model=gpt-4o)
+2026-06-08 15:00:11,313 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 15:00:11] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 15:00:11,320 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 15:00:11,323 [INFO] service.crawl4ai.classificatoreLoginService — Confidence LOW con gpt-4o-mini — fallback a gpt-4o
+2026-06-08 15:00:12,160 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 15:00:12,184 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://eprocurement.raiway.it/PortaleAppalti/it/homepage.wp] Selettori estratti e cachati (confidence=0.90)
+2026-06-08 15:00:13,509 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 15:00:13,514 [INFO] service.crawl4ai.esecutoreLoginService — [https://www.anticorruzione.it/per-le-imprese] Stato pagina: PageState.UNKNOWN (confidence=Confidence.LOW, model=gpt-4o)
+2026-06-08 15:00:15,257 [INFO] service.crawl4ai.formFillerService — [https://eprocurement.raiway.it/PortaleAppalti/it/homepage.wp] Selettore non visibile sulla pagina principale, cerco negli iFrame...
+2026-06-08 15:00:15,381 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 15:00:15] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 15:00:16,923 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 15:00:16,932 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://www.anticorruzione.it/per-le-imprese] Selettori estratti e cachati (confidence=0.80)
+2026-06-08 15:00:19,292 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 15:00:19,301 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://www.edison.it/it/diventa-fornitore] Selettori estratti e cachati (confidence=0.80)
+2026-06-08 15:00:19,303 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 15:00:19] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 15:00:19,952 [INFO] service.crawl4ai.formFillerService — [https://www.anticorruzione.it/per-le-imprese] Selettore non visibile sulla pagina principale, cerco negli iFrame...
+2026-06-08 15:00:20,487 [WARNING] service.crawl4ai.formFillerService — [https://eprocurement.raiway.it/PortaleAppalti/it/homepage.wp] Selettore username primario fallito o mutato. Avvio fallback generico...
+2026-06-08 15:00:22,327 [INFO] service.crawl4ai.formFillerService — [https://www.edison.it/it/diventa-fornitore] Selettore non visibile sulla pagina principale, cerco negli iFrame...
+2026-06-08 15:00:23,298 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 15:00:23] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 15:00:24,989 [WARNING] service.crawl4ai.formFillerService — [https://www.anticorruzione.it/per-le-imprese] Selettore username primario fallito o mutato. Avvio fallback generico...
+2026-06-08 15:00:27,302 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 15:00:27] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 15:00:27,426 [WARNING] service.crawl4ai.formFillerService — [https://www.edison.it/it/diventa-fornitore] Selettore username primario fallito o mutato. Avvio fallback generico...
+2026-06-08 15:00:29,003 [ERROR] service.crawl4ai.formFillerService — [https://www.anticorruzione.it/per-le-imprese] Errore durante l'interazione con i campi (iFrame=False): Locator.wait_for: Timeout 4000ms exceeded.
+Call log:
+  - waiting for locator("input[type='text'], input[type='email'], input[name*='user'], input[name*='login']").first to be visible
+
+2026-06-08 15:00:29,005 [WARNING] service.crawl4ai.esecutoreLoginService — [https://www.anticorruzione.it/per-le-imprese] Tentativo 1 non andato a buon fine. Stato: failed_error
+2026-06-08 15:00:29,006 [INFO] service.crawl4ai.esecutoreLoginService — [https://www.anticorruzione.it/per-le-imprese] Attesa di 2.87 secondi prima del tentativo 2...
+2026-06-08 15:00:31,325 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 15:00:31] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 15:00:31,440 [ERROR] service.crawl4ai.formFillerService — [https://www.edison.it/it/diventa-fornitore] Errore durante l'interazione con i campi (iFrame=False): Locator.wait_for: Timeout 4000ms exceeded.
+Call log:
+  - waiting for locator("input[type='text'], input[type='email'], input[name*='user'], input[name*='login']").first to be visible
+
+2026-06-08 15:00:31,441 [WARNING] service.crawl4ai.esecutoreLoginService — [https://www.edison.it/it/diventa-fornitore] Tentativo 1 non andato a buon fine. Stato: failed_error
+2026-06-08 15:00:31,443 [INFO] service.crawl4ai.esecutoreLoginService — [https://www.edison.it/it/diventa-fornitore] Attesa di 2.44 secondi prima del tentativo 2...
+2026-06-08 15:00:31,877 [INFO] service.crawl4ai.esecutoreLoginService — [https://www.anticorruzione.it/per-le-imprese] Avvio tentativo di login 2/2
+2026-06-08 15:00:33,880 [INFO] service.crawl4ai.esecutoreLoginService — [https://www.edison.it/it/diventa-fornitore] Avvio tentativo di login 2/2
+2026-06-08 15:00:35,340 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 15:00:35] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 15:00:39,330 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 15:00:39] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 15:00:40,790 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 15:00:40,802 [INFO] service.crawl4ai.classificatoreLoginService — Confidence LOW con gpt-4o-mini — fallback a gpt-4o
+2026-06-08 15:00:42,922 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 15:00:42,925 [INFO] service.crawl4ai.esecutoreLoginService — [https://www.edison.it/it/diventa-fornitore] Stato pagina: PageState.UNKNOWN (confidence=Confidence.LOW, model=gpt-4o)
+2026-06-08 15:00:42,996 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://www.edison.it/it/diventa-fornitore] Selettori da cache
+2026-06-08 15:00:43,294 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 15:00:43] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 15:00:43,843 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 15:00:43,845 [INFO] service.crawl4ai.classificatoreLoginService — Confidence LOW con gpt-4o-mini — fallback a gpt-4o
+2026-06-08 15:00:46,018 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 15:00:46,036 [INFO] service.crawl4ai.esecutoreLoginService — [https://www.anticorruzione.it/per-le-imprese] Stato pagina: PageState.LOGGED_IN (confidence=Confidence.HIGH, model=gpt-4o)
+2026-06-08 15:00:46,109 [INFO] service.crawl4ai.formFillerService — [https://www.edison.it/it/diventa-fornitore] Selettore non visibile sulla pagina principale, cerco negli iFrame...
+2026-06-08 15:00:46,190 [INFO] service.crawl4ai.esecutoreLoginService — [https://www.anticorruzione.it/per-le-imprese] Login OK — cookie salvati in sessioni/113_ANAC.json
+2026-06-08 15:00:47,292 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 15:00:47] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 15:00:48,551 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 15:00:48] "GET / HTTP/1.1" 200 -
+2026-06-08 15:00:49,873 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 15:00:49] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-06-08 15:00:49,962 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 15:00:49] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 15:00:51,516 [WARNING] service.crawl4ai.formFillerService — [https://www.edison.it/it/diventa-fornitore] Selettore username primario fallito o mutato. Avvio fallback generico...
+2026-06-08 15:00:51,655 [INFO] service.crawl4ai.browserFactory — Avvio browser Chromium...
+2026-06-08 15:00:52,007 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 15:00:52] "GET /api/dati HTTP/1.1" 200 -
+2026-06-08 15:00:52,167 [ERROR] service.crawl4ai.formFillerService — [https://eprocurement.raiway.it/PortaleAppalti/it/homepage.wp] Errore durante l'interazione con i campi (iFrame=False): Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[type='text'], input[type='email'], input[name*='user'], input[name*='login']").first
+    - locator resolved to <input value="" type="text" id="search" class="text" name="search" autocomplete="off"/>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div class="modal-content">…</div> from <div class="modalCookies" id="modalCookieDialog">…</div> subtree intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    - waiting for element to be visible, enabled and stable
+    - element is visible, enabled and stable
+    - scrolling into view if needed
+    - done scrolling
+    - <div class="modal-content">…</div> from <div class="modalCookies" id="modalCookieDialog">…</div> subtree intercepts pointer events
+  2 × retrying click action
+      - waiting 100ms
+      - waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div class="modalCookies" id="modalCookieDialog">…</div> intercepts pointer events
+  13 × retrying click action
+       - waiting 500ms
+       - waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - <div class="modal-content">…</div> from <div class="modalCookies" id="modalCookieDialog">…</div> subtree intercepts pointer events
+     - retrying click action
+       - waiting 500ms
+       - waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - <div class="modal-content">…</div> from <div class="modalCookies" id="modalCookieDialog">…</div> subtree intercepts pointer events
+     - retrying click action
+       - waiting 500ms
+       - waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - <div class="modalCookies" id="modalCookieDialog">…</div> intercepts pointer events
+     - retrying click action
+       - waiting 500ms
+       - waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - <div class="modalCookies" id="modalCookieDialog">…</div> intercepts pointer events
+  2 × retrying click action
+      - waiting 500ms
+      - waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div class="modal-content">…</div> from <div class="modalCookies" id="modalCookieDialog">…</div> subtree intercepts pointer events
+  - retrying click action
+    - waiting 500ms
+    - waiting for element to be visible, enabled and stable
+    - element is visible, enabled and stable
+    - scrolling into view if needed
+    - done scrolling
+    - <div class="modalCookies" id="modalCookieDialog">…</div> intercepts pointer events
+  - retrying click action
+    - waiting 500ms
+
+2026-06-08 15:00:52,173 [WARNING] service.crawl4ai.esecutoreLoginService — [https://eprocurement.raiway.it/PortaleAppalti/it/homepage.wp] Tentativo 1 non andato a buon fine. Stato: failed_error
+2026-06-08 15:00:52,173 [INFO] service.crawl4ai.esecutoreLoginService — [https://eprocurement.raiway.it/PortaleAppalti/it/homepage.wp] Attesa di 4.25 secondi prima del tentativo 2...
+2026-06-08 15:00:53,267 [INFO] service.crawl4ai.scraperService — [https://www.anticorruzione.it/per-le-imprese] Navigazione verso la Home di partenza: https://www.anticorruzione.it/per-le-imprese
+2026-06-08 15:00:55,606 [ERROR] service.crawl4ai.formFillerService — [https://www.edison.it/it/diventa-fornitore] Errore durante l'interazione con i campi (iFrame=False): Locator.wait_for: Timeout 4000ms exceeded.
+Call log:
+  - waiting for locator("input[type='text'], input[type='email'], input[name*='user'], input[name*='login']").first to be visible
+
+2026-06-08 15:00:55,608 [WARNING] service.crawl4ai.esecutoreLoginService — [https://www.edison.it/it/diventa-fornitore] Tentativo 2 non andato a buon fine. Stato: failed_error
+2026-06-08 15:00:55,608 [ERROR] service.crawl4ai.esecutoreLoginService — [https://www.edison.it/it/diventa-fornitore] Tutti i 2 tentativi di login sono falliti.
+2026-06-08 15:00:56,265 [WARNING] service.crawl4ai.scraperService — [https://www.edison.it/it/diventa-fornitore] Login fallito: failed_error
+2026-06-08 15:00:56,427 [INFO] service.crawl4ai.esecutoreLoginService — [https://eprocurement.raiway.it/PortaleAppalti/it/homepage.wp] Avvio tentativo di login 2/2
+2026-06-08 15:01:01,810 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 15:01:01,873 [INFO] service.crawl4ai.esecutoreLoginService — [https://eprocurement.raiway.it/PortaleAppalti/it/homepage.wp] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-08 15:01:02,106 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 15:01:02,111 [INFO] service.crawl4ai.scraperService — [https://www.anticorruzione.it/per-le-imprese] 🧭 IA ha deciso di navigare verso la sezione bandi: https://www.anticorruzione.it/-/piattaforma-contratti-pubblici
+2026-06-08 15:01:02,147 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://eprocurement.raiway.it/PortaleAppalti/it/homepage.wp] Selettori da cache
+2026-06-08 15:01:19,060 [INFO] werkzeug — [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.17.0.2:5000
+2026-06-08 15:01:19,061 [INFO] werkzeug — [33mPress CTRL+C to quit[0m
+2026-06-08 15:01:19,064 [INFO] werkzeug —  * Restarting with stat
+2026-06-08 15:01:21,837 [WARNING] werkzeug —  * Debugger is active!
+2026-06-08 15:01:21,841 [INFO] werkzeug —  * Debugger PIN: 141-312-488
+2026-06-08 15:01:22,099 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 15:01:22] "GET / HTTP/1.1" 200 -
+2026-06-08 15:01:22,232 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 15:01:22] "GET / HTTP/1.1" 200 -
+2026-06-08 15:01:22,346 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 15:01:22] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-06-08 15:01:22,394 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 15:01:22] "GET /api/stato HTTP/1.1" 200 -
+2026-06-08 15:01:22,943 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 15:01:22] "GET /api/dati HTTP/1.1" 200 -
+2026-06-08 15:01:23,013 [INFO] werkzeug — 172.17.0.1 - - [08/Jun/2026 15:01:23] "GET /api/dati HTTP/1.1" 200 -
