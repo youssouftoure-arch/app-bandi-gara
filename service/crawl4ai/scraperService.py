@@ -2,11 +2,9 @@ import asyncio
 import json
 import logging
 import os
-import inspect
-from dotenv import load_dotenv
 from pathlib import Path
 import time
-import pandas as pd
+from dotenv import load_dotenv
 from openai import AsyncOpenAI
 from playwright.async_api import async_playwright
 
@@ -14,11 +12,12 @@ from model.enums.statoLoginEnum import LoginStatus
 from model.po.portalePo import Portale
 from model.dto.bandoDto import Bando
 
-# Import del servizio di login
+# Import dei servizi
 from service.crawl4ai.esecutoreLoginService import EsecutoreLoginService
-
-# Import Unificato dell'Estrattore
 from service.crawl4ai.estrattoreBandiService import EstrattoreBandiService
+from dao.portaleDao import PortaleDao
+from dao.bandoDao import BandoDao
+from service.crawl4ai.navigatoreLlmService import NavigatoreLlmService
 
 # Nome del file in cui verranno salvati i log
 LOG_FILE_PATH = "scraper_activity.log"
@@ -56,6 +55,11 @@ class scraper:
         
         # Servizio Unificato per elenco e arricchimento dettagli
         self._estrattore_service = EstrattoreBandiService(llm_client=self.llm_client)
+        
+        # Servizi e DAOs MVP
+        self.portale_dao = PortaleDao(EXCEL_PATH)
+        self.bando_dao = BandoDao()
+        self._navigatore_service = NavigatoreLlmService(self.llm_client)
 
     async def main(self):
         tempo_inizio = time.time()
@@ -88,7 +92,7 @@ class scraper:
 
         if not risultato_login.is_success:
             logger.warning("[%s] Login fallito: %s", portale.url, risultato_login.status.value)
-            return {"portale": portale.url, "login": risultato_login.status.value, "bandi": []}
+            return {"portale": portale.url, "login": risultato_login.status.value if hasattr(risultato_login.status, "value") else str(risultato_login.status), "bandi": []}
 
         try:
             bandi_estratti: list[Bando] = await self._scrapa_e_estrai_bandi(
@@ -96,7 +100,7 @@ class scraper:
             )
         except (asyncio.CancelledError, Exception) as e:
             logger.error("[%s] Errore non gestito durante lo scraping: %s", portale.url, e)
-            return {"portale": portale.url, "login": risultato_login.status.value, "bandi": []}
+            return {"portale": portale.url, "login": risultato_login.status.value if hasattr(risultato_login.status, "value") else str(risultato_login.status), "bandi": []}
 
         if bandi_estratti:
             self._stampa_bandi(portale.url, bandi_estratti)
@@ -104,7 +108,7 @@ class scraper:
         bandi_dict = [b.model_dump() for b in bandi_estratti]
         return {
             "portale": portale.url,
-            "login": risultato_login.status.value,
+            "login": risultato_login.status.value if hasattr(risultato_login.status, "value") else str(risultato_login.status),
             "bandi": bandi_dict,
             "conteggio_bandi": len(bandi_dict),
         }
@@ -123,8 +127,8 @@ class scraper:
         
         async with async_playwright() as p:
             try:
-                browser = await p.chromium.launch(headless=True)
-                context = await browser.new_context()
+                from service.crawl4ai.browserFactory import BrowserFactory
+                browser, context = await BrowserFactory.create_browser_and_context(p, headless=True)
                 if cookies:
                     await context.add_cookies(cookies)
 
@@ -144,7 +148,7 @@ class scraper:
                 }""")
                 
                 # Chiediamo all'LLM quale di questi link porta alla sezione "Bandi", "Gare" o "Avvisi"
-                url_sezione_bandi = await self._trova_url_bandi_con_llm(url_base, links_pagine)
+                url_sezione_bandi = await self._navigatore_service.trova_url_bandi(url_base, links_pagine)
                 
                 if url_sezione_bandi and url_sezione_bandi != url_base:
                     logger.info("[%s] 🧭 IA ha deciso di navigare verso la sezione bandi: %s", portale.url, url_sezione_bandi)
@@ -215,25 +219,9 @@ class scraper:
         print("#" * 60 + "\n")
 
     def _carica_portali(self) -> list[Portale]:
-        df = pd.read_excel(EXCEL_PATH, header=4)
-        df.columns = df.columns.str.strip().str.lower().str.replace(" ", "_")
-        
-        portali = []
-        logger.info("Colonne trovate nell'Excel (riga 5): %s", df.columns.tolist())
-        
-        for _, row in df.iterrows():
-            if row.isnull().all():
-                continue
-                
-            try:
-                portali.append(Portale.from_dataframe_row(row.to_dict()))
-            except Exception as exc:
-                logger.warning("Riga dell'Excel saltata per errore di validazione: %s", exc)
-                
-        return [p for p in portali if p.is_active]
+        return self.portale_dao.carica_portali()
 
     def _stampa_riepilogo(self, risultati, tempo_totale):
-        # Supporta sia il caso in cui 'risultati' sia un dizionario mappato per URL, sia una lista
         lista_valori = list(risultati.values()) if isinstance(risultati, dict) else risultati
 
         totale = len(lista_valori)
@@ -244,7 +232,6 @@ class scraper:
             if not r or not isinstance(r, dict):
                 continue
             
-            # Gestione sicura del valore di login (stringa o istanza di Enum)
             stato_login = r.get("login")
             stato_str = str(stato_login).lower() if stato_login else ""
             
@@ -268,166 +255,5 @@ class scraper:
         logger.info("Tempo Totale Impiegato:            %s", durata_formattata)
         logger.info("=" * 60)
 
-    def _estrai_committente_da_url(self, url):
-        """Metodo di fallback per pulire l'URL e ricavare un nome committente leggibile."""
-        try:
-            from urllib.parse import urlparse
-            dominio = urlparse(url).netloc.lower()
-            # Rimuove i classici sotto-domini e suffissi dei portali acquisti
-            for sub in ['www.', 'acquisti.', 'portale.', 'portalefornitori.', 'fornitori.', 'eprocurement.']:
-                dominio = dominio.replace(sub, '')
-            nome = dominio.split('.')[0]
-            return nome.upper()
-        except:
-            return "SCONOSCIUTO"
-
     def _salva_bandi_su_excel(self, risultati):
-        logger.info("Generazione file Excel di riepilogo bandi...")
-        righe = []
-        
-        lista_valori = list(risultati.values()) if isinstance(risultati, dict) else risultati
-
-        for r in lista_valori:
-            if not r or not isinstance(r, dict):
-                continue
-                
-            url_portale = r.get("portale", "Sconosciuto")
-            stato_login = r.get("login", "Sconosciuto")
-            if hasattr(stato_login, "value"):
-                stato_login = stato_login.value
-                
-            # Generiamo il committente di fallback basato sull'URL del portale attuale
-            committente_fallback = self._estrai_committente_da_url(url_portale)
-            
-            bandi = r.get("bandi", [])
-            
-            if not bandi:
-                righe.append({
-                    "Portale": url_portale, 
-                    "Stato Login": stato_login,
-                    "Committente": committente_fallback, # Usa il nome del portale pulito
-                    "Titolo Bando": "Nessun bando estratto o login fallito",
-                    "Scadenza": "-", 
-                    "Importo": "-", 
-                    "Categoria": "-",
-                    "Descrizione": "-", 
-                    "URL Dettaglio": "-",
-                })
-            else:
-                for bando in bandi:
-                    # Normalizzazione sicura dell'oggetto bando (Pydantic o dict)
-                    if hasattr(bando, "model_dump"):
-                        bando_dict = bando.model_dump()
-                    elif hasattr(bando, "dict"):
-                        bando_dict = bando.dict()
-                    elif isinstance(bando, dict):
-                        bando_dict = bando
-                    else:
-                        bando_dict = {
-                            "committente": getattr(bando, "committente", None),
-                            "titolo": getattr(bando, "titolo", "-"),
-                            "scadenza": getattr(bando, "scadenza", "-"),
-                            "importo": getattr(bando, "importo", "-"),
-                            "categoria": getattr(bando, "categoria", "-"),
-                            "descrizione": getattr(bando, "descrizione", "-"),
-                            "url_dettaglio": getattr(bando, "url_dettaglio", "-"),
-                        }
-
-                    # --- 🛠️ BLOCCO DI PULIZIA E FILTRO INTEGRATO ---
-                    
-                    # 1. Escludi le righe con scadenze vecchie (es. anno 2025)
-                    scadenza_bando = bando_dict.get("scadenza", "-")
-                    if "2025" in str(scadenza_bando):
-                        continue  # Salta direttamente questo bando e passa al prossimo
-
-                    # 2. Pulisci preventivamente l'URL se vedi anomalie del browser / JS corporativo
-                    url_dettaglio = bando_dict.get("url_dettaglio") or "-"
-                    if "undefined" in str(url_dettaglio).lower() or str(url_dettaglio).strip() == "-":
-                        # Fallback all'URL principale del portale se l'LLM fallisce il selettore del link
-                        url_dettaglio = url_portale 
-
-                    # -----------------------------------------------
-
-                    # Se l'LLM ha estratto il committente usa quello, altrimenti usa il fallback dall'URL
-                    committente_finale = bando_dict.get("committente") or committente_fallback
-
-                    righe.append({
-                        "Portale":       url_portale,
-                        "Stato Login":   stato_login,
-                        "Committente":   str(committente_finale).upper(),
-                        "Titolo Bando":  bando_dict.get("titolo") or "-",
-                        "Scadenza":      scadenza_bando,  # Mantiene il valore pre-filtrato
-                        "Importo":       bando_dict.get("importo") or "-",
-                        "Categoria":     bando_dict.get("categoria") or "-",
-                        "Descrizione":   bando_dict.get("descrizione") or "-",
-                        "URL Dettaglio": url_dettaglio,   # Usa la variabile corretta con il fallback applicato
-                    })
-                    
-        if not righe:
-            logger.warning("Nessun dato raccolto. Generazione file Excel annullata.")
-            return
-
-        df_output = pd.DataFrame(righe)
-        output_filename = "bandi_estratti_totale.xlsx"
-        try:
-            df_output.to_excel(output_filename, index=False)
-            logger.info("= " * 25)
-            logger.info("💾 FILE SALVATO CON SUCCESSO: %s", output_filename)
-            logger.info("= " * 25)
-        except Exception as e:
-            logger.error("Errore salvataggio Excel: %s", e)
-
-
-    async def _trova_url_bandi_con_llm(self, url_corrente: str, links: list) -> str:
-        """
-        Analizza la lista dei link presenti nella pagina usando GPT-4o-mini 
-        per decidere quale URL porta all'elenco dei bandi/gare/procedure.
-        """
-        # Riduciamo il carico di token inviando solo dati essenziali (max 80 link per evitare overflow)
-        link_strati = [
-            {"testo": l["testo"], "href": l["href"]} 
-            for l in links if l["href"] and not l["href"].startswith("javascript")
-        ][:80]
-        
-        if not link_strati:
-            return url_corrente
-
-        prompt = f"""
-        Sei l'autopilota di un web scraper di bandi di gara pubblici e privati.
-        Sei appena atterrato su questa pagina: {url_corrente}
-        Il tuo obiettivo è andare alla pagina che contiene l'elenco dei bandi, delle gare, delle negoziazioni o degli avvisi di appalto.
-        
-        Analizza questa lista di link estratti dalla pagina corrente:
-        {json.dumps(link_strati, ensure_ascii=False)}
-        
-        Identifica il link migliore che corrisponde a diciture come:
-        - "Bandi e Avvisi", "Gare e procedure", "Procedure di gara", "Bandi di gara"
-        - "Negoziazioni in corso", "Bandi aperti", "Consultazioni", "Elenco bandi"
-        - "Gare", "Tenders", "Opportunities", "Avvisi"
-        - Nei portali come ANAS/RFI cerca voci relative ad "Area Fornitori" -> "Gare" o "Bandi".
-        
-        Rispondi ESCLUSIVAMENTE con un oggetto JSON valido avente questa struttura:
-        {{
-            "url_selezionato": "stringa dell'url completo da cliccare",
-            "motivazione": "breve spiegazione del perché"
-        }}
-        Se nessun link sembra idoneo o ritieni che siamo già nella pagina corretta, restituisci l'url corrente ({url_corrente}).
-        """
-        
-        try:
-            response = await self.llm_client.chat.completions.create(
-                model="gpt-4o-mini",
-                messages=[
-                    {"role": "system", "content": "Sei un assistente tecnico esperto di scraping e navigazione web. Rispondi solo in JSON."},
-                    {"role": "user", "content": prompt}
-                ],
-                response_format={"type": "json_object"},
-                temperature=0.0
-            )
-            
-            risultato = json.loads(response.choices[0].message.content)
-            url_scelto = risultato.get("url_selezionato", url_corrente)
-            return url_scelto
-        except Exception as e:
-            logger.warning("Impossibile determinare il link dei bandi via LLM: %s. Resto su URL corrente.", e)
-            return url_corrente
+        self.bando_dao.salva_bandi_su_excel(risultati)

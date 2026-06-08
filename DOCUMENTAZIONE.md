@@ -5,18 +5,22 @@ Il sistema è un framework di automazione e scraping asincrono in **Python 3.11+
 
 L'architettura unisce la stabilità del controllo del DOM di **Playwright** all'intelligenza semantica dei **Modelli di Linguaggio Generativi (LLM - GPT-4o / GPT-4o-mini)**, esponendo le metriche e il controllo operativo tramite un'interfaccia web asincrona basata su **Flask**.
 
----
-
-## ── 📂 1. Mappatura Reale del File Tree
-La struttura dei moduli, ingegnerizzata secondo il pattern a micro-servizi e la separazione delle responsabilità tramite Blueprint, si articola come segue:
+--## ── 📂 1. Mappatura Reale del File Tree
+La struttura dei moduli, organizzata secondo il pattern **MVP (Model-View-Presenter)**, si articola come segue:
 
 ```text
 📦 app bandi gara
  ┣ 📂 config
  ┃ ┗ 📜 selettori_portali.json          # Cache dei selettori CSS (Discovery LLM)
- ┣ 📂 controllers
- ┃ ┗ 📜 scraper_controller.py          # Blueprint Flask: API REST (/api/avvia, /api/stato, /api/dati)
- ┣ 📂 dao                               # Predisposizione per la persistenza su DB MySQL
+ ┣ 📂 controller
+ ┃ ┗ 📜 indexController.py              # Routing Layer Flask (adattatore di ingresso)
+ ┣ 📂 presenter
+ ┃ ┗ 📜 scraperPresenter.py             # Presenter Layer: logica di coordinamento e background threads
+ ┣ 📂 view
+ ┃ ┗ 📜 scraperView.py                  # View Layer: definizione interfacce e risposte Flask (JSON)
+ ┣ 📂 dao                               # Model Layer: Data Access Objects
+ ┃ ┣ 📜 portaleDao.py                   # DAO caricamento portali (Excel)
+ ┃ ┗ 📜 bandoDao.py                     # DAO salvataggio bandi e metriche (Excel)
  ┣ 📂 model
  ┃ ┣ 📂 dto
  ┃ ┃ ┣ 📜 bandoDto.py                 # Modello Pydantic con validazione date ≥ 2026 e normalizzazione URL
@@ -31,15 +35,17 @@ La struttura dei moduli, ingegnerizzata secondo il pattern a micro-servizi e la 
  ┃ ┗ 📜 classificatoreLogin.py          # Prompt di sistema strutturati per la Vision API
  ┣ 📂 service
  ┃ ┣ 📂 crawl4ai                        # Core Engine di Scraping e Automazione
+ ┃ ┃ ┣ 📜 browserFactory.py             # Centralizzazione configurazioni browser stealth Playwright
+ ┃ ┃ ┣ 📜 formFillerService.py          # Compilazione ed invio campi credenziali nei form
+ ┃ ┃ ┣ 📜 navigatoreLlmService.py       # Autopilota LLM per individuazione link di navigazione
  ┃ ┃ ┣ 📜 classificatoreLoginService.py   # Analisi visiva della pagina pre/post-login
- ┃ ┃ ┣ 📜 esecutoreLoginService.py        # Driver Playwright con logica Stealth e Umana
+ ┃ ┃ ┣ 📜 esecutoreLoginService.py        # Orchestrazione della routine di login
  ┃ ┃ ┣ 📜 discoverySelettoriService.py  # LLM Discovery per la generazione dei selettori
  ┃ ┃ ┣ 📜 estrattoreBandiService.py       # Orchestratore estrazione (Deterministica vs LLM)
  ┃ ┃ ┣ 📜 estrattoreCssService.py         # Parsing nativo veloce del DOM tramite CSS
- ┃ ┃ ┣ 📜 estrattoreSelettoriService.py   # Fallback LLM ed estrazione ad alta confidenza
- ┃ ┃ ┗ 📜 scraperService.py               # Loop di orchestrazione principale e parallelizzazione
+ ┃ ┃ ┗ 📜 estrattoreSelettoriService.py   # Fallback LLM ed estrazione ad alta confidenza
  ┃ ┗ 📂 estrazioneFile
- ┃    ┗ 📜 estrazioneDatiExcelService.py   # Generazione, pulizia dati e formattazione output Excel
+ ┃    ┗ 📜 estrazioneDatiExcelService.py   # Servizio di formattazione Excel
  ┣ 📂 static
  ┃ ┗ 📂 css
  ┃    ┗ 📜 style.css                   # Stile CSS esterno per la Dashboard (Enterprise-ready)
@@ -47,12 +53,11 @@ La struttura dei moduli, ingegnerizzata secondo il pattern a micro-servizi e la 
  ┃ ┗ 📜 index.html                      # Interfaccia UI asincrona (Fetch API) per il controllo dei cicli
  ┣ 📂 sessioni
  ┃ ┗ 📜 *.json                          # Cache dei cookie di autenticazione per portale
- ┣ 📜 .env                              # Chiavi API e configurazioni sensibili (Scopo locale)
+ ┣ 📜 .env                              # Chiavi API e configurazioni sensibili
  ┣ 📜 Dockerfile                        # Definizione dell'ambiente isolato Linux/Playwright
  ┣ 📜 README.md                         # Manuale operativo di installazione e avvio rapido
  ┣ 📜 requirements.txt                  # Dipendenze rigidamente tracciate (Flask, Crawl4AI, Openpyxl)
  ┗ 📜 user e password per Operations.xlsx # Sorgente dati d'ingresso (Anagrafica Portali)
-
 ```
 
 ---

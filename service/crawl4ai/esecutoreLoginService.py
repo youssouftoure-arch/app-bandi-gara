@@ -12,6 +12,8 @@ from model.enums.statoPaginaEnum import PageState
 from model.po.portalePo import Portale
 from service.crawl4ai.classificatoreLoginService import LoginClassifier
 from service.crawl4ai.estrattoreSelettoriService import EstrattoreSelettoriService
+from service.crawl4ai.browserFactory import BrowserFactory
+from service.crawl4ai.formFillerService import FormFillerService
 
 logger = logging.getLogger(__name__)
 
@@ -62,25 +64,7 @@ class EsecutoreLoginService:
 
     async def _login_con_browser(self, portale: Portale) -> LoginResult:
         async with async_playwright() as p:
-            browser = await p.chromium.launch(
-                headless=True,
-                args=[
-                    "--disable-blink-features=AutomationControlled",
-                    "--disable-infobars",
-                    "--no-sandbox"
-                ]
-            )
-            context = await browser.new_context(
-                viewport={"width": 1920, "height": 1080},
-                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-                locale="it-IT",
-                timezone_id="Europe/Rome",
-                accept_downloads=True
-            )
-            await context.add_init_script("""
-                Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
-                window.chrome = { runtime: {} };
-            """)
+            browser, context = await BrowserFactory.create_browser_and_context(p, headless=True)
             try:
                 return await self._login_con_retry(portale, context)
             finally:
@@ -159,77 +143,21 @@ class EsecutoreLoginService:
                                status=LoginStatus.FAILED_ERROR,
                                error_message="Selettori non trovati nel DOM")
 
-        # FIX ALLINEAMENTO CHIAVI: allineati con il nuovo prompt dei selettori
         u_sel = selettori.get("username")
         p_sel = selettori.get("password")
         s_sel = selettori.get("submit")
 
-        # Ricerca nei frame
-        target_context = page
-        is_iframe = False
-
         try:
-            if u_sel:
-                await page.wait_for_selector(u_sel, state="visible", timeout=3000)
-        except Exception:
-            logger.info("[%s] Selettore non visibile sulla pagina principale, cerco negli iFrame...", portale.url)
-            for frame in page.frames:
-                if frame != page:
-                    try:
-                        if u_sel and await frame.locator(u_sel).count() > 0:
-                            target_context = frame
-                            is_iframe = True
-                            logger.info("[%s] 🎯 Form di login individuato all'interno dell'iFrame: %s", portale.url, frame.name or frame.url)
-                            break
-                    except Exception:
-                        continue
-
-        try:
-            # --- 1. Gestione Username & Fallback Robustezza ---
-            try:
-                username_input = target_context.locator(u_sel).first
-                await username_input.wait_for(state="visible", timeout=5000)
-                await username_input.click()
-            except Exception:
-                logger.warning("[%s] Selettore username primario fallito o mutato. Avvio fallback generico...", portale.url)
-                username_input = target_context.locator("input[type='text'], input[type='email'], input[name*='user'], input[name*='login']").first
-                await username_input.wait_for(state="visible", timeout=4000)
-                await username_input.click()
-
-            await username_input.fill("")
-            await username_input.press_sequentially(portale.username, delay=random.randint(40, 120))
-            await asyncio.sleep(random.uniform(0.4, 0.9))
-
-            # --- 2. Gestione Password & Fallback Robustezza ---
-            try:
-                password_input = target_context.locator(p_sel).first
-                await password_input.wait_for(state="visible", timeout=4000)
-                await password_input.click()
-            except Exception:
-                logger.warning("[%s] Selettore password primario fallito. Avvio fallback generico...", portale.url)
-                password_input = target_context.locator("input[type='password'], input[name*='pass']").first
-                await password_input.wait_for(state="visible", timeout=4000)
-                await password_input.click()
-
-            await password_input.fill("")
-            await password_input.press_sequentially(portale.password, delay=random.randint(40, 120))
-            await asyncio.sleep(random.uniform(0.6, 1.3))
-
-            # --- 3. Gestione Submit / Invio Form robusto ---
-            submit_button = await self._trova_submit(target_context, s_sel)
-            try:
-                await submit_button.wait_for(state="visible", timeout=4000)
-                await submit_button.click()
-            except Exception:
-                logger.warning("[%s] Click standard sul submit fallito. Tento click forzato o via JS...", portale.url)
-                try:
-                    await submit_button.click(force=True)
-                except Exception:
-                    # Se anche il forzato fallisce, cerchiamo un pulsante col testo o inviamo via Enter
-                    await password_input.press("Enter")
-
+            await FormFillerService.fill_and_submit(
+                page=page,
+                u_sel=u_sel,
+                p_sel=p_sel,
+                s_sel=s_sel,
+                username=portale.username,
+                password=portale.password,
+                portale_url=portale.url
+            )
         except Exception as e:
-            logger.error("[%s] Errore durante l'interazione con i campi (iFrame=%s): %s", portale.url, is_iframe, e)
             return LoginResult(portal_id=str(portale.numero), url=portale.url,
                                status=LoginStatus.FAILED_ERROR, error_message=f"Errore interazione form: {str(e)}")
 
@@ -258,42 +186,11 @@ class EsecutoreLoginService:
 
         if stato_post.state == PageState.CAPTCHA_PRESENT:
             return LoginResult(portal_id=str(portale.numero), url=portale.url,
-                               status=LoginStatus.FAILED_CAPTCHA, page_state=classificazione.state)
+                               status=LoginStatus.FAILED_CAPTCHA, page_state=stato_post.state)
 
         return LoginResult(portal_id=str(portale.numero), url=portale.url,
                            status=LoginStatus.FAILED_ERROR, page_state=stato_post.state,
                            error_message=f"Stato post-submit ambiguo: {stato_post.state}")
-
-    async def _trova_submit(self, target_context, s_sel):
-        # Parole chiave che identificano un bottone di login (in ordine di priorità)
-        login_keywords = ["accedi", "login", "sign in", "entra", "accesso", "invia", "conferma"]
-
-        if not s_sel:
-            # Fallback immediato se l'LLM non ha estratto un selettore valido per il submit
-            return target_context.locator("button[type='submit'], input[type='submit'], button:has-text('Accedi')").first
-
-        locator_tutti = target_context.locator(s_sel)
-        try:
-            count = await locator_tutti.count()
-        except Exception:
-            count = 0
-
-        if count <= 1:
-            return locator_tutti.first
-
-        # Prova a trovare il bottone giusto filtrando per testo
-        for keyword in login_keywords:
-            candidato = target_context.locator(s_sel).filter(has_text=keyword)
-            try:
-                if await candidato.count() == 1:
-                    logger.info("Submit disambiguato per testo '%s'", keyword)
-                    return candidato.first
-            except Exception:
-                continue
-
-        # Fallback se non si riesce a disambiguare
-        logger.warning("Impossibile disambiguare il submit con %d elementi — uso .first", count)
-        return locator_tutti.first
 
     async def _salva_sessione(self, portale, page, classificazione, selettori=None) -> LoginResult:
         cookies = await page.context.cookies()

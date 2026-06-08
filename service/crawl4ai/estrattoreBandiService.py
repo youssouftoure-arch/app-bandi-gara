@@ -122,11 +122,12 @@ class EstrattoreBandiService:
                 if bando.importo and bando.scadenza and bando.descrizione:
                     return
 
+                from service.crawl4ai.browserFactory import BrowserFactory
                 async with async_playwright() as p:
-                    browser = await p.chromium.launch(headless=True)
-                    context = await browser.new_context(
-                        viewport={"width": 1280, "height": 800},
-                        user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+                    browser, context = await BrowserFactory.create_browser_and_context(
+                        p, 
+                        headless=True, 
+                        viewport={"width": 1280, "height": 800}
                     )
                     if cookies:
                         await context.add_cookies(cookies)
