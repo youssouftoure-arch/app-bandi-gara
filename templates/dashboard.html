@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Monitoraggio Bandi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-light">
+
+    <div class="container my-5">
+        <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
+            <div>
+                <h1 class="fw-bold text-dark">📊 Dashboard Bandi di Gara</h1>
+                <p class="text-muted mb-0">Analisi visiva dei dati estratti dai portali di e-procurement</p>
+            </div>
+            <a href="/" class="btn btn-outline-secondary">⬅️ Torna alla Home</a>
+        </div>
+
+        {% if dati.get('errore') %}
+        <div class="alert alert-warning" role="alert">
+            <h4 class="alert-heading">Attenzione!</h4>
+            <p class="mb-0">{{ dati.get('messaggio', 'Errore imprevisto.') }}</p>
+        </div>
+        {% endif %}
+
+        <div class="row g-3 mb-5">
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0 bg-white p-3 rounded-3 border-start border-primary border-4">
+                    <div class="text-muted small text-uppercase fw-bold">Totale Bandi Estratti</div>
+                    <div class="fs-2 fw-bold text-primary">{{ dati.get('totale_bandi', 0) }}</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0 bg-white p-3 rounded-3 border-start border-success border-4">
+                    <div class="text-muted small text-uppercase fw-bold">Portali Unici Scansionati</div>
+                    <div class="fs-2 fw-bold text-success">{{ dati.get('portali_scansionati', 0) }}</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0 bg-white p-3 rounded-3 border-start border-danger border-4">
+                    <div class="text-muted small text-uppercase fw-bold">Stato API OpenAI</div>
+                    <div class="fs-2 fw-bold text-danger small pt-1">Quota Esaurita (In Attesa)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="card shadow-sm border-0 p-4 bg-white rounded-3 h-100">
+                    <h5 class="fw-bold mb-3 text-secondary">🏢 Distribuzione Bandi per Portale</h5>
+                    <div style="position: relative; height:300px; width:100%">
+                        <canvas id="chartPortali"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card shadow-sm border-0 p-4 bg-white rounded-3 h-100">
+                    <h5 class="fw-bold mb-3 text-secondary">💰 Ultimi 10 Bandi Rilevati</h5>
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle small">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Titolo</th>
+                                    <th>Importo</th>
+                                    <th>Scadenza</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for bando in dati.get('ultimi_bandi', []) %}
+                                <tr>
+                                    <td class="fw-semibold text-truncate" style="max-width: 220px;" title="{{ bando.get('titolo', 'N/D') }}">
+                                        {{ bando.get('titolo', 'N/D') }}
+                                    </td>
+                                    <td class="text-success fw-bold">{{ bando.get('importo', 'N/D') }}</td>
+                                    <td><span class="badge bg-secondary">{{ bando.get('scadenza', 'N/D') }}</span></td>
+                                </tr>
+                                {% else %}
+                                <tr>
+                                    <td colspan="3" class="text-center text-muted py-3">Nessun dato disponibile nel file Excel</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const ctx = document.getElementById('chartPortali').getContext('2d');
+            
+            // Estrazione provata e sicura tramite Jinja
+            const graficoDati = {{ dati.get('grafico_portali', {}) | tojson | safe }};
+            
+            const labelsPortali = graficoDati.labels || [];
+            const valoriPortali = graficoDati.conteggi || [];
+
+            if (labelsPortali.length > 0) {
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labelsPortali,
+                        datasets: [{
+                            label: 'Numero di Bandi',
+                            data: valoriPortali,
+                            backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1,
+                            borderRadius: 5
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: { stepSize: 1 }
+                            }
+                        },
+                        plugins: {
+                            legend: { display: false }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

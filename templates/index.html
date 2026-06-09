@@ -74,7 +74,7 @@
         <section class="control-panel">
             <button id="btn-avvia" class="btn btn-primary" onclick="avviaCiclo()">Avvia Ciclo Scraping</button>
             <button id="btn-aggiorna" class="btn btn-secondary" onclick="caricaTabella()">Aggiorna Tabella</button>
-            
+            <a href="{{ url_for('scraper_api.mostra_dashboard') }}" class="btn btn-primary">📊 Vai alla Dashboard Grafici</a>
             <div id="status-indicator" class="status-badge status-idle">
                 Stato: <span id="status-text">Pronto</span>
             </div>

@@ -55,7 +55,7 @@ class EstrattoreBandiService:
 
         try:
             completion = await self._llm.beta.chat.completions.parse(
-                model="gpt-4o", # Modello avanzato per mappare accuratamente i link complessi
+                model="gpt-4o", # Modello avanzato per mappare accuratamente i link complesses
                 messages=[
                     {
                         "role": "system",
@@ -101,10 +101,34 @@ class EstrattoreBandiService:
             logger.error("Errore LLM durante l'estrazione dell'elenco bandi: %s", e)
             return []
 
+    async def estrai_dati_da_dettaglio(self, bando: Bando, html_dettaglio: str, url_dettaglio: str) -> Bando:
+        """
+        Metodo ottimizzato per il flusso centralizzato di ScraperService.
+        Prende l'HTML della pagina di dettaglio già aperta, interroga l'LLM economico (gpt-4o-mini)
+        ed estrae verticalmente l'importo economico, CIG, scadenze e categorie sovrascrivendo l'oggetto bando.
+        """
+        logger.info("Estrazione verticale dettagli tramite LLM per il bando: %s", bando.titolo[:50])
+        
+        dettagli_llm = await self._estrai_dettagli_con_llm(
+            titolo_bando=bando.titolo, 
+            html_dettaglio=html_dettaglio
+        )
+        
+        if dettagli_llm:
+            # Sovrascriviamo o arricchiamo i campi del DTO Bando
+            bando.importo = dettagli_llm.importo or bando.importo
+            bando.scadenza = dettagli_llm.scadenza or bando.scadenza
+            bando.descrizione = dettagli_llm.descrizione or bando.descrizione
+            bando.categoria = dettagli_llm.categoria or bando.categoria
+            logger.info("🎯 [Dettaglio] Dati estratti con successo per: %s -> Importo: %s", bando.titolo[:40], bando.importo)
+        else:
+            logger.warning("L'estrazione dettagli con LLM ha restituito un valore vuoto per: %s", bando.titolo[:40])
+            
+        return bando
+
     async def arricchisci_bandi(self, bandi: list[Bando], cookies: list[dict]) -> list[Bando]:
         """
-        Prende la lista di bandi già estratti e, per quelli con un URL dettaglio valido,
-        naviga la pagina profonda isolando la sessione cookie e riempie i campi vuoti tramite LLM.
+        Metodo in modalità batch asincrona asettica (mantenuto per retrocompatibilità).
         """
         bandi_da_arricchire = [b for b in bandi if b.url_dettaglio]
         
@@ -139,18 +163,12 @@ class EstrattoreBandiService:
                         await asyncio.sleep(1.5)
                         
                         html_dettaglio = await page.content()
-                        # CORREZIONE QUI: Usiamo l'argomento corretto 'html_dettaglio' senza abbreviazioni
-                        dettagli_llm = await self._estrai_dettagli_con_llm(
-                            titolo_bando=bando.titolo, 
-                            html_dettaglio=html_dettaglio
+                        bando_aggiornato = await self.estrai_dati_da_dettaglio(
+                            bando=bando,
+                            html_dettaglio=html_dettaglio,
+                            url_dettaglio=bando.url_dettaglio
                         )
-                        
-                        if dettagli_llm:
-                            bando.importo = bando.importo or dettagli_llm.importo
-                            bando.scadenza = bando.scadenza or dettagli_llm.scadenza
-                            bando.descrizione = bando.descrizione or dettagli_llm.descrizione
-                            bando.categoria = bando.categoria or dettagli_llm.categoria
-                            logger.info("🎯 Bando arricchito con successo: %s", bando.titolo[:40])
+                        bando = bando_aggiornato
                     except Exception as e:
                         logger.warning("Impossibile caricare o analizzare il dettaglio per '%s': %s", bando.titolo[:40], e)
                     finally:
@@ -173,19 +191,22 @@ class EstrattoreBandiService:
 
         try:
             completion = await self._llm.beta.chat.completions.parse(
-                model="gpt-4o-mini",
+                model="gpt-4o-mini",  # Ottimo connubio tra velocità ed economia per pagine singole verticali
                 messages=[
                     {
                         "role": "system",
                         "content": (
                             "Sei un estrattore dati specializzato in bandi di gara pubblici e privati italiani.\n"
                             "Analizza il testo della pagina di dettaglio di un bando e restituisci i campi richiesti.\n"
-                            "REGOLE:\n"
-                            "- importo: valore economico del bando/appalto (es. '1.200.000,00 €'). Null se assente.\n"
-                            "- scadenza: data di scadenza per la presentazione offerte. Null se assente.\n"
-                            "- descrizione: breve sintesi del bando (max 3 righe). Null se non ricavabile.\n"
-                            "- categoria: tipo di fornitura/servizio (es. 'Lavori', 'Servizi IT'). Null se assente.\n"
-                            "Non inventare valori. Se un'informazione non è presente, restituisci null."
+                            "REGOLE RIGIDE PER L'IMPORTO:\n"
+                            "- Identifica il valore economico complessivo o l'importo totale a base d'asta.\n"
+                            "- Cerca simboli come '€', 'EUR' o diciture come 'valore stimato', 'importo complessivo', 'lotto unico'.\n"
+                            "- Restituisci la stringa dell'importo ben formattata (es. '1.200.000,00 €'). Se assente, rispondi null.\n\n"
+                            "ALTRI CAMPI:\n"
+                            "- scadenza: data di scadenza per la presentazione offerte (es. 'DD/MM/YYYY'). Null se assente.\n"
+                            "- descrizione: breve sintesi dell'oggetto dell'appalto (max 3 righe). Null se non ricavabile.\n"
+                            "- categoria: tipo di fornitura/servizio (es. 'Lavori', 'Servizi IT', 'Forniture'). Null se assente.\n"
+                            "Non inventare valori. Se un'informazione non è presente nel testo, restituisci null."
                         ),
                     },
                     {

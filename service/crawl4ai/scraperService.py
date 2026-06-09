@@ -7,6 +7,7 @@ import time
 from dotenv import load_dotenv
 from openai import AsyncOpenAI
 from playwright.async_api import async_playwright
+from urllib.parse import urljoin  # <--- Gestione robusta dei link relativi
 
 from model.enums.statoLoginEnum import LoginStatus
 from model.po.portalePo import Portale
@@ -91,7 +92,7 @@ class scraper:
             return {"portale": portale.url, "login": "failed_error", "bandi": []}
 
         if not risultato_login.is_success:
-            logger.warning("[%s] Login fallito: %s", portale.url, risultato_login.status.value)
+            logger.warning("[%s] Login fallito: %s", portale.url, resultado_login.status.value)
             return {"portale": portale.url, "login": risultato_login.status.value if hasattr(risultato_login.status, "value") else str(risultato_login.status), "bandi": []}
 
         try:
@@ -121,8 +122,7 @@ class scraper:
             except Exception as e:
                 logger.warning("[%s] Cookie non caricabili: %s", portale.url, e)
 
-        # ── FASE 1: Fetch della Home Page post-login ───────────────────────
-        html_contenuto = ""
+        bandi_finali: list[Bando] = []
         url_base = portale.url_scraping
         
         async with async_playwright() as p:
@@ -137,7 +137,6 @@ class scraper:
                 await page.goto(url_base, timeout=45_000, wait_until="networkidle")
                 
                 # Sotto-Fase: Caccia al link dei Bandi / Gare
-                # Estraiamo tutti i link visibili nella home per farli analizzare all'LLM
                 links_pagine = await page.evaluate("""() => {
                     return Array.from(document.querySelectorAll('a')).map(a => ({
                         testo: a.innerText.trim(),
@@ -147,17 +146,14 @@ class scraper:
                     })).filter(l => l.testo.length > 2 || l.href);
                 }""")
                 
-                # Chiediamo all'LLM quale di questi link porta alla sezione "Bandi", "Gare" o "Avvisi"
                 url_sezione_bandi = await self._navigatore_service.trova_url_bandi(url_base, links_pagine)
                 
                 if url_sezione_bandi and url_sezione_bandi != url_base:
                     logger.info("[%s] 🧭 IA ha deciso di navigare verso la sezione bandi: %s", portale.url, url_sezione_bandi)
                     await page.goto(url_sezione_bandi, timeout=45_000, wait_until="domcontentloaded")
-                    # Diamo tempo a eventuali tabelle dinamiche di caricarsi
                     await page.wait_for_timeout(10000) 
                 else:
                     logger.info("[%s] L'IA ritiene di essere già sulla pagina corretta o nessun link valido trovato.", portale.url)
-                    # Forziamo una piccola attesa nel caso in cui i dati compaiano in differita via JS
                     await page.wait_for_timeout(3000)
 
                 try:
@@ -170,41 +166,74 @@ class scraper:
                     pass
 
                 html_contenuto = await page.content()
-                # Aggiorniamo l'url_base corrente con quello in cui ci troviamo effettivamente
                 url_base = page.url
+
+                if not html_contenuto:
+                    logger.warning("[%s] Contenuto HTML vuoto.", portale.url)
+                    await browser.close()
+                    return []
+
+                # ── FASE 2: Estrazione dell'elenco iniziale (Solo i Link e i Titoli principali) ──
+                logger.info("[%s] Estraggo l'elenco dei bandi per raccogliere i link di dettaglio...", portale.url)
+                bandi_raw = await self._estrattore_service.estrai_elenco(url_base=url_base, html_contenuto=html_contenuto)
+                
+                if not bandi_raw or not isinstance(bandi_raw, list):
+                    logger.warning("[%s] Nessun bando trovato nell'elenco iniziale.", portale.url)
+                    await browser.close()
+                    return []
+
+                # ── FASE 3: Navigazione sequenziale nei dettagli (Per prendere sempre l'Importo) ──
+                logger.info("[%s] 🔍 Trovati %d bandi. Inizio la navigazione mirata nei dettagli...", portale.url, len(bandi_raw))
+                
+                for idx, bando in enumerate(bandi_raw, 1):
+                    # Gestione dei link relativi / assoluti
+                    url_dettaglio = bando.url_dettaglio
+                    if url_dettaglio:
+                        # Assicura che l'URL sia completo (unisce l'url base corrente con quello estratto)
+                        url_dettaglio = urljoin(url_base, url_dettaglio.strip())
+                        bando.url_dettaglio = url_dettaglio
+                    
+                    if not url_dettaglio or not url_dettaglio.startswith("http"):
+                        logger.warning("[%s] Link di dettaglio non valido o mancante per il bando #%d. Tengo i dati superficiali.", portale.url, idx)
+                        bandi_finali.append(bando)
+                        continue
+
+                    logger.info("[%s] -> [%d/%d] Apertura pagina dettaglio: %s", portale.url, idx, len(bandi_raw), bando.titolo[:40])
+                    
+                    # Apriamo una tab separata nello stesso contesto per proteggere la sessione e il login della lista principale
+                    detail_page = await context.new_page()
+                    try:
+                        await detail_page.goto(url_dettaglio, timeout=30_000, wait_until="domcontentloaded")
+                        # Piccola attesa per il caricamento completo del DOM
+                        await detail_page.wait_for_timeout(2000)
+                        
+                        # Recuperiamo il contenuto specifico del dettaglio
+                        html_dettaglio = await detail_page.content()
+                        
+                        # Prompt verticale focalizzato su Importo e CIG inviato a OpenAI
+                        # Nota: Passiamo l'html al servizio di estrazione per sovrascrivere l'importo parziale
+                        bando_arricchito = await self._estrattore_service.estrai_dati_da_dettaglio(
+                            bando=bando, 
+                            html_dettaglio=html_dettaglio, 
+                            url_dettaglio=url_dettaglio
+                        )
+                        
+                        bandi_finali.append(bando_arricchito)
+                    except Exception as detail_err:
+                        logger.error("[%s] Errore nell'apertura del dettaglio per il bando #%d: %s", portale.url, idx, detail_err)
+                        # Fallback: Se la pagina di dettaglio fallisce, preserviamo i dati estratti dall'elenco superficiale
+                        bandi_finali.append(bando)
+                    finally:
+                        # Chiudiamo sempre la tab di dettaglio per liberare la memoria del container
+                        await detail_page.close()
+
                 await browser.close()
                 
             except Exception as e:
-                logger.error("[%s] Errore Playwright durante fetch/navigazione: %s", portale.url, e)
+                logger.error("[%s] Errore Playwright durante fetch/navigazione complessiva: %s", portale.url, e)
                 return []
 
-        if not html_contenuto:
-            logger.warning("[%s] Contenuto HTML vuoto.", portale.url)
-            return []
-
-        # ── FASE 2: Estrazione elenco iniziale ──────────────────────────────
-        try:
-            # Passiamo l'URL effettivo ottenuto dopo l'eventuale navigazione guidata
-            bandi = await self._estrattore_service.estrai_elenco(url_base=url_base, html_contenuto=html_contenuto)
-            
-            if not isinstance(bandi, list):
-                logger.warning("[%s] Il risultato estratto non è una lista valida.", portale.url)
-                bandi = []
-                
-        except Exception as e:
-            logger.error("[%s] Errore nel servizio di estrazione elenco: %s", portale.url, e)
-            return []
-
-        if not bandi:
-            return []
-
-        # ── FASE 3: Arricchimento dettagli ──────────────────────────────────
-        try:
-            bandi = await self._estrattore_service.arricchisci_bandi(bandi, cookies)
-        except Exception as e:
-            logger.warning("[%s] Arricchimento dettagli fallito (dati parziali): %s", portale.url, e)
-
-        return bandi
+        return bandi_finali
 
     def _stampa_bandi(self, url_portale: str, bandi: list[Bando]):
         print("\n" + "#" * 60)

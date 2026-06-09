@@ -1,12 +1,14 @@
-from flask import Blueprint, send_file, jsonify
+from flask import Blueprint, render_template, send_file, jsonify
 import os
 from view.scraperView import FlaskScraperView
 from presenter.scraperPresenter import ScraperPresenter
+from service.grafici.plotService import AnalyticsService
 
 # Creazione del Blueprint per isolare il controller dello scraper
 scraper_bp = Blueprint('scraper_api', __name__, url_prefix='/api')
 
 # Istanziazione del View e del Presenter secondo il pattern MVP
+analytics_service = AnalyticsService()
 view = FlaskScraperView()
 presenter = ScraperPresenter(view)
 
@@ -43,3 +45,14 @@ def scarica_excel():
         )
     except Exception as e:
         return jsonify({"status": "error", "message": f"Errore durante il download: {str(e)}"}), 500
+    
+
+@scraper_bp.route('/dashboard')
+def mostra_dashboard():
+    """
+    Renderizza la pagina web contenente i grafici e le metriche di riepilogo.
+    """
+    dati_dashboard = analytics_service.ottieni_dati_dashboard()
+    
+    # Renderizza un template HTML passando i dati elaborati dal service
+    return render_template('dashboard.html', dati=dati_dashboard)

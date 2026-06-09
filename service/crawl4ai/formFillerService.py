@@ -1,7 +1,8 @@
 import asyncio
 import logging
 import random
-from playwright.async_api import Page, Frame, errors  # <--- Aggiunto errors di Playwright
+from playwright.async_api import Page, Frame
+from playwright._impl._errors import TargetClosedError
 
 logger = logging.getLogger(__name__)
 
@@ -87,7 +88,7 @@ class FormFillerService:
                         await password_input.press("Enter")
                         # Diamo tempo al browser di processare l'invio prima che il chiamante distrugga la pagina
                         await page.wait_for_timeout(2000)
-                    except errors.TargetClosedError:
+                    except TargetClosedError:
                         logger.warning("[%s] Il browser si è chiuso anticipatamente durante la pressione di Enter, ma proseguiamo.", portale_url)
                     except Exception as press_ex:
                         logger.warning("[%s] Errore generico sulla pressione di Enter: %s", portale_url, press_ex)
