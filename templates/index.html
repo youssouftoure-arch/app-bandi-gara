@@ -61,6 +61,106 @@
             border-radius: 4px;
             display: inline-block;
         }
+
+        /* ===== SEZIONE ULTIMO CICLO DI SCRAPING ===== */
+        .ultimo-ciclo-section {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.18), 0 2px 6px rgba(0,0,0,0.1);
+            border: 1px solid #334155;
+            position: relative;
+            overflow: hidden;
+        }
+        .ultimo-ciclo-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #10b981, #3b82f6, #8b5cf6);
+        }
+        .ultimo-ciclo-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid #334155;
+        }
+        .ultimo-ciclo-header h3 {
+            margin: 0;
+            color: #f1f5f9;
+            font-size: 1.05rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .ultimo-ciclo-timestamp {
+            font-size: 0.78rem;
+            color: #64748b;
+            font-family: monospace;
+            background: #0f172a;
+            padding: 4px 10px;
+            border-radius: 20px;
+            border: 1px solid #334155;
+        }
+        .uc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 14px;
+        }
+        .uc-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid #334155;
+            border-radius: 10px;
+            padding: 14px 16px;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+        .uc-card:hover {
+            background: rgba(255,255,255,0.07);
+            transform: translateY(-2px);
+        }
+        .uc-card-label {
+            font-size: 0.72rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .uc-card-value {
+            font-size: 1.6rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+        .uc-card-sub {
+            font-size: 0.78rem;
+            margin-top: 4px;
+            color: #64748b;
+        }
+        .uc-val-neutral  { color: #f1f5f9; }
+        .uc-val-success  { color: #34d399; }
+        .uc-val-warning  { color: #fbbf24; }
+        .uc-val-info     { color: #60a5fa; }
+        .uc-val-time     { color: #a78bfa; font-size: 1.25rem; }
+        .uc-alert-banner {
+            margin-top: 16px;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 8px;
+            padding: 10px 16px;
+            font-size: 0.85rem;
+            color: #fca5a5;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
     </style>
 </head>
 <body>
@@ -110,6 +210,44 @@
             <button id="btnDownload" class="btn btn-success" onclick="scaricaFile()">
                 📥 Scarica File Excel
             </button>
+        </section>
+
+        <!-- ===== RIEPILOGO ULTIMO CICLO DI SCRAPING ===== -->
+        <section class="ultimo-ciclo-section" id="panel-ultimo-ciclo">
+            <div class="ultimo-ciclo-header">
+                <h3>🏁 RILASCIO OPERAZIONI IN BATCH COMPLETATO</h3>
+                <span class="ultimo-ciclo-timestamp" id="uc-timestamp">2026-06-09 10:10:39</span>
+            </div>
+            <div class="uc-grid">
+                <div class="uc-card">
+                    <span class="uc-card-label">Totale Portali Processati</span>
+                    <div class="uc-card-value uc-val-neutral" id="uc-portali">13</div>
+                    <div class="uc-card-sub">portali analizzati</div>
+                </div>
+                <div class="uc-card">
+                    <span class="uc-card-label">Login con Successo</span>
+                    <div class="uc-card-value uc-val-success" id="uc-login-ok">0</div>
+                    <div class="uc-card-sub">accessi riusciti</div>
+                </div>
+                <div class="uc-card">
+                    <span class="uc-card-label">Login Falliti o Saltati</span>
+                    <div class="uc-card-value uc-val-warning" id="uc-login-ko">13</div>
+                    <div class="uc-card-sub">da verificare</div>
+                </div>
+                <div class="uc-card">
+                    <span class="uc-card-label">Bandi Complessivi Estratti</span>
+                    <div class="uc-card-value uc-val-info" id="uc-bandi">0</div>
+                    <div class="uc-card-sub">bandi trovati</div>
+                </div>
+                <div class="uc-card">
+                    <span class="uc-card-label">Tempo di Esecuzione</span>
+                    <div class="uc-card-value uc-val-time" id="uc-tempo">3m 18s</div>
+                    <div class="uc-card-sub">durata totale</div>
+                </div>
+            </div>
+            <div class="uc-alert-banner">
+                ⚠️ <strong>Attenzione:</strong> tutti i login sono falliti o saltati in questo ciclo. Verificare le credenziali dei portali.
+            </div>
         </section>
 
         <hr class="section-divider">

@@ -1020,3 +1020,107 @@ Call log:
 2026-06-09 08:29:11,204 [INFO] werkzeug — 172.17.0.1 - - [09/Jun/2026 08:29:11] "GET /api/stato HTTP/1.1" 200 -
 2026-06-09 08:29:11,582 [INFO] werkzeug — 172.17.0.1 - - [09/Jun/2026 08:29:11] "GET /api/dati HTTP/1.1" 200 -
 2026-06-09 08:29:11,734 [INFO] werkzeug — 172.17.0.1 - - [09/Jun/2026 08:29:11] "GET /api/dati HTTP/1.1" 200 -
+2026-06-09 10:26:12,350 [INFO] werkzeug — [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.17.0.2:5000
+2026-06-09 10:26:12,350 [INFO] werkzeug — [33mPress CTRL+C to quit[0m
+2026-06-09 10:26:12,354 [INFO] werkzeug —  * Restarting with stat
+2026-06-09 10:26:14,139 [WARNING] werkzeug —  * Debugger is active!
+2026-06-09 10:26:14,145 [INFO] werkzeug —  * Debugger PIN: 221-864-630
+2026-06-09 10:26:15,377 [INFO] werkzeug — 172.17.0.1 - - [09/Jun/2026 10:26:15] "POST /api/avvia HTTP/1.1" 200 -
+2026-06-09 10:26:16,004 [INFO] dao.portaleDao — Colonne trovate nell'Excel (riga 5): ['unnamed:_0', 'n°', 'cliente', 'gruppo', 'link_http', 'user', 'psw', 'note', 'cognome', 'nome', 'telefono']
+2026-06-09 10:26:16,011 [INFO] service.crawl4ai.scraperService — Portali caricati finali attivi: 13
+2026-06-09 10:26:17,033 [INFO] werkzeug — 172.17.0.1 - - [09/Jun/2026 10:26:17] "GET /api/stato HTTP/1.1" 200 -
+2026-06-09 10:26:17,894 [INFO] service.crawl4ai.browserFactory — Avvio browser Chromium...
+2026-06-09 10:26:17,984 [INFO] service.crawl4ai.browserFactory — Avvio browser Chromium...
+2026-06-09 10:26:17,995 [INFO] service.crawl4ai.browserFactory — Avvio browser Chromium...
+2026-06-09 10:26:19,640 [INFO] service.crawl4ai.esecutoreLoginService — [https://acquisti.stradeanas.it/web/areaFornitori.html] Avvio tentativo di login 1/2
+2026-06-09 10:26:19,650 [INFO] service.crawl4ai.esecutoreLoginService — [https://portalefornitori.a2a.eu/Login.aspx] Avvio tentativo di login 1/2
+2026-06-09 10:26:19,680 [INFO] service.crawl4ai.esecutoreLoginService — [https://cmbcarpi.onlineprocurement.com/] Avvio tentativo di login 1/2
+2026-06-09 10:26:21,059 [INFO] werkzeug — 172.17.0.1 - - [09/Jun/2026 10:26:21] "GET /api/stato HTTP/1.1" 200 -
+2026-06-09 10:26:25,022 [INFO] werkzeug — 172.17.0.1 - - [09/Jun/2026 10:26:25] "GET /api/stato HTTP/1.1" 200 -
+2026-06-09 10:26:26,689 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 10:26:26,787 [INFO] service.crawl4ai.esecutoreLoginService — [https://cmbcarpi.onlineprocurement.com/] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-09 10:26:28,491 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 10:26:28,496 [INFO] service.crawl4ai.esecutoreLoginService — [https://portalefornitori.a2a.eu/Login.aspx] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-09 10:26:28,565 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 10:26:28,577 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://cmbcarpi.onlineprocurement.com/] Selettori estratti e cachati (confidence=0.90)
+2026-06-09 10:26:29,373 [INFO] werkzeug — 172.17.0.1 - - [09/Jun/2026 10:26:29] "GET /api/stato HTTP/1.1" 200 -
+2026-06-09 10:26:33,273 [INFO] werkzeug — 172.17.0.1 - - [09/Jun/2026 10:26:33] "GET /api/stato HTTP/1.1" 200 -
+2026-06-09 10:26:33,443 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 10:26:33,451 [INFO] service.crawl4ai.classificatoreLoginService — Confidence LOW con gpt-4o-mini — fallback a gpt-4o
+2026-06-09 10:26:33,655 [INFO] service.crawl4ai.formFillerService — [https://cmbcarpi.onlineprocurement.com/] Selettore non visibile sulla pagina principale, cerco negli iFrame...
+2026-06-09 10:26:33,694 [INFO] service.crawl4ai.formFillerService — [https://cmbcarpi.onlineprocurement.com/] 🎯 Form di login individuato all'interno dell'iFrame: https://cmbcarpi.onlineprocurement.com/
+2026-06-09 10:26:35,540 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 10:26:35,543 [INFO] service.crawl4ai.esecutoreLoginService — [https://acquisti.stradeanas.it/web/areaFornitori.html] Stato pagina: PageState.LOGGED_IN (confidence=Confidence.HIGH, model=gpt-4o)
+2026-06-09 10:26:35,597 [INFO] service.crawl4ai.esecutoreLoginService — [https://acquisti.stradeanas.it/web/areaFornitori.html] Login OK — cookie salvati in sessioni/2_ANAS.json
+2026-06-09 10:26:37,284 [INFO] werkzeug — 172.17.0.1 - - [09/Jun/2026 10:26:37] "GET /api/stato HTTP/1.1" 200 -
+2026-06-09 10:26:37,780 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 10:26:37,787 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://portalefornitori.a2a.eu/Login.aspx] Selettori estratti e cachati (confidence=0.90)
+2026-06-09 10:26:38,917 [INFO] service.crawl4ai.browserFactory — Avvio browser Chromium...
+2026-06-09 10:26:39,715 [WARNING] service.crawl4ai.formFillerService — [https://cmbcarpi.onlineprocurement.com/] Selettore username primario fallito o mutato. Avvio fallback generico...
+2026-06-09 10:26:40,387 [INFO] service.crawl4ai.scraperService — [https://acquisti.stradeanas.it/web/areaFornitori.html] Navigazione verso la Home di partenza: https://acquisti.stradeanas.it/web/areaFornitori.html
+2026-06-09 10:26:41,278 [INFO] werkzeug — 172.17.0.1 - - [09/Jun/2026 10:26:41] "GET /api/stato HTTP/1.1" 200 -
+2026-06-09 10:26:45,275 [INFO] werkzeug — 172.17.0.1 - - [09/Jun/2026 10:26:45] "GET /api/stato HTTP/1.1" 200 -
+2026-06-09 10:26:45,769 [ERROR] service.crawl4ai.formFillerService — [https://cmbcarpi.onlineprocurement.com/] Errore critico durante l'interazione con i campi (iFrame=True): Locator.wait_for: Timeout 6000ms exceeded.
+Call log:
+  - waiting for locator("input[type='text'], input[type='email'], input[name*='user'], input[name*='login']").first to be visible
+    15 × locator resolved to hidden <input required="" type="email" name="username" class="form-control" autocomplete="username" id="inputEmailLogin-381" placeholder="Inserisci la tua email"/>
+
+2026-06-09 10:26:45,771 [WARNING] service.crawl4ai.esecutoreLoginService — [https://cmbcarpi.onlineprocurement.com/] Tentativo 1 non andato a buon fine. Stato: failed_error
+2026-06-09 10:26:45,772 [INFO] service.crawl4ai.esecutoreLoginService — [https://cmbcarpi.onlineprocurement.com/] Attesa di 3.26 secondi prima del tentativo 2...
+2026-06-09 10:26:49,036 [INFO] service.crawl4ai.esecutoreLoginService — [https://cmbcarpi.onlineprocurement.com/] Avvio tentativo di login 2/2
+2026-06-09 10:26:49,284 [INFO] werkzeug — 172.17.0.1 - - [09/Jun/2026 10:26:49] "GET /api/stato HTTP/1.1" 200 -
+2026-06-09 10:26:50,170 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 10:26:50,197 [INFO] service.crawl4ai.scraperService — [https://acquisti.stradeanas.it/web/areaFornitori.html] 🧭 IA ha deciso di navigare verso la sezione bandi: https://acquisti.stradeanas.it/web/bandi_avvisi.html
+2026-06-09 10:26:51,301 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 10:26:51,309 [INFO] service.crawl4ai.classificatoreLoginService — Confidence LOW con gpt-4o-mini — fallback a gpt-4o
+2026-06-09 10:26:53,297 [INFO] werkzeug — 172.17.0.1 - - [09/Jun/2026 10:26:53] "GET /api/stato HTTP/1.1" 200 -
+2026-06-09 10:26:53,473 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 10:26:53,478 [INFO] service.crawl4ai.esecutoreLoginService — [https://portalefornitori.a2a.eu/Login.aspx] Stato post-submit: PageState.LOGGED_IN
+2026-06-09 10:26:53,952 [INFO] service.crawl4ai.esecutoreLoginService — [https://portalefornitori.a2a.eu/Login.aspx] Login OK — cookie salvati in sessioni/1_A2A.json
+2026-06-09 10:26:57,341 [INFO] werkzeug — 172.17.0.1 - - [09/Jun/2026 10:26:57] "GET /api/stato HTTP/1.1" 200 -
+2026-06-09 10:27:00,215 [INFO] service.crawl4ai.browserFactory — Avvio browser Chromium...
+2026-06-09 10:27:01,225 [INFO] werkzeug — 172.17.0.1 - - [09/Jun/2026 10:27:01] "GET /api/stato HTTP/1.1" 200 -
+2026-06-09 10:27:01,665 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 10:27:01,680 [INFO] service.crawl4ai.esecutoreLoginService — [https://cmbcarpi.onlineprocurement.com/] Stato pagina: PageState.STANDARD_FORM (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-09 10:27:01,828 [INFO] service.crawl4ai.estrattoreSelettoriService — [https://cmbcarpi.onlineprocurement.com/] Selettori da cache
+2026-06-09 10:27:02,695 [INFO] service.crawl4ai.scraperService — [https://portalefornitori.a2a.eu/Login.aspx] Navigazione verso la Home di partenza: https://portalefornitori.a2a.eu/Login.aspx
+2026-06-09 10:27:05,014 [INFO] werkzeug — 172.17.0.1 - - [09/Jun/2026 10:27:05] "GET /api/stato HTTP/1.1" 200 -
+2026-06-09 10:27:05,661 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 10:27:05,666 [INFO] service.crawl4ai.scraperService — [https://portalefornitori.a2a.eu/Login.aspx] L'IA ritiene di essere già sulla pagina corretta o nessun link valido trovato.
+2026-06-09 10:27:06,881 [INFO] service.crawl4ai.formFillerService — [https://cmbcarpi.onlineprocurement.com/] Selettore non visibile sulla pagina principale, cerco negli iFrame...
+2026-06-09 10:27:06,903 [INFO] service.crawl4ai.formFillerService — [https://cmbcarpi.onlineprocurement.com/] 🎯 Form di login individuato all'interno dell'iFrame: https://cmbcarpi.onlineprocurement.com/
+2026-06-09 10:27:07,326 [INFO] service.crawl4ai.scraperService — [https://acquisti.stradeanas.it/web/areaFornitori.html] Estraggo l'elenco dei bandi per raccogliere i link di dettaglio...
+2026-06-09 10:27:07,328 [INFO] service.crawl4ai.estrattoreBandiService — Interrogazione LLM per estrazione elenco bandi da URL base: https://acquisti.stradeanas.it/web/bandi_avvisi.html
+2026-06-09 10:27:09,214 [INFO] werkzeug — 172.17.0.1 - - [09/Jun/2026 10:27:09] "GET /api/stato HTTP/1.1" 200 -
+2026-06-09 10:27:09,861 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 10:27:09,893 [INFO] service.crawl4ai.estrattoreBandiService — LLM ha individuato 0 bandi nella pagina elenco.
+2026-06-09 10:27:09,894 [WARNING] service.crawl4ai.scraperService — [https://acquisti.stradeanas.it/web/areaFornitori.html] Nessun bando trovato nell'elenco iniziale.
+2026-06-09 10:27:12,916 [WARNING] service.crawl4ai.formFillerService — [https://cmbcarpi.onlineprocurement.com/] Selettore username primario fallito o mutato. Avvio fallback generico...
+2026-06-09 10:27:13,017 [INFO] werkzeug — 172.17.0.1 - - [09/Jun/2026 10:27:13] "GET /api/stato HTTP/1.1" 200 -
+2026-06-09 10:27:14,321 [INFO] service.crawl4ai.scraperService — [https://portalefornitori.a2a.eu/Login.aspx] Estraggo l'elenco dei bandi per raccogliere i link di dettaglio...
+2026-06-09 10:27:14,321 [INFO] service.crawl4ai.estrattoreBandiService — Interrogazione LLM per estrazione elenco bandi da URL base: https://portalefornitori.a2a.eu/Login.aspx
+2026-06-09 10:27:15,001 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 10:27:15,014 [INFO] service.crawl4ai.estrattoreBandiService — LLM ha individuato 0 bandi nella pagina elenco.
+2026-06-09 10:27:15,014 [WARNING] service.crawl4ai.scraperService — [https://portalefornitori.a2a.eu/Login.aspx] Nessun bando trovato nell'elenco iniziale.
+2026-06-09 10:27:17,025 [INFO] werkzeug — 172.17.0.1 - - [09/Jun/2026 10:27:17] "GET /api/stato HTTP/1.1" 200 -
+2026-06-09 10:27:18,934 [ERROR] service.crawl4ai.formFillerService — [https://cmbcarpi.onlineprocurement.com/] Errore critico durante l'interazione con i campi (iFrame=True): Locator.wait_for: Timeout 6000ms exceeded.
+Call log:
+  - waiting for locator("input[type='text'], input[type='email'], input[name*='user'], input[name*='login']").first to be visible
+    16 × locator resolved to hidden <input required="" type="email" name="username" class="form-control" autocomplete="username" id="inputEmailLogin-570" placeholder="Inserisci la tua email"/>
+
+2026-06-09 10:27:18,936 [WARNING] service.crawl4ai.esecutoreLoginService — [https://cmbcarpi.onlineprocurement.com/] Tentativo 2 non andato a buon fine. Stato: failed_error
+2026-06-09 10:27:18,937 [ERROR] service.crawl4ai.esecutoreLoginService — [https://cmbcarpi.onlineprocurement.com/] Tutti i 2 tentativi di login sono falliti.
+2026-06-09 10:27:21,040 [INFO] werkzeug — 172.17.0.1 - - [09/Jun/2026 10:27:21] "GET /api/stato HTTP/1.1" 200 -
+2026-06-09 10:27:21,466 [INFO] werkzeug — 172.17.0.1 - - [09/Jun/2026 10:27:21] "GET /api/dati HTTP/1.1" 200 -
+2026-06-09 10:28:40,788 [INFO] werkzeug — 172.17.0.1 - - [09/Jun/2026 10:28:40] "GET /api/dashboard HTTP/1.1" 200 -
+2026-06-09 10:51:19,451 [INFO] werkzeug — [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.17.0.2:5000
+2026-06-09 10:51:19,453 [INFO] werkzeug — [33mPress CTRL+C to quit[0m
+2026-06-09 10:51:19,456 [INFO] werkzeug —  * Restarting with stat
+2026-06-09 10:51:21,639 [WARNING] werkzeug —  * Debugger is active!
+2026-06-09 10:51:21,643 [INFO] werkzeug —  * Debugger PIN: 139-431-395
