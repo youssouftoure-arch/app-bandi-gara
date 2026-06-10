@@ -55,19 +55,18 @@ class EstrattoreBandiService:
 
         try:
             completion = await self._llm.beta.chat.completions.parse(
-                model="gpt-4o", # Modello avanzato per mappare accuratamente i link complesses
+                model="gpt-4o-mini",  # Solo titolo + url_dettaglio, non serve modello pesante
                 messages=[
                     {
                         "role": "system",
                         "content": (
-                            "Sei un assistente specializzato nello scraping di portali di e-procurement e bandi di gara pubblici/privati.\n"
-                            "Il tuo obiettivo principale è estrarre l'elenco dei bandi presenti nella pagina.\n\n"
-                            "CRITICO PER IL CAMPO 'url_dettaglio':\n"
-                            "- Devi assolutamente trovare il link o l'ancora che permette di accedere al dettaglio del bando.\n"
-                            "- Cerca nei tag <a> (attributo href), ma guarda anche dentro attributi 'onclick', 'data-id', o l'ID del bottone se l'URL non è immediato.\n"
-                            "- Se il link è relativo (es. '/bando/123' o 'dettaglio.aspx?id=A'), inseriscilo fedelmente. Verrà normalizzato dopo.\n"
-                            "- NON lasciare 'url_dettaglio' a null se nella pagina è presente un qualsiasi elemento cliccabile per aprire quel bando."
-                            "ATTENZIONE: Per il campo 'url_dettaglio', non estrarre funzioni javascript o stringhe parziali. Se il link non è un URL valido o un percorso relativo (es. /bando/123), lascia il campo vuoto o imposta null."
+                            "Sei un estrattore di bandi di gara. Il tuo UNICO obiettivo è estrarre titolo e url_dettaglio di ogni bando nella pagina.\n"
+                            "NON estrarre importo, scadenza o descrizione — quei dati verranno presi dalla pagina di dettaglio.\n\n"
+                            "REGOLE PER url_dettaglio:\n"
+                            "- Cerca href nei tag <a>, oppure attributi onclick/data-href che contengono un percorso.\n"
+                            "- Se il link è relativo (es. /bando/123), inseriscilo fedelmente.\n"
+                            "- Se l'URL contiene 'javascript:' o è solo '#', imposta null.\n"
+                            "- Preferisci URL che portano a una pagina di dettaglio singola, non a filtri o categorie."
                         ),
                     },
                     {

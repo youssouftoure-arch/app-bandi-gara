@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Scraper Bandi</title>\n    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Dashboard Scraper Bandi</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <style>
         /* Stili CSS integrati per il box di riepilogo delle metriche finali */
         .riepilogo-container {
@@ -180,73 +181,47 @@
             </div>
         </section>
 
-        <section id="panel-riepilogo-finale" class="riepilogo-container" style="display: none;">
-            <h3 class="riepilogo-titolo">🏁 RILASCIO OPERAZIONI DI SCRAPING COMPLETATO</h3>
-            <div class="grid-metriche">
-                <div class="card-metrica">
-                    <label>Totale Portali Processati</label>
-                    <div id="m-totale-portali" class="valore">-</div>
-                </div>
-                <div class="card-metrica">
-                    <label>Login con Successo</label>
-                    <div id="m-login-successo" class="valore txt-success">-</div>
-                </div>
-                <div class="card-metrica">
-                    <label>Login Falliti</label>
-                    <div id="m-login-falliti" class="valore txt-danger">-</div>
-                </div>
-                <div class="card-metrica">
-                    <label>Bandi Complessivi Estratti</label>
-                    <div id="m-totale-bandi" class="valore txt-primary">-</div>
-                </div>
-                <div class="card-metrica">
-                    <label>Tempo Totale Impiegato</label>
-                    <div id="m-tempo-impiegato" class="valore" style="color: #475569;">-</div>
-                </div>
-            </div>
-            <div class="info-file">
-                💾 <strong>FILE SALVATO CON SUCCESSO:</strong> <span id="m-nome-file" style="font-family: monospace; font-weight: bold; color: #0f172a;">-</span>
-            </div>
-            <button id="btnDownload" class="btn btn-success" onclick="scaricaFile()">
-                📥 Scarica File Excel
-            </button>
-        </section>
-
-        <!-- ===== RIEPILOGO ULTIMO CICLO DI SCRAPING ===== -->
-        <section class="ultimo-ciclo-section" id="panel-ultimo-ciclo">
+        <!-- Pannello riepilogo ultimo ciclo (dark) — aggiornato dinamicamente dal JS -->
+        <section class="ultimo-ciclo-section" id="panel-ultimo-ciclo" style="display: none;">
             <div class="ultimo-ciclo-header">
                 <h3>🏁 RILASCIO OPERAZIONI IN BATCH COMPLETATO</h3>
-                <span class="ultimo-ciclo-timestamp" id="uc-timestamp">2026-06-09 10:10:39</span>
+                <span class="ultimo-ciclo-timestamp" id="uc-timestamp">-</span>
             </div>
             <div class="uc-grid">
                 <div class="uc-card">
                     <span class="uc-card-label">Totale Portali Processati</span>
-                    <div class="uc-card-value uc-val-neutral" id="uc-portali">13</div>
+                    <div class="uc-card-value uc-val-neutral" id="uc-portali">-</div>
                     <div class="uc-card-sub">portali analizzati</div>
                 </div>
                 <div class="uc-card">
                     <span class="uc-card-label">Login con Successo</span>
-                    <div class="uc-card-value uc-val-success" id="uc-login-ok">0</div>
+                    <div class="uc-card-value uc-val-success" id="uc-login-ok">-</div>
                     <div class="uc-card-sub">accessi riusciti</div>
                 </div>
                 <div class="uc-card">
                     <span class="uc-card-label">Login Falliti o Saltati</span>
-                    <div class="uc-card-value uc-val-warning" id="uc-login-ko">13</div>
+                    <div class="uc-card-value uc-val-warning" id="uc-login-ko">-</div>
                     <div class="uc-card-sub">da verificare</div>
                 </div>
                 <div class="uc-card">
                     <span class="uc-card-label">Bandi Complessivi Estratti</span>
-                    <div class="uc-card-value uc-val-info" id="uc-bandi">0</div>
+                    <div class="uc-card-value uc-val-info" id="uc-bandi">-</div>
                     <div class="uc-card-sub">bandi trovati</div>
                 </div>
                 <div class="uc-card">
                     <span class="uc-card-label">Tempo di Esecuzione</span>
-                    <div class="uc-card-value uc-val-time" id="uc-tempo">3m 18s</div>
+                    <div class="uc-card-value uc-val-time" id="uc-tempo">-</div>
                     <div class="uc-card-sub">durata totale</div>
                 </div>
             </div>
-            <div class="uc-alert-banner">
+            <div class="uc-alert-banner" id="uc-alert" style="display: none;">
                 ⚠️ <strong>Attenzione:</strong> tutti i login sono falliti o saltati in questo ciclo. Verificare le credenziali dei portali.
+            </div>
+            <div style="margin-top: 16px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+                <span class="info-file" id="uc-file" style="display: none;"></span>
+                <button id="btn-download" class="btn btn-success" onclick="scaricaFile()" style="display: none;">
+                    📥 Scarica File Excel
+                </button>
             </div>
         </section>
 
@@ -268,8 +243,7 @@
                             <th>URL Dettaglio</th>
                         </tr>
                     </thead>
-                    <tbody id="tabella-corpo">
-                        </tbody>
+                    <tbody id="tabella-corpo"></tbody>
                 </table>
             </div>
         </section>
@@ -283,10 +257,10 @@
                 const response = await fetch('/api/avvia', { method: 'POST' });
                 const data = await response.json();
                 alert(data.message);
-                
-                // Nascondi il vecchio pannello se viene riavviato un nuovo ciclo
-                document.getElementById('panel-riepilogo-finale').style.display = 'none';
-                
+
+                // Nascondi il pannello risultati mentre il nuovo ciclo parte
+                document.getElementById('panel-ultimo-ciclo').style.display = 'none';
+
                 controllaStato();
                 if (!intervalStato) {
                     intervalStato = setInterval(controllaStato, 4000);
@@ -300,47 +274,69 @@
             try {
                 const response = await fetch('/api/stato');
                 const data = await response.json();
-                
+
                 const indicator = document.getElementById('status-indicator');
-                const text = document.getElementById('status-text');
-                const panelRiepilogo = document.getElementById('panel-riepilogo-finale');
+                const statusText = document.getElementById('status-text');
 
                 if (data.in_corso) {
                     indicator.className = "status-badge status-running";
-                    text.innerText = "Scraping in corso...";
-                    panelRiepilogo.style.display = 'none';
-                } else {
-                    indicator.className = "status-badge status-idle";
-                    text.innerText = "Pronto / Terminato";
-                    
-                    // Se lo scraping è terminato ed escono le metriche finali, mostra il pannello riepilogativo
-                    if (data.metriche_finali) {
-                        document.getElementById('m-totale-portali').innerText = data.metriche_finali.totale_portali;
-                        document.getElementById('m-login-successo').innerText = data.metriche_finali.login_successo;
-                        document.getElementById('m-login-falliti').innerText = data.metriche_finali.login_falliti;
-                        document.getElementById('m-totale-bandi').innerText = data.metriche_finali.totale_bandi;
-                        document.getElementById('m-tempo-impiegato').innerText = data.metriche_finali.tempo_impiegato;
-                        document.getElementById('m-nome-file').innerText = data.metriche_finali.file_excel;
-                        
-                        panelRiepilogo.style.display = 'block';
-                    }
-                    
-                    if (intervalStato) {
-                        clearInterval(intervalStato);
-                        intervalStato = null;
-                    }
-                    caricaTabella(); // Ricarica i dati aggiornati
+                    statusText.innerText = data.fase || "Scraping in corso...";
+                    return;
                 }
+
+                // Scraping terminato
+                indicator.className = "status-badge status-idle";
+                statusText.innerText = "Pronto / Terminato";
+
+                if (intervalStato) {
+                    clearInterval(intervalStato);
+                    intervalStato = null;
+                }
+
+                if (data.metriche_finali) {
+                    aggiornapannelloRiepilogo(data.metriche_finali, data.ultimo_aggiornamento);
+                }
+
+                caricaTabella();
+
             } catch (error) {
                 console.error("Errore controllo stato:", error);
             }
+        }
+
+        function aggiornapannelloRiepilogo(m, timestamp) {
+            // Valori numerici
+            document.getElementById('uc-portali').innerText  = m.totale_portali  ?? '-';
+            document.getElementById('uc-login-ok').innerText = m.login_ok         ?? '-';
+            document.getElementById('uc-login-ko').innerText = m.login_ko         ?? '-';
+            document.getElementById('uc-bandi').innerText    = m.totale_bandi     ?? '-';
+            document.getElementById('uc-tempo').innerText    = m.tempo_impiegato  ?? '-';
+            document.getElementById('uc-timestamp').innerText = timestamp         ?? '-';
+
+            // Alert solo se 0 login riusciti
+            document.getElementById('uc-alert').style.display =
+                (m.login_ok === 0) ? 'flex' : 'none';
+
+            // File Excel
+            const fileEl = document.getElementById('uc-file');
+            const btnDl  = document.getElementById('btn-download');
+            if (m.file_excel) {
+                fileEl.innerHTML = '💾 <strong>FILE SALVATO:</strong> <span style="font-family:monospace;">' + m.file_excel + '</span>';
+                fileEl.style.display = 'inline-block';
+                btnDl.style.display  = 'inline-block';
+                btnDl.disabled       = false;
+            } else {
+                fileEl.style.display = 'none';
+                btnDl.style.display  = 'none';
+            }
+
+            document.getElementById('panel-ultimo-ciclo').style.display = 'block';
         }
 
         async function caricaTabella() {
             try {
                 const response = await fetch('/api/dati');
                 const res = await response.json();
-                
                 const tbody = document.getElementById('tabella-corpo');
                 tbody.innerHTML = '';
 
@@ -348,17 +344,16 @@
                     tbody.innerHTML = `<tr><td colspan="8" style="text-align:center;">${res.message || 'Nessun dato disponibile.'}</td></tr>`;
                     return;
                 }
-                
+
                 res.data.forEach(riga => {
                     const tr = document.createElement('tr');
-                    const linkHtml = riga['URL Dettaglio'] && riga['URL Dettaglio'] !== '-' 
-                        ? `<a href="${riga['URL Dettaglio']}" target="_blank" class="table-link">Vedi Link</a>` 
+                    const linkHtml = riga['URL Dettaglio'] && riga['URL Dettaglio'] !== '-'
+                        ? `<a href="${riga['URL Dettaglio']}" target="_blank" class="table-link">Vedi Link</a>`
                         : '-';
-
                     tr.innerHTML = `
                         <td><span class="url-text">${riga['Portale']}</span></td>
                         <td><span class="badge-login ${riga['Stato Login'] === 'success' ? 'login-ok' : 'login-ko'}">${riga['Stato Login']}</span></td>
-                        <td><span class="committente-text">${riga['Committente'] || '-'}</span></td> 
+                        <td><span class="committente-text">${riga['Committente'] || '-'}</span></td>
                         <td><strong>${riga['Titolo Bando']}</strong></td>
                         <td>${riga['Scadenza']}</td>
                         <td class="text-nowrap">${riga['Importo']}</td>
@@ -372,29 +367,14 @@
             }
         }
 
+        function scaricaFile() {
+            window.location.href = "/api/scarica-excel";
+        }
+
         document.addEventListener("DOMContentLoaded", () => {
             controllaStato();
             caricaTabella();
         });
-
-        function scaricaFile() {
-    // Reindirizza direttamente il browser all'endpoint di download
-    window.location.href = "/api/scarica-excel";
-}
-
-// ESEMPIO DI LOGICA DI CONTROLLO (da integrare nella tua funzione che controlla lo stato):
-// Se fai una fetch a `/api/stato` e vedi che lo scraper è in corso, 
-// puoi disabilitare il tasto per evitare download di file incompleti:
-function controllaStatoScraper(stato) {
-    const btn = document.getElementById("btnDownload");
-    if (stato.in_corso) {
-        btn.disabled = true;
-        btn.innerText = "⏳ Scraper in corso... Download bloccato";
-    } else {
-        btn.disabled = false;
-        btn.innerText = "📥 Scarica File Excel";
-    }
-}
     </script>
 </body>
 </html>

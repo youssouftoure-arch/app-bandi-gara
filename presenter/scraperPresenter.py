@@ -56,7 +56,9 @@ class ScraperPresenter:
         try:
             loop = asyncio.new_event_loop()
             asyncio.set_event_loop(loop)
-            loop.run_until_complete(scraper().main())
+            
+            # 1. Eseguiamo il ciclo sui 14 portali attivi visti nei log
+            risultati_raw = loop.run_until_complete(scraper().main())
             loop.close()
             
             elapsed_time = time.time() - start_time
@@ -64,20 +66,43 @@ class ScraperPresenter:
             secondi = int(elapsed_time % 60)
             tempo_str = f"{minuti}m {secondi}s" if minuti > 0 else f"{secondi}s"
 
-            # Lettura dinamica dei risultati con valori di fallback
-            metriche = self.bando_dao.leggi_metriche(
-                fallback_totale_portali=114,
-                fallback_login_ok=32,
-                fallback_login_ko=82,
-                fallback_totale_bandi=167
-            )
-            
-            # Formatta il tempo impiegato
-            metriche["tempo_impiegato"] = "39m 47s" if tempo_str == "0s" else tempo_str
-            metriche["file_excel"] = str(self.bando_dao.excel_path)
+            # main() ritorna {"risultati": [...], "metriche": {...}} — estraiamo la lista
+            lista_risultati = risultati_raw.get("risultati", []) if isinstance(risultati_raw, dict) else []
 
+            successi = 0
+            totale_bandi = 0
+            for r in lista_risultati:
+                if isinstance(r, dict):
+                    stato_str = str(r.get("login", "")).lower()
+                    if "success" in stato_str or "skipped_cookie" in stato_str:
+                        successi += 1
+                    totale_bandi += len(r.get("bandi", []))
+
+            totale_portali = len(lista_risultati)
+
+            metriche = {
+                "totale_portali": totale_portali,
+                "login_ok": successi,
+                "login_ko": totale_portali - successi,
+                "totale_bandi": totale_bandi,
+                "tempo_impiegato": tempo_str,
+                "file_excel": str(self.bando_dao.excel_path)
+            }
+
+            # 4. REQUISITO: Se i bandi estratti oggi sono 0, forziamo la pulizia
+            if totale_bandi == 0:
+                print("[Presenter] Rilevati 0 bandi totali. Forzo l'azzeramento della tabella dei dati.")
+                # Se il tuo DAO ha un metodo per ripulire i dati correnti in memoria o svuotare l'excel:
+                if hasattr(self.bando_dao, 'svuota_dati_correnti'):
+                    self.bando_dao.svuota_dati_correnti()
+                elif hasattr(self.bando_dao, 'salva_bandi'):
+                    # Sovrascrive l'Excel/DB con una lista vuota per pulire la tabella sul frontend
+                    self.bando_dao.salva_bandi([])
+
+            # 5. Aggiorniamo lo stato globale letto da /api/stato
             with self._stato_lock:
                 self._scraper_stato["metriche_finali"] = metriche
+                # Questo sblocca la data aggiornandola al 2026-06-10 attuale dei log!
                 self._scraper_stato["ultimo_aggiornamento"] = time.strftime("%Y-%m-%d %H:%M:%S")
                 
         except Exception as e:

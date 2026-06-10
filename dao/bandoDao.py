@@ -49,7 +49,7 @@ class BandoDao:
             "totale_bandi": totale_bandi
         }
 
-    def salva_bandi_su_excel(self, risultati: list) -> bool:
+    def salva_bandi(self, risultati: list) -> bool:
         logger.info("Generazione file Excel di riepilogo bandi...")
         righe = []
         

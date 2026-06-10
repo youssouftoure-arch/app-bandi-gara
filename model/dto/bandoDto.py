@@ -1,8 +1,6 @@
 from typing import Optional
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, Field
 from urllib.parse import urljoin
-from datetime import datetime
-import re
 
 class Bando(BaseModel):
     titolo: str = Field(..., description="Titolo del bando di gara")
@@ -12,29 +10,6 @@ class Bando(BaseModel):
     importo: Optional[str] = Field(None, description="Importo o valore stimato")
     categoria: Optional[str] = Field(None, description="Categoria merceologica")
     url_dettaglio: Optional[str] = Field(None, description="URL del dettaglio del bando")
-
-    @field_validator('scadenza')
-    @classmethod
-    def verifica_scadenza_futura(cls, v: Optional[str]) -> Optional[str]:
-        if not v or v == "-":
-            return v
-        
-        try:
-            # Estrae la data (GG/MM/AAAA) ignorando l'orario se presente
-            match = re.search(r'(\d{2})/(\d{2})/(\d{4})', v)
-            if match:
-                data_str = match.group(0)
-                data_bando = datetime.strptime(data_str, "%d/%m/%Y")
-                
-                # Se la scadenza è passata (antecedente a oggi), scartiamo o solleviamo errore
-                if data_bando.date() < datetime.now().date():
-                    raise ValueError(f"Bando scaduto il {data_str}, riga ignorata.")
-            return v
-        except ValueError as e:
-            # Sollevando l'errore, Pydantic invalida questa riga e lo scraper la salta
-            raise e
-        except Exception:
-            return v # Nel dubbio non blocchiamo l'esecuzione
 
     @classmethod
     def normalizza_url(cls, url_estratto: Optional[str], url_base: str) -> Optional[str]:
