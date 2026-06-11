@@ -67,7 +67,7 @@ L'applicazione è interamente containerizzata. L'unico requisito sulla macchina 
 ### 1. Clona la repository
 
 ```bash
-git clone <URL_DELLA_TUA_REPO_QUI>
+git clone [https://github.com/youssouftoure-arch/app-bandi-gara.git]
 cd "app bandi gara"
 
 ```
