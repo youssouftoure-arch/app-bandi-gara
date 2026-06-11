@@ -1,3 +1,5 @@
+"""Compilatore form: inserisce credenziali nei campi login anche dentro iframe."""
+
 import asyncio
 import logging
 import random

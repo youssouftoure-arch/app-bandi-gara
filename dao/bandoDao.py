@@ -1,3 +1,5 @@
+"""DAO bandi: legge, calcola metriche e salva su Excel i risultati dello scraping."""
+
 import pandas as pd
 import logging
 import os

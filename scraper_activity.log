@@ -1,0 +1,368 @@
+2026-06-11 11:55:17,154 [INFO] werkzeug — [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.17.0.2:5000
+2026-06-11 11:55:17,155 [INFO] werkzeug — [33mPress CTRL+C to quit[0m
+2026-06-11 11:55:17,159 [INFO] werkzeug —  * Restarting with stat
+2026-06-11 11:55:18,586 [WARNING] werkzeug —  * Debugger is active!
+2026-06-11 11:55:18,590 [INFO] werkzeug —  * Debugger PIN: 123-232-065
+2026-06-11 11:55:21,622 [INFO] werkzeug — 172.17.0.1 - - [11/Jun/2026 11:55:21] "GET / HTTP/1.1" 200 -
+2026-06-11 11:55:21,982 [INFO] werkzeug — 172.17.0.1 - - [11/Jun/2026 11:55:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-06-11 11:55:22,035 [INFO] werkzeug — 172.17.0.1 - - [11/Jun/2026 11:55:22] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 11:55:22,517 [INFO] werkzeug — 172.17.0.1 - - [11/Jun/2026 11:55:22] "GET /api/dati HTTP/1.1" 200 -
+2026-06-11 11:55:22,578 [INFO] werkzeug — 172.17.0.1 - - [11/Jun/2026 11:55:22] "GET /api/dati HTTP/1.1" 200 -
+2026-06-11 11:55:24,312 [INFO] werkzeug — 172.17.0.1 - - [11/Jun/2026 11:55:24] "POST /api/avvia HTTP/1.1" 200 -
+2026-06-11 11:55:24,593 [INFO] dao.portaleDao — Colonne trovate nell'Excel (riga 5): ['unnamed:_0', 'n°', 'cliente', 'gruppo', 'link_http', 'user', 'psw', 'note', 'cognome', 'nome', 'telefono']
+2026-06-11 11:55:24,601 [INFO] service.crawl4ai.scraperService — Portali caricati finali attivi: 2
+2026-06-11 11:55:26,050 [INFO] werkzeug — 172.17.0.1 - - [11/Jun/2026 11:55:26] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 11:55:27,300 [INFO] service.crawl4ai.browserFactory — Avvio browser Chromium...
+2026-06-11 11:55:27,457 [INFO] service.crawl4ai.browserFactory — Avvio browser Chromium...
+2026-06-11 11:55:28,636 [INFO] service.crawl4ai.esecutoreLoginService — [eprocurement.gruppofs.it] Avvio tentativo di login 1/2
+2026-06-11 11:55:28,649 [INFO] service.crawl4ai.esecutoreLoginService — [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] Avvio tentativo di login 1/2
+2026-06-11 11:55:29,467 [ERROR] service.crawl4ai.esecutoreLoginService — [eprocurement.gruppofs.it] Errore critico al tentativo 1: Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "eprocurement.gruppofs.it", waiting until "domcontentloaded"
+
+2026-06-11 11:55:29,469 [INFO] service.crawl4ai.esecutoreLoginService — [eprocurement.gruppofs.it] Attesa di 3.91 secondi prima del tentativo 2...
+2026-06-11 11:55:30,084 [INFO] werkzeug — 172.17.0.1 - - [11/Jun/2026 11:55:30] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 11:55:33,381 [INFO] service.crawl4ai.esecutoreLoginService — [eprocurement.gruppofs.it] Avvio tentativo di login 2/2
+2026-06-11 11:55:33,490 [ERROR] service.crawl4ai.esecutoreLoginService — [eprocurement.gruppofs.it] Errore critico al tentativo 2: Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "eprocurement.gruppofs.it", waiting until "domcontentloaded"
+
+2026-06-11 11:55:33,491 [ERROR] service.crawl4ai.esecutoreLoginService — [eprocurement.gruppofs.it] Tutti i 2 tentativi di login sono falliti.
+2026-06-11 11:55:34,032 [INFO] werkzeug — 172.17.0.1 - - [11/Jun/2026 11:55:34] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 11:55:34,193 [WARNING] service.crawl4ai.scraperService — [eprocurement.gruppofs.it] Login fallito: failed_error
+2026-06-11 11:55:34,195 [INFO] dao.bandoDao — Generazione file Excel di riepilogo bandi...
+2026-06-11 11:55:34,285 [INFO] dao.bandoDao — = = = = = = = = = = = = = = = = = = = = = = = = = 
+2026-06-11 11:55:34,285 [INFO] dao.bandoDao — 💾 FILE SALVATO CON SUCCESSO: bandi_estratti_totale.xlsx
+2026-06-11 11:55:34,287 [INFO] dao.bandoDao — = = = = = = = = = = = = = = = = = = = = = = = = = 
+2026-06-11 11:55:34,288 [INFO] service.crawl4ai.scraperService — Completato portale: eprocurement.gruppofs.it (1 / 2)
+2026-06-11 11:55:35,803 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-11 11:55:35,824 [INFO] service.crawl4ai.classificatoreLoginService — Confidence LOW con gpt-4o-mini — fallback a gpt-4o
+2026-06-11 11:55:37,142 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-11 11:55:37,157 [INFO] service.crawl4ai.esecutoreLoginService — [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] Stato pagina: PageState.LOGGED_IN (confidence=Confidence.HIGH, model=gpt-4o)
+2026-06-11 11:55:37,230 [INFO] service.crawl4ai.esecutoreLoginService — [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] Login OK — cookie salvati in sessioni/102_RFI.json
+2026-06-11 11:55:37,864 [INFO] service.crawl4ai.browserFactory — Avvio browser Chromium...
+2026-06-11 11:55:38,030 [INFO] werkzeug — 172.17.0.1 - - [11/Jun/2026 11:55:38] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 11:55:38,090 [INFO] service.crawl4ai.scraperService — [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] Navigazione verso la Home di partenza: https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1
+2026-06-11 11:55:42,035 [INFO] werkzeug — 172.17.0.1 - - [11/Jun/2026 11:55:42] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 11:55:43,087 [INFO] service.crawl4ai.scraperService — [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] 🧠 [CACHE MISS] L'IA deve profilare interamente il sito...
+2026-06-11 11:55:44,865 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-11 11:55:46,047 [INFO] werkzeug — 172.17.0.1 - - [11/Jun/2026 11:55:46] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 11:55:50,020 [INFO] werkzeug — 172.17.0.1 - - [11/Jun/2026 11:55:50] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 11:55:54,025 [INFO] werkzeug — 172.17.0.1 - - [11/Jun/2026 11:55:54] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 11:55:57,752 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-11 11:55:57,784 [INFO] service.crawl4ai.scraperService — [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] 💾 [CACHE WRITE] Profilazione strutturata registrata nel file JSON.
+2026-06-11 11:55:57,785 [INFO] service.crawl4ai.scraperService — [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] 🧭 Navigazione verso la sezione bandi: https://www.acquistionlinerfi.it/esop/guest/go/public/opportunity/current?customLoginPage=/web/login.html
+2026-06-11 11:55:58,035 [INFO] werkzeug — 172.17.0.1 - - [11/Jun/2026 11:55:58] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 11:56:02,028 [INFO] werkzeug — 172.17.0.1 - - [11/Jun/2026 11:56:02] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 11:56:03,422 [INFO] service.crawl4ai.scraperService — [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] 🧠 [SLOW TRACK] Estraggo l'elenco iniziale tramite LLM...
+2026-06-11 11:56:03,422 [INFO] service.crawl4ai.estrattoreBandiService — Interrogazione LLM per estrazione elenco bandi da URL base: https://www.acquistionlinerfi.it/esop/toolkit/opportunity/current/list.si?reset=true&resetstored=true&customLoginPage=%2Fweb%2Flogin.html&_ncp=1781178958436.938464-1
+2026-06-11 11:56:06,029 [INFO] werkzeug — 172.17.0.1 - - [11/Jun/2026 11:56:06] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 11:56:10,030 [INFO] werkzeug — 172.17.0.1 - - [11/Jun/2026 11:56:10] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 11:56:14,032 [INFO] werkzeug — 172.17.0.1 - - [11/Jun/2026 11:56:14] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 11:56:18,026 [INFO] werkzeug — 172.17.0.1 - - [11/Jun/2026 11:56:18] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 11:56:21,078 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-11 11:56:21,082 [INFO] service.crawl4ai.estrattoreBandiService — LLM ha individuato 15 bandi nella pagina elenco.
+2026-06-11 11:56:21,083 [INFO] service.crawl4ai.scraperService — [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] 🔍 Trovati 15 bandi. Inizio la navigazione mirata nei dettagli...
+2026-06-11 11:56:21,083 [INFO] service.crawl4ai.scraperService — [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] Nessun link dettaglio bando #1 - fallback su HTML elenco.
+2026-06-11 11:56:21,084 [INFO] service.crawl4ai.estrattoreBandiService — Estrazione verticale dettagli tramite LLM per il bando: DAC.0186.2026_Fornitura di "PALI TE"
+2026-06-11 11:56:21,964 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-11 11:56:21,971 [INFO] service.crawl4ai.estrattoreBandiService — 🎯 [Dettaglio] Dati estratti con successo per: DAC.0186.2026_Fornitura di "PALI TE" -> Importo: None
+2026-06-11 11:56:21,972 [INFO] service.crawl4ai.scraperService — [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] Nessun link dettaglio bando #2 - fallback su HTML elenco.
+2026-06-11 11:56:21,972 [INFO] service.crawl4ai.estrattoreBandiService — Estrazione verticale dettagli tramite LLM per il bando: DAC.326.2026 - Servizio per interventi su chiamata
+2026-06-11 11:56:22,026 [INFO] werkzeug — 172.17.0.1 - - [11/Jun/2026 11:56:22] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 11:56:23,451 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-11 11:56:23,456 [INFO] service.crawl4ai.estrattoreBandiService — 🎯 [Dettaglio] Dati estratti con successo per: DAC.326.2026 - Servizio per interventi s -> Importo: None
+2026-06-11 11:56:23,457 [INFO] service.crawl4ai.scraperService — [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] Nessun link dettaglio bando #3 - fallback su HTML elenco.
+2026-06-11 11:56:23,457 [INFO] service.crawl4ai.estrattoreBandiService — Estrazione verticale dettagli tramite LLM per il bando: DAC.0317.2026_GPA_Servizio di manutenzione attrezz
+2026-06-11 11:56:24,853 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-11 11:56:24,915 [INFO] service.crawl4ai.estrattoreBandiService — 🎯 [Dettaglio] Dati estratti con successo per: DAC.0317.2026_GPA_Servizio di manutenzio -> Importo: None
+2026-06-11 11:56:24,932 [INFO] service.crawl4ai.scraperService — [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] Nessun link dettaglio bando #4 - fallback su HTML elenco.
+2026-06-11 11:56:24,936 [INFO] service.crawl4ai.estrattoreBandiService — Estrazione verticale dettagli tramite LLM per il bando: DAC.0211.2026 - Key Management System
+2026-06-11 11:56:25,969 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-11 11:56:25,982 [INFO] service.crawl4ai.estrattoreBandiService — 🎯 [Dettaglio] Dati estratti con successo per: DAC.0211.2026 - Key Management System -> Importo: None
+2026-06-11 11:56:25,983 [INFO] service.crawl4ai.scraperService — [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] Nessun link dettaglio bando #5 - fallback su HTML elenco.
+2026-06-11 11:56:25,983 [INFO] service.crawl4ai.estrattoreBandiService — Estrazione verticale dettagli tramite LLM per il bando: DAC.0010.2026 - GPA Multilotto Fornitura, in regim
+2026-06-11 11:56:26,036 [INFO] werkzeug — 172.17.0.1 - - [11/Jun/2026 11:56:26] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 11:56:27,462 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-11 11:56:27,469 [INFO] service.crawl4ai.estrattoreBandiService — 🎯 [Dettaglio] Dati estratti con successo per: DAC.0010.2026 - GPA Multilotto Fornitura -> Importo: None
+2026-06-11 11:56:27,470 [INFO] service.crawl4ai.scraperService — [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] Nessun link dettaglio bando #6 - fallback su HTML elenco.
+2026-06-11 11:56:27,470 [INFO] service.crawl4ai.estrattoreBandiService — Estrazione verticale dettagli tramite LLM per il bando: DAC.0193.2026_Fornitura di Attrezzaggio TE
+2026-06-11 11:56:28,402 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-11 11:56:28,409 [INFO] service.crawl4ai.estrattoreBandiService — 🎯 [Dettaglio] Dati estratti con successo per: DAC.0193.2026_Fornitura di Attrezzaggio  -> Importo: None
+2026-06-11 11:56:28,410 [INFO] service.crawl4ai.scraperService — [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] Nessun link dettaglio bando #7 - fallback su HTML elenco.
+2026-06-11 11:56:28,410 [INFO] service.crawl4ai.estrattoreBandiService — Estrazione verticale dettagli tramite LLM per il bando: DAC.0006.2026 - GPA Multilotto Fornitura, in regim
+2026-06-11 11:56:29,507 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-11 11:56:29,513 [INFO] service.crawl4ai.estrattoreBandiService — 🎯 [Dettaglio] Dati estratti con successo per: DAC.0006.2026 - GPA Multilotto Fornitura -> Importo: None
+2026-06-11 11:56:29,514 [INFO] service.crawl4ai.scraperService — [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] Nessun link dettaglio bando #8 - fallback su HTML elenco.
+2026-06-11 11:56:29,514 [INFO] service.crawl4ai.estrattoreBandiService — Estrazione verticale dettagli tramite LLM per il bando: DAC.0008.2026 - Fornitura, in regime di Full Maint
+2026-06-11 11:56:30,031 [INFO] werkzeug — 172.17.0.1 - - [11/Jun/2026 11:56:30] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 11:56:30,653 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-11 11:56:30,656 [INFO] service.crawl4ai.estrattoreBandiService — 🎯 [Dettaglio] Dati estratti con successo per: DAC.0008.2026 - Fornitura, in regime di  -> Importo: None
+2026-06-11 11:56:30,656 [INFO] service.crawl4ai.scraperService — [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] Nessun link dettaglio bando #9 - fallback su HTML elenco.
+2026-06-11 11:56:30,657 [INFO] service.crawl4ai.estrattoreBandiService — Estrazione verticale dettagli tramite LLM per il bando: DAC.0111.2026_Fornitura di SALDATURE ALLUMINOTERMI
+2026-06-11 11:56:32,107 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-11 11:56:32,118 [INFO] service.crawl4ai.estrattoreBandiService — 🎯 [Dettaglio] Dati estratti con successo per: DAC.0111.2026_Fornitura di SALDATURE ALL -> Importo: None
+2026-06-11 11:56:32,119 [INFO] service.crawl4ai.scraperService — [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] Nessun link dettaglio bando #10 - fallback su HTML elenco.
+2026-06-11 11:56:32,119 [INFO] service.crawl4ai.estrattoreBandiService — Estrazione verticale dettagli tramite LLM per il bando: DAC.0374.2026 MDI_Isolatori per tirante a  terra p
+2026-06-11 11:56:33,063 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-11 11:56:33,070 [INFO] service.crawl4ai.estrattoreBandiService — 🎯 [Dettaglio] Dati estratti con successo per: DAC.0374.2026 MDI_Isolatori per tirante  -> Importo: None
+2026-06-11 11:56:33,071 [INFO] service.crawl4ai.scraperService — [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] Nessun link dettaglio bando #11 - fallback su HTML elenco.
+2026-06-11 11:56:33,071 [INFO] service.crawl4ai.estrattoreBandiService — Estrazione verticale dettagli tramite LLM per il bando: DAC.0294.2026_Fornitura di MENSOLE IN ACCIAIO
+2026-06-11 11:56:34,017 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-11 11:56:34,023 [INFO] service.crawl4ai.estrattoreBandiService — 🎯 [Dettaglio] Dati estratti con successo per: DAC.0294.2026_Fornitura di MENSOLE IN AC -> Importo: None
+2026-06-11 11:56:34,024 [INFO] service.crawl4ai.scraperService — [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] Nessun link dettaglio bando #12 - fallback su HTML elenco.
+2026-06-11 11:56:34,024 [INFO] service.crawl4ai.estrattoreBandiService — Estrazione verticale dettagli tramite LLM per il bando: DAC.0337.2026_AQ Indagini  Geognostiche, Geofisich
+2026-06-11 11:56:34,033 [INFO] werkzeug — 172.17.0.1 - - [11/Jun/2026 11:56:34] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 11:56:35,216 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-11 11:56:35,229 [INFO] service.crawl4ai.estrattoreBandiService — 🎯 [Dettaglio] Dati estratti con successo per: DAC.0337.2026_AQ Indagini  Geognostiche, -> Importo: None
+2026-06-11 11:56:35,230 [INFO] service.crawl4ai.scraperService — [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] Nessun link dettaglio bando #13 - fallback su HTML elenco.
+2026-06-11 11:56:35,230 [INFO] service.crawl4ai.estrattoreBandiService — Estrazione verticale dettagli tramite LLM per il bando: DAC.0332.2026 - FORNITURA DI AGHI GREZZI CON FORGI
+2026-06-11 11:56:36,175 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-11 11:56:36,181 [INFO] service.crawl4ai.estrattoreBandiService — 🎯 [Dettaglio] Dati estratti con successo per: DAC.0332.2026 - FORNITURA DI AGHI GREZZI -> Importo: None
+2026-06-11 11:56:36,182 [INFO] service.crawl4ai.scraperService — [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] Nessun link dettaglio bando #14 - fallback su HTML elenco.
+2026-06-11 11:56:36,182 [INFO] service.crawl4ai.estrattoreBandiService — Estrazione verticale dettagli tramite LLM per il bando: DAC.0254.2026 - FORNITURA DI BARRE DI COLLEGAMENTO
+2026-06-11 11:56:37,263 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-11 11:56:37,275 [INFO] service.crawl4ai.estrattoreBandiService — 🎯 [Dettaglio] Dati estratti con successo per: DAC.0254.2026 - FORNITURA DI BARRE DI CO -> Importo: None
+2026-06-11 11:56:37,275 [INFO] service.crawl4ai.scraperService — [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] Nessun link dettaglio bando #15 - fallback su HTML elenco.
+2026-06-11 11:56:37,276 [INFO] service.crawl4ai.estrattoreBandiService — Estrazione verticale dettagli tramite LLM per il bando: DAC.0366.2026 - GPA- Fornitura con posa nr. due ma
+2026-06-11 11:56:38,031 [INFO] werkzeug — 172.17.0.1 - - [11/Jun/2026 11:56:38] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 11:56:38,512 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-11 11:56:38,523 [INFO] service.crawl4ai.estrattoreBandiService — 🎯 [Dettaglio] Dati estratti con successo per: DAC.0366.2026 - GPA- Fornitura con posa  -> Importo: None
+2026-06-11 11:56:38,632 [INFO] dao.bandoDao — Generazione file Excel di riepilogo bandi...
+2026-06-11 11:56:38,711 [INFO] dao.bandoDao — = = = = = = = = = = = = = = = = = = = = = = = = = 
+2026-06-11 11:56:38,711 [INFO] dao.bandoDao — 💾 FILE SALVATO CON SUCCESSO: bandi_estratti_totale.xlsx
+2026-06-11 11:56:38,712 [INFO] dao.bandoDao — = = = = = = = = = = = = = = = = = = = = = = = = = 
+2026-06-11 11:56:38,712 [INFO] service.crawl4ai.scraperService — Completato portale: https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1 (2 / 2)
+2026-06-11 11:56:38,713 [INFO] dao.bandoDao — Generazione file Excel di riepilogo bandi...
+2026-06-11 11:56:38,777 [INFO] dao.bandoDao — = = = = = = = = = = = = = = = = = = = = = = = = = 
+2026-06-11 11:56:38,778 [INFO] dao.bandoDao — 💾 FILE SALVATO CON SUCCESSO: bandi_estratti_totale.xlsx
+2026-06-11 11:56:38,778 [INFO] dao.bandoDao — = = = = = = = = = = = = = = = = = = = = = = = = = 
+2026-06-11 11:56:38,780 [INFO] service.crawl4ai.scraperService — ============================================================
+2026-06-11 11:56:38,781 [INFO] service.crawl4ai.scraperService — RILASCIO OPERAZIONI DI SCRAPING COMPLETATO
+2026-06-11 11:56:38,781 [INFO] service.crawl4ai.scraperService — Totale Portali Processati:         2
+2026-06-11 11:56:38,781 [INFO] service.crawl4ai.scraperService — Login Effettuati con Successo:     1
+2026-06-11 11:56:38,782 [INFO] service.crawl4ai.scraperService — Login Falliti:                     1
+2026-06-11 11:56:38,782 [INFO] service.crawl4ai.scraperService — Totale Bandi Complessivi Estratti: 15
+2026-06-11 11:56:38,782 [INFO] service.crawl4ai.scraperService — Tempo Totale Impiegato:            1m 14s
+2026-06-11 11:56:38,783 [INFO] service.crawl4ai.scraperService — ============================================================
+2026-06-11 11:56:42,036 [INFO] werkzeug — 172.17.0.1 - - [11/Jun/2026 11:56:42] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 11:56:42,167 [INFO] werkzeug — 172.17.0.1 - - [11/Jun/2026 11:56:42] "GET /api/dati HTTP/1.1" 200 -
+2026-06-11 11:56:45,733 [INFO] werkzeug — 172.17.0.1 - - [11/Jun/2026 11:56:45] "POST /api/avvia HTTP/1.1" 200 -
+2026-06-11 11:56:45,812 [INFO] dao.portaleDao — Colonne trovate nell'Excel (riga 5): ['unnamed:_0', 'n°', 'cliente', 'gruppo', 'link_http', 'user', 'psw', 'note', 'cognome', 'nome', 'telefono']
+2026-06-11 11:56:45,818 [INFO] service.crawl4ai.scraperService — Portali caricati finali attivi: 2
+2026-06-11 11:56:46,413 [INFO] service.crawl4ai.browserFactory — Avvio browser Chromium...
+2026-06-11 11:56:46,422 [INFO] service.crawl4ai.browserFactory — Avvio browser Chromium...
+2026-06-11 11:56:46,747 [INFO] service.crawl4ai.esecutoreLoginService — [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] Avvio tentativo di login 1/2
+2026-06-11 11:56:46,757 [INFO] service.crawl4ai.esecutoreLoginService — [eprocurement.gruppofs.it] Avvio tentativo di login 1/2
+2026-06-11 11:56:46,904 [ERROR] service.crawl4ai.esecutoreLoginService — [eprocurement.gruppofs.it] Errore critico al tentativo 1: Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "eprocurement.gruppofs.it", waiting until "domcontentloaded"
+
+2026-06-11 11:56:46,906 [INFO] service.crawl4ai.esecutoreLoginService — [eprocurement.gruppofs.it] Attesa di 4.35 secondi prima del tentativo 2...
+2026-06-11 11:56:48,011 [INFO] werkzeug — 172.17.0.1 - - [11/Jun/2026 11:56:48] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 11:56:50,779 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-11 11:56:50,788 [INFO] service.crawl4ai.esecutoreLoginService — [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] Stato pagina: PageState.LOGGED_IN (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-11 11:56:50,817 [INFO] service.crawl4ai.esecutoreLoginService — [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] Login OK — cookie salvati in sessioni/102_RFI.json
+2026-06-11 11:56:51,259 [INFO] service.crawl4ai.esecutoreLoginService — [eprocurement.gruppofs.it] Avvio tentativo di login 2/2
+2026-06-11 11:56:51,558 [ERROR] service.crawl4ai.esecutoreLoginService — [eprocurement.gruppofs.it] Errore critico al tentativo 2: Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "eprocurement.gruppofs.it", waiting until "domcontentloaded"
+
+2026-06-11 11:56:51,558 [ERROR] service.crawl4ai.esecutoreLoginService — [eprocurement.gruppofs.it] Tutti i 2 tentativi di login sono falliti.
+2026-06-11 11:56:51,658 [WARNING] service.crawl4ai.scraperService — [eprocurement.gruppofs.it] Login fallito: failed_error
+2026-06-11 11:56:51,660 [INFO] dao.bandoDao — Generazione file Excel di riepilogo bandi...
+2026-06-11 11:56:51,729 [INFO] dao.bandoDao — = = = = = = = = = = = = = = = = = = = = = = = = = 
+2026-06-11 11:56:51,730 [INFO] dao.bandoDao — 💾 FILE SALVATO CON SUCCESSO: bandi_estratti_totale.xlsx
+2026-06-11 11:56:51,731 [INFO] dao.bandoDao — = = = = = = = = = = = = = = = = = = = = = = = = = 
+2026-06-11 11:56:51,733 [INFO] service.crawl4ai.scraperService — Completato portale: eprocurement.gruppofs.it (1 / 2)
+2026-06-11 11:56:51,963 [INFO] werkzeug — 172.17.0.1 - - [11/Jun/2026 11:56:51] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 11:56:52,066 [INFO] service.crawl4ai.browserFactory — Avvio browser Chromium...
+2026-06-11 11:56:52,312 [INFO] service.crawl4ai.scraperService — [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] Navigazione verso la Home di partenza: https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1
+2026-06-11 11:56:54,502 [INFO] service.crawl4ai.scraperService — [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] 💾 [CACHE HIT COMFORT] Trovati anche i selettori CSS in cache.
+2026-06-11 11:56:54,503 [INFO] service.crawl4ai.scraperService — [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] 🧭 Navigazione verso la sezione bandi: https://www.acquistionlinerfi.it/esop/guest/go/public/opportunity/current?customLoginPage=/web/login.html
+2026-06-11 11:56:55,960 [INFO] werkzeug — 172.17.0.1 - - [11/Jun/2026 11:56:55] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 11:56:59,945 [INFO] service.crawl4ai.scraperService — [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] 🚀 [FAST TRACK] Estrazione locale nativa con EstrattoreCssService (Zero LLM)...
+2026-06-11 11:56:59,971 [INFO] werkzeug — 172.17.0.1 - - [11/Jun/2026 11:56:59] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 11:56:59,991 [INFO] service.crawl4ai.estrattoreCssService — Trovati 15 elementi con il selettore contenitore.
+2026-06-11 11:57:00,081 [INFO] dao.bandoDao — Generazione file Excel di riepilogo bandi...
+2026-06-11 11:57:00,102 [INFO] dao.bandoDao — = = = = = = = = = = = = = = = = = = = = = = = = = 
+2026-06-11 11:57:00,103 [INFO] dao.bandoDao — 💾 FILE SALVATO CON SUCCESSO: bandi_estratti_totale.xlsx
+2026-06-11 11:57:00,103 [INFO] dao.bandoDao — = = = = = = = = = = = = = = = = = = = = = = = = = 
+2026-06-11 11:57:00,104 [INFO] service.crawl4ai.scraperService — Completato portale: https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1 (2 / 2)
+2026-06-11 11:57:00,104 [INFO] dao.bandoDao — Generazione file Excel di riepilogo bandi...
+2026-06-11 11:57:00,136 [INFO] dao.bandoDao — = = = = = = = = = = = = = = = = = = = = = = = = = 
+2026-06-11 11:57:00,137 [INFO] dao.bandoDao — 💾 FILE SALVATO CON SUCCESSO: bandi_estratti_totale.xlsx
+2026-06-11 11:57:00,137 [INFO] dao.bandoDao — = = = = = = = = = = = = = = = = = = = = = = = = = 
+2026-06-11 11:57:00,138 [INFO] service.crawl4ai.scraperService — ============================================================
+2026-06-11 11:57:00,138 [INFO] service.crawl4ai.scraperService — RILASCIO OPERAZIONI DI SCRAPING COMPLETATO
+2026-06-11 11:57:00,138 [INFO] service.crawl4ai.scraperService — Totale Portali Processati:         2
+2026-06-11 11:57:00,139 [INFO] service.crawl4ai.scraperService — Login Effettuati con Successo:     1
+2026-06-11 11:57:00,139 [INFO] service.crawl4ai.scraperService — Login Falliti:                     1
+2026-06-11 11:57:00,140 [INFO] service.crawl4ai.scraperService — Totale Bandi Complessivi Estratti: 15
+2026-06-11 11:57:00,141 [INFO] service.crawl4ai.scraperService — Tempo Totale Impiegato:            14s
+2026-06-11 11:57:00,141 [INFO] service.crawl4ai.scraperService — ============================================================
+2026-06-11 11:57:03,961 [INFO] werkzeug — 172.17.0.1 - - [11/Jun/2026 11:57:03] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 11:57:04,009 [INFO] werkzeug — 172.17.0.1 - - [11/Jun/2026 11:57:04] "GET /api/dati HTTP/1.1" 200 -
+2026-06-11 11:58:10,534 [INFO] werkzeug — 172.17.0.1 - - [11/Jun/2026 11:58:10] "GET /api/scarica-excel HTTP/1.1" 200 -
+2026-06-11 11:59:29,267 [INFO] werkzeug — 172.17.0.1 - - [11/Jun/2026 11:59:29] "GET /api/dashboard HTTP/1.1" 200 -
+2026-06-11 12:11:47,998 [INFO] werkzeug — 172.17.0.1 - - [11/Jun/2026 12:11:47] "GET /api/dashboard HTTP/1.1" 200 -
+2026-06-11 12:55:09,964 [INFO] werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.17.0.2:5000
+2026-06-11 12:55:09,966 [INFO] werkzeug - [33mPress CTRL+C to quit[0m
+2026-06-11 12:55:09,968 [INFO] werkzeug -  * Restarting with stat
+2026-06-11 12:55:12,215 [WARNING] werkzeug -  * Debugger is active!
+2026-06-11 12:55:12,220 [INFO] werkzeug -  * Debugger PIN: 852-046-282
+2026-06-11 12:55:15,855 [INFO] werkzeug - 172.17.0.1 - - [11/Jun/2026 12:55:15] "GET / HTTP/1.1" 200 -
+2026-06-11 12:55:16,085 [INFO] werkzeug - 172.17.0.1 - - [11/Jun/2026 12:55:16] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-06-11 12:55:16,135 [INFO] werkzeug - 172.17.0.1 - - [11/Jun/2026 12:55:16] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 12:55:16,417 [INFO] werkzeug - 172.17.0.1 - - [11/Jun/2026 12:55:16] "GET /api/dati HTTP/1.1" 200 -
+2026-06-11 12:55:16,469 [INFO] werkzeug - 172.17.0.1 - - [11/Jun/2026 12:55:16] "GET /api/dati HTTP/1.1" 200 -
+2026-06-11 12:55:17,859 [INFO] werkzeug - 172.17.0.1 - - [11/Jun/2026 12:55:17] "POST /api/avvia HTTP/1.1" 200 -
+2026-06-11 12:55:18,130 [INFO] dao.portaleDao - Colonne trovate nell'Excel (riga 5): ['unnamed:_0', 'n°', 'cliente', 'gruppo', 'link_http', 'user', 'psw', 'note', 'cognome', 'nome', 'telefono']
+2026-06-11 12:55:18,133 [INFO] service.crawl4ai.scraperService - Portali caricati finali attivi: 2
+2026-06-11 12:55:18,728 [INFO] service.crawl4ai.browserFactory - Avvio browser Chromium...
+2026-06-11 12:55:18,754 [INFO] service.crawl4ai.browserFactory - Avvio browser Chromium...
+2026-06-11 12:55:19,128 [INFO] werkzeug - 172.17.0.1 - - [11/Jun/2026 12:55:19] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 12:55:19,198 [INFO] service.crawl4ai.esecutoreLoginService - [eprocurement.gruppofs.it] Avvio tentativo di login 1/2
+2026-06-11 12:55:19,206 [INFO] service.crawl4ai.esecutoreLoginService - [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] Avvio tentativo di login 1/2
+2026-06-11 12:55:19,415 [ERROR] service.crawl4ai.esecutoreLoginService - [eprocurement.gruppofs.it] Errore critico al tentativo 1: Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "eprocurement.gruppofs.it", waiting until "domcontentloaded"
+
+2026-06-11 12:55:19,417 [INFO] service.crawl4ai.esecutoreLoginService - [eprocurement.gruppofs.it] Attesa di 2.53 secondi prima del tentativo 2...
+2026-06-11 12:55:22,314 [INFO] service.crawl4ai.esecutoreLoginService - [eprocurement.gruppofs.it] Avvio tentativo di login 2/2
+2026-06-11 12:55:22,450 [ERROR] service.crawl4ai.esecutoreLoginService - [eprocurement.gruppofs.it] Errore critico al tentativo 2: Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "eprocurement.gruppofs.it", waiting until "domcontentloaded"
+
+2026-06-11 12:55:22,450 [ERROR] service.crawl4ai.esecutoreLoginService - [eprocurement.gruppofs.it] Tutti i 2 tentativi di login sono falliti.
+2026-06-11 12:55:22,538 [WARNING] service.crawl4ai.scraperService - [eprocurement.gruppofs.it] Login fallito: failed_error
+2026-06-11 12:55:22,539 [INFO] dao.bandoDao - Generazione file Excel di riepilogo bandi...
+2026-06-11 12:55:22,607 [INFO] dao.bandoDao - = = = = = = = = = = = = = = = = = = = = = = = = = 
+2026-06-11 12:55:22,608 [INFO] dao.bandoDao - 💾 FILE SALVATO CON SUCCESSO: bandi_estratti_totale.xlsx
+2026-06-11 12:55:22,610 [INFO] dao.bandoDao - = = = = = = = = = = = = = = = = = = = = = = = = = 
+2026-06-11 12:55:22,610 [INFO] service.crawl4ai.scraperService - Completato portale: eprocurement.gruppofs.it (1 / 2)
+2026-06-11 12:55:23,673 [INFO] werkzeug - 172.17.0.1 - - [11/Jun/2026 12:55:23] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 12:55:24,753 [INFO] httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-11 12:55:24,766 [INFO] service.crawl4ai.esecutoreLoginService - [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] Stato pagina: PageState.LOGGED_IN (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-11 12:55:24,799 [INFO] service.crawl4ai.esecutoreLoginService - [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] Login OK — cookie salvati in sessioni/102_RFI.json
+2026-06-11 12:55:25,375 [INFO] service.crawl4ai.browserFactory - Avvio browser Chromium...
+2026-06-11 12:55:25,785 [INFO] service.crawl4ai.scraperService - [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] Navigazione verso la Home di partenza: https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1
+2026-06-11 12:55:26,960 [INFO] service.crawl4ai.scraperService - [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] [CACHE HIT COMFORT] Trovati anche i selettori CSS in cache.
+2026-06-11 12:55:26,960 [INFO] service.crawl4ai.scraperService - [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] Navigazione verso la sezione bandi: https://www.acquistionlinerfi.it/esop/guest/go/public/opportunity/current?customLoginPage=/web/login.html
+2026-06-11 12:55:27,690 [INFO] werkzeug - 172.17.0.1 - - [11/Jun/2026 12:55:27] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 12:55:31,571 [INFO] werkzeug - 172.17.0.1 - - [11/Jun/2026 12:55:31] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 12:55:32,567 [INFO] service.crawl4ai.scraperService - [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] [FAST TRACK] Estrazione locale nativa con EstrattoreCssService (Zero LLM)...
+2026-06-11 12:55:33,000 [INFO] service.crawl4ai.estrattoreCssService - Trovati 15 elementi con il selettore contenitore.
+2026-06-11 12:55:33,123 [INFO] dao.bandoDao - Generazione file Excel di riepilogo bandi...
+2026-06-11 12:55:33,155 [INFO] dao.bandoDao - = = = = = = = = = = = = = = = = = = = = = = = = = 
+2026-06-11 12:55:33,156 [INFO] dao.bandoDao - 💾 FILE SALVATO CON SUCCESSO: bandi_estratti_totale.xlsx
+2026-06-11 12:55:33,157 [INFO] dao.bandoDao - = = = = = = = = = = = = = = = = = = = = = = = = = 
+2026-06-11 12:55:33,158 [INFO] service.crawl4ai.scraperService - Completato portale: https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1 (2 / 2)
+2026-06-11 12:55:33,160 [INFO] dao.bandoDao - Generazione file Excel di riepilogo bandi...
+2026-06-11 12:55:33,198 [INFO] dao.bandoDao - = = = = = = = = = = = = = = = = = = = = = = = = = 
+2026-06-11 12:55:33,199 [INFO] dao.bandoDao - 💾 FILE SALVATO CON SUCCESSO: bandi_estratti_totale.xlsx
+2026-06-11 12:55:33,199 [INFO] dao.bandoDao - = = = = = = = = = = = = = = = = = = = = = = = = = 
+2026-06-11 12:55:33,199 [INFO] service.crawl4ai.scraperService - ============================================================
+2026-06-11 12:55:33,200 [INFO] service.crawl4ai.scraperService - RILASCIO OPERAZIONI DI SCRAPING COMPLETATO
+2026-06-11 12:55:33,201 [INFO] service.crawl4ai.scraperService - Totale Portali Processati:         2
+2026-06-11 12:55:33,201 [INFO] service.crawl4ai.scraperService - Login Effettuati con Successo:     1
+2026-06-11 12:55:33,201 [INFO] service.crawl4ai.scraperService - Login Falliti:                     1
+2026-06-11 12:55:33,202 [INFO] service.crawl4ai.scraperService - Totale Bandi Complessivi Estratti: 15
+2026-06-11 12:55:33,203 [INFO] service.crawl4ai.scraperService - Tempo Totale Impiegato:            15s
+2026-06-11 12:55:33,203 [INFO] service.crawl4ai.scraperService - ============================================================
+2026-06-11 12:55:35,117 [INFO] werkzeug - 172.17.0.1 - - [11/Jun/2026 12:55:35] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 12:55:35,228 [INFO] werkzeug - 172.17.0.1 - - [11/Jun/2026 12:55:35] "GET /api/dati HTTP/1.1" 200 -
+2026-06-11 12:59:21,808 [INFO] werkzeug -  * Detected change in '/app/model/__init__.py', reloading
+2026-06-11 12:59:30,705 [INFO] werkzeug -  * Restarting with stat
+2026-06-11 12:59:36,609 [WARNING] werkzeug -  * Debugger is active!
+2026-06-11 12:59:36,630 [INFO] werkzeug -  * Debugger PIN: 852-046-282
+2026-06-11 13:01:28,152 [INFO] werkzeug -  * Detected change in '/app/service/crawl4ai/browserFactory.py', reloading
+2026-06-11 13:01:30,726 [INFO] werkzeug -  * Restarting with stat
+2026-06-11 13:01:33,263 [WARNING] werkzeug -  * Debugger is active!
+2026-06-11 13:01:33,269 [INFO] werkzeug -  * Debugger PIN: 852-046-282
+2026-06-11 13:18:04,994 [INFO] werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.17.0.2:5000
+2026-06-11 13:18:04,994 [INFO] werkzeug - [33mPress CTRL+C to quit[0m
+2026-06-11 13:18:04,998 [INFO] werkzeug -  * Restarting with stat
+2026-06-11 13:18:11,879 [WARNING] werkzeug -  * Debugger is active!
+2026-06-11 13:18:11,907 [INFO] werkzeug -  * Debugger PIN: 111-296-686
+2026-06-11 13:18:14,403 [INFO] werkzeug - 172.17.0.1 - - [11/Jun/2026 13:18:14] "GET / HTTP/1.1" 200 -
+2026-06-11 13:18:14,832 [INFO] werkzeug - 172.17.0.1 - - [11/Jun/2026 13:18:14] "GET /static/css/style.css HTTP/1.1" 200 -
+2026-06-11 13:18:14,921 [INFO] werkzeug - 172.17.0.1 - - [11/Jun/2026 13:18:14] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 13:18:15,762 [INFO] werkzeug - 172.17.0.1 - - [11/Jun/2026 13:18:15] "GET /api/dati HTTP/1.1" 200 -
+2026-06-11 13:18:15,967 [INFO] werkzeug - 172.17.0.1 - - [11/Jun/2026 13:18:15] "GET /api/dati HTTP/1.1" 200 -
+2026-06-11 13:19:02,108 [INFO] werkzeug - 172.17.0.1 - - [11/Jun/2026 13:19:02] "GET / HTTP/1.1" 200 -
+2026-06-11 13:19:02,296 [INFO] werkzeug - 172.17.0.1 - - [11/Jun/2026 13:19:02] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-06-11 13:19:02,398 [INFO] werkzeug - 172.17.0.1 - - [11/Jun/2026 13:19:02] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 13:19:02,619 [INFO] werkzeug - 172.17.0.1 - - [11/Jun/2026 13:19:02] "GET /api/dati HTTP/1.1" 200 -
+2026-06-11 13:19:02,698 [INFO] werkzeug - 172.17.0.1 - - [11/Jun/2026 13:19:02] "GET /api/dati HTTP/1.1" 200 -
+2026-06-11 13:19:04,462 [INFO] werkzeug - 172.17.0.1 - - [11/Jun/2026 13:19:04] "POST /api/avvia HTTP/1.1" 200 -
+2026-06-11 13:19:05,068 [INFO] dao.portaleDao - Colonne trovate nell'Excel (riga 5): ['unnamed:_0', 'n°', 'cliente', 'gruppo', 'link_http', 'user', 'psw', 'note', 'cognome', 'nome', 'telefono']
+2026-06-11 13:19:05,074 [INFO] service.crawl4ai.scraperService - Portali caricati finali attivi: 2
+2026-06-11 13:19:05,958 [INFO] werkzeug - 172.17.0.1 - - [11/Jun/2026 13:19:05] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 13:19:08,785 [INFO] service.crawl4ai.browserFactory - Avvio browser Chromium...
+2026-06-11 13:19:08,955 [INFO] service.crawl4ai.browserFactory - Avvio browser Chromium...
+2026-06-11 13:19:09,965 [INFO] werkzeug - 172.17.0.1 - - [11/Jun/2026 13:19:09] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 13:19:11,475 [INFO] service.crawl4ai.esecutoreLoginService - [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] Avvio tentativo di login 1/2
+2026-06-11 13:19:11,547 [INFO] service.crawl4ai.esecutoreLoginService - [eprocurement.gruppofs.it] Avvio tentativo di login 1/2
+2026-06-11 13:19:12,880 [ERROR] service.crawl4ai.esecutoreLoginService - [eprocurement.gruppofs.it] Errore critico al tentativo 1: Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "eprocurement.gruppofs.it", waiting until "domcontentloaded"
+
+2026-06-11 13:19:12,882 [INFO] service.crawl4ai.esecutoreLoginService - [eprocurement.gruppofs.it] Attesa di 4.54 secondi prima del tentativo 2...
+2026-06-11 13:19:13,973 [INFO] werkzeug - 172.17.0.1 - - [11/Jun/2026 13:19:13] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 13:19:17,424 [INFO] service.crawl4ai.esecutoreLoginService - [eprocurement.gruppofs.it] Avvio tentativo di login 2/2
+2026-06-11 13:19:17,979 [ERROR] service.crawl4ai.esecutoreLoginService - [eprocurement.gruppofs.it] Errore critico al tentativo 2: Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "eprocurement.gruppofs.it", waiting until "domcontentloaded"
+
+2026-06-11 13:19:17,982 [INFO] werkzeug - 172.17.0.1 - - [11/Jun/2026 13:19:17] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 13:19:17,982 [ERROR] service.crawl4ai.esecutoreLoginService - [eprocurement.gruppofs.it] Tutti i 2 tentativi di login sono falliti.
+2026-06-11 13:19:19,597 [WARNING] service.crawl4ai.scraperService - [eprocurement.gruppofs.it] Login fallito: failed_error
+2026-06-11 13:19:19,606 [INFO] dao.bandoDao - Generazione file Excel di riepilogo bandi...
+2026-06-11 13:19:19,921 [INFO] dao.bandoDao - = = = = = = = = = = = = = = = = = = = = = = = = = 
+2026-06-11 13:19:19,923 [INFO] dao.bandoDao - 💾 FILE SALVATO CON SUCCESSO: bandi_estratti_totale.xlsx
+2026-06-11 13:19:19,927 [INFO] dao.bandoDao - = = = = = = = = = = = = = = = = = = = = = = = = = 
+2026-06-11 13:19:19,929 [INFO] service.crawl4ai.scraperService - Completato portale: eprocurement.gruppofs.it (1 / 2)
+2026-06-11 13:19:21,950 [INFO] werkzeug - 172.17.0.1 - - [11/Jun/2026 13:19:21] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 13:19:22,453 [INFO] httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-11 13:19:22,502 [INFO] service.crawl4ai.esecutoreLoginService - [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] Stato pagina: PageState.LOGGED_IN (confidence=Confidence.HIGH, model=gpt-4o-mini)
+2026-06-11 13:19:22,583 [INFO] service.crawl4ai.esecutoreLoginService - [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] Login OK — cookie salvati in sessioni/102_RFI.json
+2026-06-11 13:19:24,285 [INFO] service.crawl4ai.browserFactory - Avvio browser Chromium...
+2026-06-11 13:19:24,959 [INFO] service.crawl4ai.scraperService - [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] Navigazione verso la Home di partenza: https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1
+2026-06-11 13:19:25,961 [INFO] werkzeug - 172.17.0.1 - - [11/Jun/2026 13:19:25] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 13:19:26,664 [INFO] service.crawl4ai.scraperService - [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] [CACHE HIT COMFORT] Trovati anche i selettori CSS in cache.
+2026-06-11 13:19:26,664 [INFO] service.crawl4ai.scraperService - [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] Navigazione verso la sezione bandi: https://www.acquistionlinerfi.it/esop/guest/go/public/opportunity/current?customLoginPage=/web/login.html
+2026-06-11 13:19:30,673 [INFO] werkzeug - 172.17.0.1 - - [11/Jun/2026 13:19:30] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 13:19:33,800 [INFO] service.crawl4ai.scraperService - [https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1] [FAST TRACK] Estrazione locale nativa con EstrattoreCssService (Zero LLM)...
+2026-06-11 13:19:35,044 [INFO] werkzeug - 172.17.0.1 - - [11/Jun/2026 13:19:35] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 13:19:35,065 [INFO] service.crawl4ai.estrattoreCssService - Trovati 15 elementi con il selettore contenitore.
+2026-06-11 13:19:35,180 [INFO] dao.bandoDao - Generazione file Excel di riepilogo bandi...
+2026-06-11 13:19:35,205 [INFO] dao.bandoDao - = = = = = = = = = = = = = = = = = = = = = = = = = 
+2026-06-11 13:19:35,206 [INFO] dao.bandoDao - 💾 FILE SALVATO CON SUCCESSO: bandi_estratti_totale.xlsx
+2026-06-11 13:19:35,206 [INFO] dao.bandoDao - = = = = = = = = = = = = = = = = = = = = = = = = = 
+2026-06-11 13:19:35,207 [INFO] service.crawl4ai.scraperService - Completato portale: https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1 (2 / 2)
+2026-06-11 13:19:35,207 [INFO] dao.bandoDao - Generazione file Excel di riepilogo bandi...
+2026-06-11 13:19:35,239 [INFO] dao.bandoDao - = = = = = = = = = = = = = = = = = = = = = = = = = 
+2026-06-11 13:19:35,240 [INFO] dao.bandoDao - 💾 FILE SALVATO CON SUCCESSO: bandi_estratti_totale.xlsx
+2026-06-11 13:19:35,240 [INFO] dao.bandoDao - = = = = = = = = = = = = = = = = = = = = = = = = = 
+2026-06-11 13:19:35,241 [INFO] service.crawl4ai.scraperService - ============================================================
+2026-06-11 13:19:35,241 [INFO] service.crawl4ai.scraperService - RILASCIO OPERAZIONI DI SCRAPING COMPLETATO
+2026-06-11 13:19:35,242 [INFO] service.crawl4ai.scraperService - Totale Portali Processati:         2
+2026-06-11 13:19:35,242 [INFO] service.crawl4ai.scraperService - Login Effettuati con Successo:     1
+2026-06-11 13:19:35,243 [INFO] service.crawl4ai.scraperService - Login Falliti:                     1
+2026-06-11 13:19:35,243 [INFO] service.crawl4ai.scraperService - Totale Bandi Complessivi Estratti: 15
+2026-06-11 13:19:35,244 [INFO] service.crawl4ai.scraperService - Tempo Totale Impiegato:            30s
+2026-06-11 13:19:35,245 [INFO] service.crawl4ai.scraperService - ============================================================
+2026-06-11 13:19:38,676 [INFO] werkzeug - 172.17.0.1 - - [11/Jun/2026 13:19:38] "GET /api/stato HTTP/1.1" 200 -
+2026-06-11 13:19:38,739 [INFO] werkzeug - 172.17.0.1 - - [11/Jun/2026 13:19:38] "GET /api/dati HTTP/1.1" 200 -
+2026-06-11 13:20:16,322 [INFO] werkzeug - 172.17.0.1 - - [11/Jun/2026 13:20:16] "GET /api/scarica-excel HTTP/1.1" 200 -
+2026-06-11 13:20:18,021 [INFO] werkzeug - 172.17.0.1 - - [11/Jun/2026 13:20:18] "GET /api/dashboard HTTP/1.1" 200 -

@@ -1,24 +1,24 @@
+"""Esecutore login: orchestra browser, classificazione pagina, form fill e retry."""
+
 import asyncio
-import json
 import logging
-from datetime import datetime, timezone
 from pathlib import Path
 
-from playwright.async_api import async_playwright, Page, BrowserContext
+from playwright.async_api import BrowserContext, async_playwright
 
 from model.dto.risultatoLoginDto import LoginResult
 from model.enums.statoLoginEnum import LoginStatus
 from model.enums.statoPaginaEnum import PageState
 from model.po.portalePo import Portale
+from service.crawl4ai.browserFactory import BrowserFactory
 from service.crawl4ai.classificatoreLoginService import LoginClassifier
 from service.crawl4ai.estrattoreSelettoriService import EstrattoreSelettoriService
-from service.crawl4ai.browserFactory import BrowserFactory
 from service.crawl4ai.formFillerService import FormFillerService
+from service.crawl4ai.sessioneLoginService import COOKIES_DIR, SessioneLoginService
 
 logger = logging.getLogger(__name__)
 
-COOKIES_DIR  = Path("sessioni")
-TIMEOUT_NAV  = 30_000
+TIMEOUT_NAV = 30_000
 TIMEOUT_PORT = 90
 
 
@@ -28,9 +28,9 @@ class EsecutoreLoginService:
 
     def __init__(self, openai_api_key: str, cookies_dir: Path = COOKIES_DIR):
         self._classificatore = LoginClassifier(openai_api_key)
-        self._estrattore     = EstrattoreSelettoriService(openai_api_key)
-        self._cookies_dir    = cookies_dir
-        self._cookies_dir.mkdir(exist_ok=True)
+        self._estrattore = EstrattoreSelettoriService(openai_api_key)
+        self._cookies_dir = cookies_dir
+        self._sessione_service = SessioneLoginService(cookies_dir, logger)
 
     async def esegui_login(self, portale: Portale) -> LoginResult:
         if portale.has_valid_session and portale.cookies_path:
@@ -72,6 +72,7 @@ class EsecutoreLoginService:
 
     async def _login_con_retry(self, portale: Portale, context: BrowserContext) -> LoginResult:
         import random
+
         ultimo_errore = None
 
         for tentativo in range(1, self.MAX_RETRY + 1):
@@ -106,6 +107,7 @@ class EsecutoreLoginService:
 
     async def _tenta_login(self, portale: Portale, context: BrowserContext) -> LoginResult:
         import random
+
         page = await context.new_page()
 
         try:
@@ -118,8 +120,13 @@ class EsecutoreLoginService:
         screenshot = await page.screenshot()
         classificazione = await self._classificatore.classify_bytes(screenshot)
 
-        logger.info("[%s] Stato pagina: %s (confidence=%s, model=%s)",
-                    portale.url, classificazione.state, classificazione.confidence, classificazione.used_model)
+        logger.info(
+            "[%s] Stato pagina: %s (confidence=%s, model=%s)",
+            portale.url,
+            classificazione.state,
+            classificazione.confidence,
+            classificazione.used_model,
+        )
 
         if classificazione.state == PageState.LOGGED_IN:
             return await self._salva_sessione(portale, page, classificazione)
@@ -155,7 +162,7 @@ class EsecutoreLoginService:
                 s_sel=s_sel,
                 username=portale.username,
                 password=portale.password,
-                portale_url=portale.url
+                portale_url=portale.url,
             )
         except Exception as e:
             return LoginResult(portal_id=str(portale.numero), url=portale.url,
@@ -193,17 +200,4 @@ class EsecutoreLoginService:
                            error_message=f"Stato post-submit ambiguo: {stato_post.state}")
 
     async def _salva_sessione(self, portale, page, classificazione, selettori=None) -> LoginResult:
-        cookies = await page.context.cookies()
-        path = self._cookies_dir / f"{portale.numero}_{portale.cliente}.json"
-        path.write_text(json.dumps(cookies, ensure_ascii=False, indent=2))
-        portale.cookies_path  = str(path)
-        portale.last_login_ok = datetime.now(timezone.utc)
-        if selettori:
-            portale.selectors_cached = selettori
-        logger.info("[%s] Login OK — cookie salvati in %s", portale.url, path)
-        return LoginResult(
-            portal_id=str(portale.numero), url=portale.url,
-            status=LoginStatus.SUCCESS, session_valid=True,
-            cookies_path=str(path), page_state=classificazione.state,
-            vision_model=classificazione.used_model, selectors_used=selettori,
-        )
+        return await self._sessione_service.salva_sessione(portale, page, classificazione, selettori)

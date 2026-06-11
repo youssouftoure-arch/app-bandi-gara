@@ -1,3 +1,5 @@
+"""View MVP: definisce l'interfaccia di output e le risposte JSON Flask."""
+
 from abc import ABC, abstractmethod
 from flask import jsonify, Response
 

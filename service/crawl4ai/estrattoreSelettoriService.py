@@ -1,6 +1,4 @@
-"""
-service/crawl4ai/estrattoreSelettoriService.py
-"""
+"""Estrattore selettori login: individua username, password e submit con LLM."""
 
 import json
 import logging

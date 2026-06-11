@@ -1,3 +1,5 @@
+"""Persistent object Portale: credenziali, metadati login, sessione e stato operativo."""
+
 from dataclasses import dataclass, field
 from datetime import datetime
 from typing import Optional

@@ -1,0 +1,15 @@
+{
+    "https://www.acquistionlinerfi.it/web/error.html?_ncp=1753696951455.127431-1": {
+        "url_sezione_bandi": "https://www.acquistionlinerfi.it/esop/guest/go/public/opportunity/current?customLoginPage=/web/login.html",
+        "selettori": {
+            "contenitore_bando": "tbody.list-tbody tr",
+            "titolo": "td:nth-child(4) a",
+            "descrizione": "td:nth-child(3)",
+            "scadenza": "td.column-date",
+            "importo": "",
+            "categoria": "td:nth-child(5)",
+            "url_dettaglio": "td:nth-child(4) a"
+        },
+        "last_updated": "2026-06-11T11:55:57.775206"
+    }
+}

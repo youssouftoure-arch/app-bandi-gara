@@ -1,3 +1,5 @@
+"""Navigatore LLM: sceglie tra i link pagina quello piu probabile per i bandi."""
+
 import json
 import logging
 from openai import AsyncOpenAI

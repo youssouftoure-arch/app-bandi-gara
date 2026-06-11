@@ -1,3 +1,5 @@
+"""DAO portali: carica dall'Excel operativo i portali attivi da processare."""
+
 import pandas as pd
 import logging
 from pathlib import Path

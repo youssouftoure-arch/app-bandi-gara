@@ -1,3 +1,5 @@
+"""Discovery selettori bandi: usa LLM e BeautifulSoup per trovare CSS robusti."""
+
 import json
 import logging
 from datetime import datetime

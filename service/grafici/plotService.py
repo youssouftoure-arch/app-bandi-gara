@@ -1,3 +1,5 @@
+"""Servizio analytics: legge l'Excel dei bandi e prepara KPI/grafici per la dashboard."""
+
 import logging
 from pathlib import Path
 import pandas as pd

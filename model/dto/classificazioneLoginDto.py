@@ -1,3 +1,5 @@
+"""DTO della classificazione vision: stato pagina, confidenza e payload grezzo LLM."""
+
 from dataclasses import dataclass
 from model.enums.statoPaginaEnum import PageState
 from model.enums.confidenzaEnum import Confidence

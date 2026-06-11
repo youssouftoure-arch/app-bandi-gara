@@ -1,3 +1,5 @@
+-- Schema iniziale per la tabella dei portali e delle credenziali operative.
+
 CREATE TABLE portali_bandi (
     id INT AUTO_INCREMENT PRIMARY KEY,
     numero INT COMMENT 'Corrisponde al N° progressivo',

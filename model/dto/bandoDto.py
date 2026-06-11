@@ -1,3 +1,5 @@
+"""DTO Pydantic del bando: normalizza dati estratti e link di dettaglio."""
+
 from typing import Optional
 from pydantic import BaseModel, Field
 from urllib.parse import urljoin

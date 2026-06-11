@@ -1,3 +1,5 @@
+"""Enum degli stati pagina riconosciuti dal classificatore vision."""
+
 from enum import Enum
 
 class PageState(str, Enum):

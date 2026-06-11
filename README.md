@@ -8,30 +8,46 @@ L'applicazione segue l'architettura **MVP** per garantire il disaccoppiamento tr
 
 ```
 app bandi gara/
+├── config/                             # File di configurazione e Cache
+│   ├── profiler_cache.json             # Cache settimanale dei selettori (risparmio API)
+│   └── selettori_portali.json          # Configurazione statica per portale
+├── controller/                         # Routing Layer: Ingressi HTTP Flask
+│   └── indexController.py              # Inoltra le rotte /api al Presenter
 ├── dao/                                # Model Layer: Data Access Objects
 │   ├── portaleDao.py                   # Carica i dati dei portali da Excel
 │   └── bandoDao.py                     # Salva i bandi ed estrae le metriche da Excel
-├── view/                               # View Layer: Formattazione dei risultati
-│   └── scraperView.py                  # ScraperViewInterface e FlaskScraperView (JSON)
+├── model/                              # DTO, PO ed Enums
+│   ├── dto/                            # Pydantic Schemas per input/output LLM
+│   ├── enums/                          # Stati di login, pagina e confidenza
+│   └── po/portalePo.py                 # Dataclass per la configurazione del portale
 ├── presenter/                          # Presenter Layer: Coordinamento e threading
 │   └── scraperPresenter.py             # Riceve richieste, avvia i thread e aggiorna la View
-├── controller/                         # Routing Layer: Ingressi HTTP Flask
-│   └── indexController.py              # Inoltra le rotte /api al Presenter
-├── service/crawl4ai/                   # Model Layer: Motori di Scraping e IA
-│   ├── browserFactory.py               # Configura ed avvia browser Playwright stealth
-│   ├── formFillerService.py            # Riempie i form e simula la digitazione umana
-│   ├── navigatoreLlmService.py         # Naviga alla sezione bandi guidato da LLM
-│   ├── classificatoreLoginService.py   # Vision LLM — classifica stato pagina
-│   ├── estrattoreSelettoriService.py   # DOM → LLM → selettori CSS con cache
-│   ├── esecutoreLoginService.py        # Gestisce i tentativi di login sui portali
-│   └── scraperService.py               # Orchestratore principale del loop di scraping
-├── model/                              # DTO, PO ed Enums
-│   ├── po/portalePo.py                 # Dataclass per la configurazione del portale
-│   ├── dto/                            # Pydantic Schemas per input/output LLM
-│   └── enums/                          # Stati di login, pagina e confidenza
-├── promptDiSistema/
+├── promptDiSistema/                    # Prompt testuali
 │   └── classificatoreLogin.py          # Prompt di sistema per la Vision API
+├── service/                            # Model Layer: Logica di Business
+│   ├── crawl4ai/                       # Motori di Scraping, IA e Caching
+│   │   ├── browserFactory.py           # Configura ed avvia browser Playwright stealth
+│   │   ├── classificatoreLoginService.py # Vision LLM — classifica stato pagina
+│   │   ├── discoverySelettoriService.py  # LLM individua e testa i selettori CSS (Cache Miss)
+│   │   ├── esecutoreLoginService.py    # Gestisce i tentativi di login sui portali
+│   │   ├── estrattoreBandiService.py   # LLM fallback per elenco e dettagli (Slow Track)
+│   │   ├── estrattoreCssService.py     # Scraping locale nativo ad alte prestazioni (Fast Track)
+│   │   ├── estrattoreSelettoriService.py # DOM → LLM → selettori login
+│   │   ├── formFillerService.py        # Riempie i form e simula la digitazione umana
+│   │   ├── navigatoreLlmService.py     # Naviga alla sezione bandi guidato da LLM
+│   │   └── scraperService.py           # Orchestratore principale del loop di scraping
+│   ├── estrazioneFile/                 # Gestione documenti
+│   │   └── estrazioneDatiExcelService.py
+│   └── grafici/                        # Elaborazione e plot
+│       └── plotService.py
+├── sessioni/                           # Cookie salvati in formato JSON (es. 102_RFI.json)
+├── static/ & templates/                # UI Layer (CSS e HTML Dashboard)
+├── view/                               # View Layer
+│   └── scraperView.py                  # ScraperViewInterface e FlaskScraperView (JSON)
 ├── user e password per Operations.xlsx # Sorgente dati portali
+├── bandi_estratti_totale.xlsx          # File generato con i risultati
+├── limiti.md & DOCUMENTAZIONE.md       # Documentazione di progetto
+├── scraper_activity.log                # Log delle operazioni in background
 ├── .env                                # Chiavi API (non committare)
 ├── Dockerfile
 └── requirements.txt

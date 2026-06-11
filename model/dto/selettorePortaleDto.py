@@ -1,3 +1,5 @@
+"""DTO dei selettori CSS scoperti dall'LLM per liste bandi e configurazioni portale."""
+
 from pydantic import BaseModel, Field
 from typing import Dict
 

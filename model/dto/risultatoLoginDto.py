@@ -1,8 +1,4 @@
-"""
-model/dto/login_result.py
--------------------------
-DTO che rappresenta il risultato di un tentativo di login su un portale.
-"""
+"""DTO del login: raccoglie esito, sessione, errori, MFA e selettori usati."""
 
 from dataclasses import dataclass, field
 from datetime import datetime

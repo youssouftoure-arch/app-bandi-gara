@@ -1,3 +1,5 @@
+"""Factory Playwright: crea browser Chromium e context con opzioni stealth comuni."""
+
 import logging
 from playwright.async_api import Playwright, BrowserContext
 

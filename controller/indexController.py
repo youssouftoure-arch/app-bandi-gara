@@ -1,3 +1,5 @@
+"""Controller Flask: espone endpoint API, download Excel e dashboard grafica."""
+
 from flask import Blueprint, render_template, send_file, jsonify
 import os
 from view.scraperView import FlaskScraperView

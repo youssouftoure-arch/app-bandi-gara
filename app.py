@@ -1,3 +1,5 @@
+"""Entry point Flask: crea l'app, registra il blueprint API e serve la home."""
+
 from flask import Flask, render_template
 from controller.indexController import scraper_bp
 

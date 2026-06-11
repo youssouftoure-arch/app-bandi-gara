@@ -1,3 +1,5 @@
+"""Estrattore CSS: legge bandi dal DOM usando selettori deterministici gia scoperti."""
+
 import logging
 from typing import Optional
 from bs4 import BeautifulSoup

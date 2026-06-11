@@ -1,3 +1,5 @@
+"""Presenter MVP: avvia lo scraping in background e traduce risultati/stato in risposte View."""
+
 import threading
 import time
 import asyncio

@@ -1,3 +1,5 @@
+"""Prompt di sistema usato dal classificatore vision per riconoscere lo stato login."""
+
 SYSTEM_PROMPT = """
 Sei un classificatore di pagine web specializzato in form di autenticazione.
 Analizza lo screenshot fornito e restituisci SOLO un oggetto JSON valido,

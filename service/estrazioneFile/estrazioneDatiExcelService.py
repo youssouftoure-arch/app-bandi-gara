@@ -1,3 +1,5 @@
+"""Servizio legacy di lettura Excel portali con normalizzazione base degli URL."""
+
 import pandas as pd
 from model.po.portalePo import Portale
 

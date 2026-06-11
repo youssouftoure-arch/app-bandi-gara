@@ -1,3 +1,4 @@
+# Immagine applicativa: prepara Python, dipendenze di sistema e Chromium Playwright.
 FROM python:3.11-slim
 
 # Dipendenze di sistema per Playwright + lxml

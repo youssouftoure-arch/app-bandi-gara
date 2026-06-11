@@ -1,3 +1,5 @@
+"""Enum degli esiti possibili del processo di login automatico."""
+
 from enum import Enum
 
 class LoginStatus(str, Enum):
